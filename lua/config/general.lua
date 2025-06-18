@@ -19,5 +19,4 @@ vim.opt.history = 1000
 vim.opt.guicursor = "n-v-c-i:block"
 vim.opt.backspace = "indent,eol,start"
 vim.opt.completeopt = "menu,menuone,noselect,noinsert"
-vim.g.indentLine_char = "⦙"
 
