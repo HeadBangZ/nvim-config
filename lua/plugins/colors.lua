@@ -6,13 +6,13 @@ return {
     -- Colors
     {
         "folke/tokyonight.nvim",
+        config = function()
+            vim.cmd.colorscheme "tokyonight"
+            enable_transparency()
+        end
     },
     {
         "rebelot/kanagawa.nvim",
-        config = function()
-            vim.cmd.colorscheme "kanagawa"
-            enable_transparency()
-        end
     },
     {
         "morhetz/gruvbox",
@@ -27,7 +27,7 @@ return {
             "nvim-tree/nvim-web-devicons",
         },
         opts = {
-            theme = "kanagawa"
+            theme = "tokyonight"
         }
     },
 }
