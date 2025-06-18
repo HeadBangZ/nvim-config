@@ -17,6 +17,6 @@ vim.opt.showmatch = true
 vim.opt.hlsearch = true
 vim.opt.history = 1000
 vim.opt.guicursor = "n-v-c-i:block"
-vim.opt.backspace = "indent,eol,start"
+vim.opt.backspace = "eol,start"
 vim.opt.completeopt = "menu,menuone,noselect,noinsert"
 

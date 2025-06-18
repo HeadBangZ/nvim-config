@@ -12,6 +12,7 @@ return {
             ensure_installed = {
                 "go",
                 "c_sharp",
+                "rust",
                 "php",
                 "lua",
                 "python",
