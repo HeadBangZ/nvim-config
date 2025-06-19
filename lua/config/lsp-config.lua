@@ -17,31 +17,43 @@ vim.lsp.config.gopls = {
     },
 }
 
+vim.lsp.config.clangd = {
+    cmd = {
+        "clangd",
+        "--clang-tidy",
+        "--background-index",
+        "--offset-encoding=utf-8",
+    },
+    root_markers = { ".clangd", "compile_commands.json" },
+    filetypes = { "c" },
+}
+
+vim.lsp.config.lua_ls = {
+    cmd = { "lua-language-server" },
+    filetypes = { "lua" },
+    root_markers = { ".luarc.json" },
+    settings = {
+        Lua = {
+            workspace = {
+                checkThirdParty = false,
+                library = {
+                    vim.env.VIMRUNTIME,
+                    vim.fn.stdpath("config") .. "/lua",
+                },
+            },
+            diagnostics = {
+                globals = { "vim" },
+            },
+            completion = {
+                callSnippet = "Replace",
+            },
+            telemetry = {
+                enable = false
+            },
+        },
+    },
+}
+
 vim.lsp.enable("gopls")
---return {
---    vim.enable("gopls")
---    {
---        "neovim/nvim-lspconfig",
---        dependencies = {
---            "hrsh7th/cmp-nvim-lsp",
---            "hrsh7th/nvim-cmp",
---        },
---        config = function()
---            require("lspconfig").lua_ls.setup { }
---            require("lspconfig").gopls.setup {
---                cmd = { "gopls" },
---                root_dir = require("lspconfig").util.root_pattern("go.work", "go.mod", ".git"),
---                settings = {
---                    gopls = {
---                        completeUnimported = true,
---                        usePlaceholders = true,
---                        staticcheck = true,
---                        analyses = {
---                            unusedparams = true, 
---                        },
---                    },
---                },
---            }
---        end,
---    }
---cd
+vim.lsp.enable("clangd")
+vim.lsp.enable("lua_ls")

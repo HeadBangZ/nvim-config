@@ -8,11 +8,13 @@ return {
                 enable = true
             },
             indent = { enable = true },
-            autotage = { enable = true },
+            autotag = { enable = true },
             ensure_installed = {
+                "c",
                 "go",
                 "c_sharp",
                 "rust",
+                "odin",
                 "lua",
                 "python",
                 "json",
