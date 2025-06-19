@@ -6,10 +6,6 @@ return {
     -- Colors
     {
         "folke/tokyonight.nvim",
-        config = function()
-            vim.cmd.colorscheme "tokyonight"
-            enable_transparency()
-        end
     },
     {
         "rebelot/kanagawa.nvim",
@@ -19,6 +15,10 @@ return {
     },
     {
         "sainnhe/everforest",
+        config = function()
+            vim.cmd.colorscheme "everforest"
+            enable_transparency()
+        end
     },
     -- End
     {
@@ -27,7 +27,7 @@ return {
             "nvim-tree/nvim-web-devicons",
         },
         opts = {
-            theme = "tokyonight"
+            theme = "everforest"
         }
     },
 }

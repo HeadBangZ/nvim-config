@@ -13,7 +13,6 @@ return {
                 "go",
                 "c_sharp",
                 "rust",
-                "php",
                 "lua",
                 "python",
                 "json",
