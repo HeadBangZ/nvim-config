@@ -54,6 +54,25 @@ vim.lsp.config.lua_ls = {
     },
 }
 
+vim.lsp.config.rust_analyzer = {
+    cmd = { "rust-analyzer" },
+    filetypes = { "rust" },
+    root_markers = { "Cargo.toml", ".git" },
+    settings = {
+        ["rust_analyzer"] = {
+            inlayHints = {
+            },
+        },
+        checkOnSave = {
+            command = "clippy",
+        },
+        procMacro = {
+            enable = true,
+        },
+    }
+}
+
 vim.lsp.enable("gopls")
 vim.lsp.enable("clangd")
 vim.lsp.enable("lua_ls")
+vim.lsp.enable("rust_analyzer")
