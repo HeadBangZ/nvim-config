@@ -72,7 +72,19 @@ vim.lsp.config.rust_analyzer = {
     }
 }
 
+vim.lsp.config.csharp_ls = {
+    cmd = { "csharp-ls" },
+    root_markers = { ".git", ".sln", ".csproj" },
+    settings = {
+        csharp = {
+            enableFormatting = true,
+            enableImportCompletion = true,
+        },
+    },
+}
+
 vim.lsp.enable("gopls")
 vim.lsp.enable("clangd")
+vim.lsp.enable("csharp_ls")
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("rust_analyzer")

@@ -15,6 +15,7 @@ return {
             require("mason-lspconfig").setup({
                 ensure_installed = { 
                     "gopls",
+                    "csharp_ls",
                     "lua_ls",
                     "clangd",
                     "rust_analyzer",
