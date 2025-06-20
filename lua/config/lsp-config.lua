@@ -19,17 +19,6 @@ vim.lsp.config.gopls = {
     },
 }
 
-vim.lsp.config.clangd = {
-    cmd = {
-        "clangd",
-        "--clang-tidy",
-        "--background-index",
-        "--offset-encoding=utf-8",
-    },
-    root_markers = { ".clangd", "compile_commands.json" },
-    filetypes = { "c" },
-}
-
 vim.lsp.config.lua_ls = {
     cmd = { "lua-language-server" },
     filetypes = { "lua" },
@@ -54,24 +43,6 @@ vim.lsp.config.lua_ls = {
             },
         },
     },
-}
-
-vim.lsp.config.rust_analyzer = {
-    cmd = { "rust-analyzer" },
-    filetypes = { "rust" },
-    root_markers = { "Cargo.toml", ".git" },
-    settings = {
-        ["rust_analyzer"] = {
-            inlayHints = {
-            },
-        },
-        checkOnSave = {
-            command = "clippy",
-        },
-        procMacro = {
-            enable = true,
-        },
-    }
 }
 
 if is_workstation then
@@ -103,9 +74,39 @@ if is_workstation then
 
     vim.lsp.enable("csharp_ls")
     vim.lsp.enable("pyright")
+else
+    vim.lsp.config.clangd = {
+        cmd = {
+            "clangd",
+            "--clang-tidy",
+            "--background-index",
+            "--offset-encoding=utf-8",
+        },
+        root_markers = { ".clangd", "compile_commands.json" },
+        filetypes = { "c" },
+    }
+
+    vim.lsp.config.rust_analyzer = {
+        cmd = { "rust-analyzer" },
+        filetypes = { "rust" },
+        root_markers = { "Cargo.toml", ".git" },
+        settings = {
+            ["rust_analyzer"] = {
+                inlayHints = {
+                },
+            },
+            checkOnSave = {
+                command = "clippy",
+            },
+            procMacro = {
+                enable = true,
+            },
+        },
+    }
+
+    vim.lsp.enable("clangd")
+    vim.lsp.enable("rust_analyzer")
 end
 
-vim.lsp.enable("clangd")
 vim.lsp.enable("gopls")
 vim.lsp.enable("lua_ls")
-vim.lsp.enable("rust_analyzer")

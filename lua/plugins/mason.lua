@@ -15,16 +15,17 @@ return {
             local is_workstation = os.getenv("NVIM_WORKSTATION_DEV") ~= nil
 
             local ensure_installed_lsps = {
-                "clangd",
                 "gopls",
                 "lua_ls",
-                "ols",
-                "rust_analyzer",
             }
 
             if is_workstation then
                 table.insert(ensure_installed_lsps, "csharp_ls")
                 table.insert(ensure_installed_lsps, "pyright")
+            else
+                table.insert(ensure_installed_lsps, "clangd")
+                table.insert(ensure_installed_lsps, "ols")
+                table.insert(ensure_installed_lsps, "rust_analyzer")
             end
 
             require("mason-lspconfig").setup({
