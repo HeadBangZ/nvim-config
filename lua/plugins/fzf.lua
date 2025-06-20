@@ -47,6 +47,46 @@ return {
             function() require("fzf-lua").resume() end,
             desc = "FZF Resume"
         },
+        {
+            "gd",
+            function() require("fzf-lua").lsp_definitions() end,
+            desc = "FZF Go To Definition"
+        },
+        {
+            "gD",
+            function() require("fzf-lua").lsp_declarations() end,
+            desc = "FZF Go To Declaration"
+        },
+        {
+            "gr",
+            function() require("fzf-lua").lsp_references() end,
+            desc = "FZF References"
+        },
+        {
+            "gri",
+            function() require("fzf-lua").lsp_implementations() end,
+            desc = "FZF Go To Implementations"
+        },
+        {
+            "grt",
+            function() require("fzf-lua").lsp_typedefs() end,
+            desc = "FZF Go To Type Definitions"
+        },
+        {
+            "gs",
+            function() require("fzf-lua").lsp_document_symbols() end,
+            desc = "FZF Document Symbols"
+        },
+        {
+            "gS",
+            function() require("fzf-lua").lsp_workspace_symbols() end,
+            desc = "FZF Workspace Symbols"
+        },
+        {
+            "<leader>d",
+            function() require("fzf-lua").diagnostics_workspace() end,
+            desc = "FZF Workspace Diagnostics"
+        },
     },
     config = function()
         require("fzf-lua").setup({
