@@ -14,12 +14,13 @@ return {
         config = function()
             require("mason-lspconfig").setup({
                 ensure_installed = { 
-                    "gopls",
-                    "csharp_ls",
-                    "lua_ls",
                     "clangd",
-                    "rust_analyzer",
+                    "csharp_ls",
+                    "gopls",
+                    "lua_ls",
                     "ols",
+                    "pyright",
+                    "rust_analyzer",
                 },   
             })
         end,
