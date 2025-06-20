@@ -14,11 +14,12 @@ return {
         config = function()
             require("mason-lspconfig").setup({
                 ensure_installed = { 
+                    "clangd",
                     "gopls",
                     "lua_ls",
-                    "clangd",
-                    "rust_analyzer",
                     "ols",
+                    "pyright",
+                    "rust_analyzer",
                 },   
             })
         end,
