@@ -24,7 +24,6 @@ return {
                 table.insert(ensure_installed_lsps, "pyright")
             else
                 table.insert(ensure_installed_lsps, "clangd")
-                table.insert(ensure_installed_lsps, "ols")
                 table.insert(ensure_installed_lsps, "rust_analyzer")
             end
 
