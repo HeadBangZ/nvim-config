@@ -13,7 +13,7 @@ return {
         },
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { 
+                ensure_installed = {
                     "clangd",
                     "csharp_ls",
                     "gopls",
@@ -21,7 +21,7 @@ return {
                     "ols",
                     "pyright",
                     "rust_analyzer",
-                },   
+                },
             })
         end,
     },

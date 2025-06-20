@@ -12,13 +12,13 @@ return {
     },
     {
         "morhetz/gruvbox",
+        config = function()
+            vim.cmd.colorscheme "gruvbox"
+            enable_transparency()
+        end
     },
     {
         "sainnhe/everforest",
-        config = function()
-            vim.cmd.colorscheme "everforest"
-            enable_transparency()
-        end
     },
     -- End
     {
@@ -27,7 +27,7 @@ return {
             "nvim-tree/nvim-web-devicons",
         },
         opts = {
-            theme = "everforest"
+            theme = "gruvbox"
         }
     },
 }
