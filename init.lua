@@ -1,3 +1,4 @@
+-- vim.lsp.set_log_level("debug")
 require("config.options")
 require("config.keybinds")
 require("config.lazy")

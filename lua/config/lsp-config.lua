@@ -108,10 +108,6 @@ else
         cmd = { "ols" },
         filetypes = { "odin" },
         root_markers = { "ols.json", ".git" },
-        settings = {
-            enable_hover = true,
-            enable_snippets = true,
-        },
     }
 
     vim.lsp.enable("clangd")
