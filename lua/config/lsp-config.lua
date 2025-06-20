@@ -1,3 +1,5 @@
+local is_workstation = os.getenv("NVIM_WORKSTATION_DEV") ~= nil
+
 vim.lsp.config("*", {
     root_markers = { ".git" },
 })
@@ -72,35 +74,38 @@ vim.lsp.config.rust_analyzer = {
     }
 }
 
-vim.lsp.config.csharp_ls = {
-    cmd = { "csharp-ls" },
-    root_markers = { ".git", ".sln", ".csproj" },
-    settings = {
-        csharp = {
-            enableFormatting = true,
-            enableImportCompletion = true,
-        },
-    },
-}
-
-vim.lsp.config.pyright = {
-    cmd = { "pyright-langserver", "--stdio" },
-    filetypes = { "python" },
-    root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", "Pipfile", "pyrightconfig.json", ".git" },
-    settings = {
-        python = {
-            analysis = {
-                autoSearchPaths = true,
-                diagnosticMode = "openFilesOnly",
-                useLibraryCodeForTypes = true,
+if is_workstation then
+    vim.lsp.config.csharp_ls = {
+        cmd = { "csharp-ls" },
+        root_markers = { ".git", ".sln", ".csproj" },
+        settings = {
+            csharp = {
+                enableFormatting = true,
+                enableImportCompletion = true,
             },
         },
-    },
-}
+    }
+
+    vim.lsp.config.pyright = {
+        cmd = { "pyright-langserver", "--stdio" },
+        filetypes = { "python" },
+        root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", "Pipfile", "pyrightconfig.json", ".git" },
+        settings = {
+            python = {
+                analysis = {
+                    autoSearchPaths = true,
+                    diagnosticMode = "openFilesOnly",
+                    useLibraryCodeForTypes = true,
+                },
+            },
+        },
+    }
+
+    vim.lsp.enable("csharp_ls")
+    vim.lsp.enable("pyright")
+end
 
 vim.lsp.enable("clangd")
-vim.lsp.enable("csharp_ls")
 vim.lsp.enable("gopls")
 vim.lsp.enable("lua_ls")
-vim.lsp.enable("pyright")
 vim.lsp.enable("rust_analyzer")
