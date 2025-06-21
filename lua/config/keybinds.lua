@@ -2,10 +2,12 @@ vim.g.mapleader = ' '
 vim.keymap.set("n", "<leader>cd", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>t", "~", { desc = "Toggle Case" })
 
--- formatting not working ("Format request failed. No matching language servers.
 vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", { desc = "Hover Documentation" })
 vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { desc = "Code Action" })
 vim.keymap.set("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", { desc = "Rename" })
+
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle Undotree" })
+vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "Git status" })
 
 vim.diagnostic.config({
     virtual_text = true

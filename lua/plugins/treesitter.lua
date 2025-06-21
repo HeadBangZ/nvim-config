@@ -21,6 +21,8 @@ return {
                 "yaml",
                 "markdown",
                 "csv",
+                "javascript",
+                "typescript",
             },
             auto_install = false,
         })
