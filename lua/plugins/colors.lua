@@ -9,13 +9,13 @@ return {
     },
     {
         "rebelot/kanagawa.nvim",
+        config = function()
+            vim.cmd.colorscheme "kanagawa"
+            enable_transparency()
+        end
     },
     {
         "morhetz/gruvbox",
-        config = function()
-            vim.cmd.colorscheme "gruvbox"
-            enable_transparency()
-        end
     },
     {
         "sainnhe/everforest",
@@ -27,7 +27,7 @@ return {
             "nvim-tree/nvim-web-devicons",
         },
         opts = {
-            theme = "gruvbox"
+            theme = "kanagawa"
         }
     },
 }
