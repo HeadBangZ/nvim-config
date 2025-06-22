@@ -1,5 +1,30 @@
 local is_workstation = os.getenv("NVIM_WORKSTATION_DEV") ~= nil
 
+local on_attach = function(client, bufnr)
+    local function map_buf_key(mode, lhs, rhs, opts)
+        vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts)
+    end
+
+    local opts = { noremap = true, silent = true }
+
+    map_buf_key('n', 'gd', '<Cmd>lua require("fzf-lua").lsp_definitions()<CR>', opts)
+    map_buf_key('n', 'gD', '<Cmd>lua require("fzf-lua").lsp_declarations()<CR>', opts)
+    map_buf_key('n', 'grr', '<Cmd>lua require("fzf-lua").lsp_references()<CR>', opts)
+    map_buf_key('n', 'gri', '<Cmd>lua require("fzf-lua").lsp_implementations()<CR>', opts)
+    map_buf_key('n', 'grt', '<Cmd>lua require("fzf-lua").lsp_typedefs()<CR>', opts)
+    map_buf_key('n', 'gs', '<Cmd>lua require("fzf-lua").lsp_document_symbols()<CR>', opts)
+    map_buf_key('n', 'gS', '<Cmd>lua require("fzf-lua").lsp_workspace_symbols()<CR>', opts)
+    map_buf_key('n', '<leader>d', '<Cmd>lua require("fzf-lua").diagnostics_workspace()<CR>', opts)
+
+    map_buf_key('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+    map_buf_key('n', '<C-h>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+    map_buf_key('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+    map_buf_key('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+
+    map_buf_key("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+    map_buf_key("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+end
+
 vim.lsp.config("*", {
     root_markers = { ".git" },
 })
@@ -17,6 +42,7 @@ vim.lsp.config.gopls = {
             },
         },
     },
+    on_attach = on_attach,
 }
 
 vim.lsp.config.lua_ls = {
@@ -43,6 +69,7 @@ vim.lsp.config.lua_ls = {
             },
         },
     },
+    on_attach = on_attach,
 }
 
 if is_workstation then
@@ -55,6 +82,7 @@ if is_workstation then
                 enableImportCompletion = true,
             },
         },
+        on_attach = on_attach,
     }
 
     vim.lsp.config.pyright = {
@@ -70,6 +98,7 @@ if is_workstation then
                 },
             },
         },
+        on_attach = on_attach,
     }
 
     vim.lsp.enable("csharp_ls")
@@ -84,6 +113,7 @@ else
         },
         root_markers = { ".clangd", "compile_commands.json" },
         filetypes = { "c" },
+        on_attach = on_attach,
     }
 
     vim.lsp.config.rust_analyzer = {
@@ -102,12 +132,14 @@ else
                 enable = true,
             },
         },
+        on_attach = on_attach,
     }
 
     vim.lsp.config.ols = {
         cmd = { "ols" },
         filetypes = { "odin" },
         root_markers = { "ols.json", ".git" },
+        on_attach = on_attach,
     }
 
     vim.lsp.enable("clangd")
