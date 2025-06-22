@@ -1,5 +1,5 @@
 -- vim.lsp.set_log_level("debug")
-require("config.options")
-require("config.keybinds")
+require("config.core.options")
+require("config.core.keymaps")
 require("config.lazy")
-require("config.lsp-config")
+require("config.lsp")
