@@ -129,9 +129,25 @@ else
         on_attach = on_attach,
     }
 
+    vim.lsp.config.nimlangserver = {
+        cmd = { "nimlangserver" },
+        filetypes = { "nim" },
+        root_markers = { ".git", "nim.nimble", "package.nim", "config.nims" },
+        settings = {
+            nim = {
+                nimsuggestPath = "/usr/bin/nimsuggest",
+                nimSearchPaths = {
+                    '/usr/lib/nim/lib',
+                },
+            },
+        },
+        on_attach = on_attach,
+    }
+
     vim.lsp.enable("clangd")
     vim.lsp.enable("rust_analyzer")
     vim.lsp.enable("ols")
+    vim.lsp.enable("nimlangserver")
 end
 
 vim.lsp.enable("gopls")

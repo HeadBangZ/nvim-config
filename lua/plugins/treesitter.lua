@@ -14,6 +14,7 @@ return {
                 "go",
                 "rust",
                 "odin",
+                "nim",
                 "lua",
                 "python",
                 "json",
