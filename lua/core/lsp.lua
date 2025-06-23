@@ -45,6 +45,18 @@ vim.lsp.config.gopls = {
     on_attach = on_attach,
 }
 
+vim.lsp.config.nimlangserver = {
+    cmd = { "nim_langserver" },
+    filetypes = { "nim" },
+    root_markers = { ".git", "nim.nimble", "package.nim", "config.nims" },
+    settings = {
+        nim = {
+            autoCheckProject = true,
+        },
+    },
+    on_attach = on_attach,
+}
+
 vim.lsp.config.lua_ls = {
     cmd = { "lua-language-server" },
     filetypes = { "lua" },
@@ -136,3 +148,4 @@ end
 
 vim.lsp.enable("gopls")
 vim.lsp.enable("lua_ls")
+vim.lsp.enable("nim_langserver")

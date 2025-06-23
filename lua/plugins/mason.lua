@@ -17,6 +17,7 @@ return {
             local ensure_installed_lsps = {
                 "gopls",
                 "lua_ls",
+                "nim_langserver",
             }
 
             if is_workstation then
