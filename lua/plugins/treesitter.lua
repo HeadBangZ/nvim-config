@@ -12,7 +12,6 @@ return {
             ensure_installed = {
                 "c",
                 "go",
-                "c_sharp",
                 "rust",
                 "odin",
                 "lua",
