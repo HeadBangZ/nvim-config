@@ -73,18 +73,6 @@ vim.lsp.config.lua_ls = {
 }
 
 if is_workstation then
-    vim.lsp.config.csharp_ls = {
-        cmd = { "csharp-ls" },
-        root_markers = { ".git", ".sln", ".csproj" },
-        settings = {
-            csharp = {
-                enableFormatting = true,
-                enableImportCompletion = true,
-            },
-        },
-        on_attach = on_attach,
-    }
-
     vim.lsp.config.pyright = {
         cmd = { "pyright-langserver", "--stdio" },
         filetypes = { "python" },
@@ -101,7 +89,6 @@ if is_workstation then
         on_attach = on_attach,
     }
 
-    vim.lsp.enable("csharp_ls")
     vim.lsp.enable("pyright")
 else
     vim.lsp.config.clangd = {
