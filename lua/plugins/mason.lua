@@ -17,11 +17,9 @@ return {
             local ensure_installed_lsps = {
                 "gopls",
                 "lua_ls",
-                "nim_langserver",
             }
 
             if is_workstation then
-                table.insert(ensure_installed_lsps, "csharp_ls")
                 table.insert(ensure_installed_lsps, "pyright")
             else
                 table.insert(ensure_installed_lsps, "clangd")
