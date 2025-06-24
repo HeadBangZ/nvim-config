@@ -1,6 +1,6 @@
 require("config.options")
 require("config.keymaps")
 require("config.lazy")
-require("config.autosave")
+require("config.autoformat")
 require("core.lsp")
 -- vim.lsp.set_log_level("debug")
