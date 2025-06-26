@@ -21,6 +21,8 @@ return {
 
             if is_workstation then
                 table.insert(ensure_installed_lsps, "pyright")
+                table.insert(ensure_installed_lsps, "ts_ls")
+                table.insert(ensure_installed_lsps, "cssls")
             else
                 table.insert(ensure_installed_lsps, "clangd")
                 table.insert(ensure_installed_lsps, "rust_analyzer")

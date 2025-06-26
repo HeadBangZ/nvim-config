@@ -89,7 +89,32 @@ if is_workstation then
         on_attach = on_attach,
     }
 
+    vim.lsp.config.ts_ls = {
+        cmd = { "typescript-language-server", "--stdio" },
+        filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "vue" },
+        root_markers = { "package.json", "tsconfig.json", "jsconfig.json", ".git" },
+        on_attach = on_attach,
+    }
+
+    vim.lsp.config.cssls = {
+        cmd = { "vscode-css-language-server", "--stdio" },
+        filetypes = { "css", "scss", "less", },
+        root_markers = { "package.json", ".git" },
+        settings = {
+            css = { validate = true },
+            scss = { validate = true },
+            less = { validate = true },
+            hover = {
+                documentation = true,
+                references = true,
+            },
+        },
+        on_attach = on_attach,
+    }
+
     vim.lsp.enable("pyright")
+    vim.lsp.enable("ts_ls")
+    vim.lsp.enable("cssls")
 else
     vim.lsp.config.clangd = {
         cmd = {
