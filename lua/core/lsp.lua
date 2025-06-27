@@ -112,9 +112,35 @@ if is_workstation then
         on_attach = on_attach,
     }
 
+    vim.lsp.config.html = {
+        cmd = { "vscode-html-language-server", "--stdio" },
+        filetypes = { "htm", "html" },
+        root_markers = { ".git" },
+        settings = {
+            html = {
+                autoClosingTags = true,
+                autoCreateQuotes = "doublequotes",
+                format = {
+                    enable = true,
+                    wrapLineLength = 120,
+                },
+                hover = {
+                    documentation = true,
+                    references = true,
+                },
+                mirrorCursorOnMatchingTag = false,
+                validate = {
+                    scripts = true,
+                    styles = true,
+                },
+            }
+        }
+    }
+
     vim.lsp.enable("pyright")
     vim.lsp.enable("ts_ls")
     vim.lsp.enable("cssls")
+    vim.lsp.enable("html")
 else
     vim.lsp.config.clangd = {
         cmd = {

@@ -23,6 +23,7 @@ return {
                 table.insert(ensure_installed_lsps, "pyright")
                 table.insert(ensure_installed_lsps, "ts_ls")
                 table.insert(ensure_installed_lsps, "cssls")
+                table.insert(ensure_installed_lsps, "html")
             else
                 table.insert(ensure_installed_lsps, "clangd")
                 table.insert(ensure_installed_lsps, "rust_analyzer")
