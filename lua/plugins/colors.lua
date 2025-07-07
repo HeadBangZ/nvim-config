@@ -27,7 +27,7 @@ return {
             "nvim-tree/nvim-web-devicons",
         },
         opts = {
-            theme = "kanagawa"
-        }
+            theme = "kanagawa",
+        },
     },
 }
