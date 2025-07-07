@@ -1,6 +1,5 @@
 vim.g.mapleader = ' '
 vim.keymap.set("n", "<leader>cd", vim.cmd.Ex)
-vim.keymap.set("n", "<leader>da", vim.cmd.Lex)
 vim.keymap.set("n", "<leader>t", "~", { desc = "Toggle Case" })
 
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle Undotree" })
