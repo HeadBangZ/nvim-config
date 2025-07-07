@@ -31,8 +31,9 @@ vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
--- vim.opt.isframe:append("@-@")
 
 vim.opt.updatetime = 50
 
--- vim.opt.colorcolumn = "160"
+vim.g.netrw_winsize = 25
+vim.g.netrw_liststyle = 3
+vim.g.netrw_banner = 0
