@@ -1,5 +1,8 @@
 vim.g.mapleader = ' '
-vim.keymap.set("n", "<leader>cd", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>cd", vim.cmd.Oil)
+vim.keymap.set("n", "<leader>E", function()
+    require("oil").open_float(vim.loop.cwd())
+end)
 vim.keymap.set("n", "<leader>t", "~", { desc = "Toggle Case" })
 
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle Undotree" })
