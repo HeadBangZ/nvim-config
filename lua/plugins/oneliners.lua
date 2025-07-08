@@ -1,5 +1,8 @@
 return {
     {
+        "nvim-lua/plenary.nvim",
+    },
+    {
         "ojroques/vim-oscyank",
     },
     {
