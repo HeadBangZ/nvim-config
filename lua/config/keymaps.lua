@@ -1,10 +1,11 @@
 vim.g.mapleader = ' '
-vim.keymap.set("n", "<leader>cd", vim.cmd.Oil)
+vim.keymap.set("n", "<leader>cd", vim.cmd.Oil, { desc = "Open Oil file explorer" })
 vim.keymap.set("n", "<leader>E", function()
-    require("oil").open_float(vim.loop.cwd())
-end)
-vim.keymap.set("n", "<leader>t", "~", { desc = "Toggle Case" })
+        require("oil").open_float(vim.loop.cwd())
+    end,
+    { desc = "Open Oil file explorer (floating window)" })
 
+vim.keymap.set("n", "<leader>t", "~", { desc = "Toggle Case" })
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle Undotree" })
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "Git status" })
 
@@ -15,10 +16,11 @@ vim.diagnostic.config({
 vim.keymap.set("n", "<leader>i",
     function()
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ 0 }), { 0 })
-    end
+    end,
+    { desc = "Inlay hints" }
 )
 
-vim.keymap.set("n", "<leader>h", ":ho ter<CR>", {
+vim.keymap.set("n", "<leader>h", ":horizontal terminal<CR>", {
     noremap = true,
     silent = true
 })
