@@ -17,3 +17,8 @@ vim.keymap.set("n", "<leader>i",
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ 0 }), { 0 })
     end
 )
+
+vim.keymap.set("n", "<leader>h", ":ho ter<CR>", {
+    noremap = true,
+    silent = true
+})
