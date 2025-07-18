@@ -10,7 +10,9 @@ vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle Undotr
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "Git status" })
 
 vim.diagnostic.config({
-    virtual_text = true
+    virtual_lines = {
+        current_line = true,
+    },
 })
 
 vim.keymap.set("n", "<leader>i",
