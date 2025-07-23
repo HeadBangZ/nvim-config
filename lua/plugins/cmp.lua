@@ -7,6 +7,7 @@ return {
         "rafamadriz/friendly-snippets",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
+        "b0o/schemastore.nvim",
     },
     event = "InsertEnter",
     config = function()
