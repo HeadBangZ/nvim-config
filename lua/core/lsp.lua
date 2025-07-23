@@ -72,6 +72,33 @@ vim.lsp.config.lua_ls = {
     on_attach = on_attach,
 }
 
+vim.lsp.config.jsonls = {
+    cmd = { "vscode-json-language-server", "--stdio" },
+    filetypes = { "json", },
+    settings = {
+        json = {
+            schemas = require("schemastore").json.schemas(),
+            validate = { enable = true }
+        }
+    }
+}
+
+vim.lsp.config.yamlls = {
+    cmd = { "yaml-language-server", "--stdio" },
+    filetypes = { "yml", "yaml" },
+    settings = {
+        yaml = {
+            schemaStore = {
+                enable = false,
+                url = "",
+            },
+            schemas = {
+                require("schemastore").yaml.schemas(),
+            }
+        }
+    }
+}
+
 if is_workstation then
     vim.lsp.config.pyright = {
         cmd = { "pyright-langserver", "--stdio" },

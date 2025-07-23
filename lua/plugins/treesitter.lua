@@ -18,6 +18,7 @@ return {
                 "lua",
                 "python",
                 "json",
+                "toml",
                 "yaml",
                 "markdown",
                 "csv",
