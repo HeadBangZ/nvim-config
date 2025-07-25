@@ -23,16 +23,6 @@ local on_attach = function(client, bufnr)
 
     map_buf_key("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
     map_buf_key("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-
-    if client.server_capabilities and client.server_capabilities.documentFormattingProvider then
-        vim.api.nvim_create_autocmd('BufWritePre', {
-            group = vim.api.nvim_create_augroup('LspFormatOnSave', { clear = true }),
-            buffer = bufnr,
-            callback = function()
-                vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 5000 })
-            end,
-        })
-    end
 end
 
 vim.lsp.config("*", {
