@@ -10,12 +10,6 @@ vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle Undotr
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "Git status" })
 vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { desc = "LSP: [R]ename" })
 
-vim.diagnostic.config({
-    virtual_lines = {
-        current_line = true,
-    },
-})
-
 vim.keymap.set("n", "<leader>i",
     function()
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ 0 }), { 0 })
