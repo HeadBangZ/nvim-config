@@ -26,7 +26,13 @@ return {
             },
             mapping = {
                 ["<C-e>"] = cmp.mapping.abort(),
-                ["<CR>"] = cmp.mapping.confirm({ select = true }),
+                ["<CR>"] = cmp.mapping(function(fallback)
+                    if cmp.visible() and cmp.get_selected_entry() then
+                        cmp.confirm({ select = true })
+                    else
+                        fallback()
+                    end
+                end, { "i", "s" }),
 
                 ["<C-n>"] = cmp.mapping(function()
                     if cmp.visible() then
