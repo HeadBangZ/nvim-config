@@ -17,7 +17,7 @@ local on_attach = function(client, bufnr)
     map_buf_key('n', '<leader>d', '<Cmd>lua require("fzf-lua").diagnostics_workspace()<CR>', opts)
 
     map_buf_key('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-    map_buf_key('n', '<C-h>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+    map_buf_key('n', 'gh', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
     map_buf_key('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
     map_buf_key('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
 
