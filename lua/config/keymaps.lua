@@ -17,10 +17,7 @@ vim.keymap.set("n", "<leader>i",
     { desc = "Inlay hints" }
 )
 
-vim.keymap.set("n", "<leader>h", ":horizontal terminal<CR>", {
-    noremap = true,
-    silent = true
-})
+vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format, { desc = "LSP: [F]ormat document", silent = true })
 
 local opts = { noremap = true, silent = true }
 

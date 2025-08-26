@@ -23,12 +23,3 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end
     end
 })
-
-local format_on_save_group = vim.api.nvim_create_augroup("FormatOnSave", { clear = true })
-vim.api.nvim_create_autocmd("BufWritePre", {
-    group = format_on_save_group,
-    pattern = { "*.json", "*.yaml", "*.yml", "*.toml" },
-    callback = function()
-        vim.lsp.buf.format({ async = false })
-    end
-})

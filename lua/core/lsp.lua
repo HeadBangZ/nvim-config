@@ -81,13 +81,6 @@ vim.lsp.config.jsonls = {
             validate = { enable = true }
         }
     },
-
-    on_attach = function(client, bufnr)
-        client.server_capabilities.documentFormattingProvider = true
-
-        local opts = { noremap = true, silent = true, buffer = bufnr }
-        vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format, opts)
-    end
 }
 
 vim.lsp.config.yamlls = {
