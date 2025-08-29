@@ -24,6 +24,8 @@ return {
                 "csv",
                 "javascript",
                 "typescript",
+                "vim",
+                "vimdoc",
             },
             auto_install = false,
         })
