@@ -21,16 +21,19 @@ vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format, { desc = "LSP: [F]ormat do
 
 local opts = { noremap = true, silent = true }
 
+-- scroll up and down and center when searching
 vim.keymap.set("n", "<C-d>", "<C-d>zz", opts)
 vim.keymap.set("n", "<C-u>", "<C-u>zz", opts)
 vim.keymap.set("n", "n", "nzzzv", opts)
 vim.keymap.set("n", "N", "Nzzzv", opts)
 vim.keymap.set("n", "x", '"_x', opts)
 
+-- open window vertically and horizontally
 vim.keymap.set("n", "<leader>v", "<C-w>v", opts)
 vim.keymap.set("n", "<leader>h", "<C-w>s", opts)
 vim.keymap.set("n", "<leader>xs", ":close<CR>", opts)
 
+-- resize window using arrow keys
 vim.keymap.set("n", "<Up>", ":resize -2<CR>", opts)
 vim.keymap.set("n", "<Down>", ":resize +2<CR>", opts)
 vim.keymap.set("n", "<Left>", ":vertical resize -2<CR>", opts)
