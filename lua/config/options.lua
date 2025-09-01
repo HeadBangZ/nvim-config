@@ -1,6 +1,5 @@
 vim.cmd("syntax on")
 
-vim.opt.filetype = "on"
 vim.opt.fileformat = "unix"
 
 vim.opt.guicursor = ""
