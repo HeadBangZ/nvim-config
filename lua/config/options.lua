@@ -1,5 +1,5 @@
-vim.cmd("filetype plugin indent on")
-vim.cmd("syntax on")
+-- vim.cmd("filetype plugin indent on")
+-- vim.cmd("syntax on")
 
 -- vim.opt.filetype = "on"
 vim.opt.fileformat = "unix"

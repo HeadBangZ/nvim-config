@@ -46,13 +46,13 @@ return {
                     end
                 end, { "i", "s" }),
 
-                ["<C-k>"] = cmp.mapping(function()
+                ["<C-h>"] = cmp.mapping(function()
                     if luasnip.expand_or_jumpable() then
                         luasnip.expand_or_jump()
                     end
                 end, { "i", "s" }),
 
-                ["<C-j>"] = cmp.mapping(function()
+                ["<C-l>"] = cmp.mapping(function()
                     if luasnip.jumpable(-1) then
                         luasnip.jump(-1)
                     end
