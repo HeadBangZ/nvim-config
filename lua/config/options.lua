@@ -47,3 +47,5 @@ vim.diagnostic.config({
         current_line = true,
     },
 })
+
+vim.opt.history = 100
