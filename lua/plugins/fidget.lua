@@ -1,6 +1,6 @@
 return {
     "j-hui/fidget.nvim",
-    event = "LspAttach",
+    event = "VeryLazy",
     config = function()
         require("fidget").setup({
             notification = {
@@ -14,5 +14,6 @@ return {
                 },
             },
         })
+        vim.notify = require("fidget").notify
     end,
 }

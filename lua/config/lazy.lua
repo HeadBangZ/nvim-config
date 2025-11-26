@@ -19,4 +19,8 @@ require("lazy").setup({
         { import = "plugins" },
     },
     change_detection = { notify = true },
+    rocks = {
+        enabled = false,
+        hererocks = false,
+    }
 })
