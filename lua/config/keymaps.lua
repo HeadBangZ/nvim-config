@@ -38,3 +38,18 @@ vim.keymap.set("n", "<Up>", ":resize -2<CR>", opts)
 vim.keymap.set("n", "<Down>", ":resize +2<CR>", opts)
 vim.keymap.set("n", "<Left>", ":vertical resize -2<CR>", opts)
 vim.keymap.set("n", "<Right>", ":vertical resize +2<CR>", opts)
+
+-- Terminal
+vim.keymap.set("t", "<ESC>", [[<C-\><C-n>]], opts)
+vim.keymap.set("n", "<C-t>", function()
+    local shell_cmd = ""
+
+    if vim.fn.has("win32") == 1 then
+        shell_cmd = "powershell.exe"
+    else
+        shell_cmd = ""
+    end
+
+    vim.cmd("botright 12split | term " .. shell_cmd)
+    vim.cmd("startinsert")
+end, { desc = "Terminal Below" })
