@@ -10,7 +10,7 @@ return {
     opts = {
         show_icons = true,
         leader_key = "<leader>a",
-        buffer_leader_key = "m",
+        buffer_leader_key = "<leader>m",
         window = {
             border = "rounded",
             row = "auto",
