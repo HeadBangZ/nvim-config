@@ -9,7 +9,7 @@ return {
     end,
     opts = {
         show_icons = true,
-        leader_key = ",",
+        leader_key = "<leader>a",
         buffer_leader_key = "m",
         window = {
             border = "rounded",
