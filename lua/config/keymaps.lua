@@ -18,6 +18,7 @@ vim.keymap.set("n", "<leader>i",
 )
 
 vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format, { desc = "LSP: [F]ormat document", silent = true })
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Remove highlights", silent = true })
 
 local opts = { noremap = true, silent = true }
 

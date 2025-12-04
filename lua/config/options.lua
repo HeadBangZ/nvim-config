@@ -16,7 +16,6 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 
 vim.opt.wrap = false
-vim.opt.hlsearch = true
 
 vim.opt.swapfile = false
 vim.opt.backup = false
@@ -25,7 +24,7 @@ local home = os.getenv("HOME") or os.getenv("USERPROFILE")
 vim.opt.undodir = home .. "/.vim/undodir"
 vim.opt.undofile = true
 
-vim.opt.hlsearch = false
+vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
