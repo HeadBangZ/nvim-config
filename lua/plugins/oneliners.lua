@@ -17,4 +17,12 @@ return {
     {
         "mbbill/undotree",
     },
+    {
+        "tpope/vim-surround",
+        event = "VeryLazy"
+    },
+    {
+        "tpope/vim-repeat",
+        event = "VeryLazy"
+    }
 }
