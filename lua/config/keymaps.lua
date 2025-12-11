@@ -52,23 +52,18 @@ vim.keymap.set("n", "<C-M-S-F8>", function()
     vim.cmd("Git")
 end, { desc = "Toggle Fugitive Window" })
 
--- smart line finisher
-vim.keymap.set("i", "<C-M-S-F8>", function()
-    local ft = vim.bo.filetype
+-- show function signature
+vim.keymap.set("i", "<C-M-S-F8>", vim.lsp.buf.signature_help, { expr = true, desc = "Show Function Signature" })
 
-    local semicolon_langs = {
-        cs = true,
-        rust = true,
-        php = true,
-        c = true,
-        odin = true,
-        zig = true,
-        fs = true,
-    }
-
-    if semicolon_langs[ft] then
-        return "<Esc>A;<CR>"
-    else
-        return "<Esc>A<CR>"
-    end
-end, { expr = true, desc = "Smart Line Finisher" })
+-- jump over closing pairs ) ] } ' "
+-- vim.keymap.set("i", "<C-M-S-F8>", function()
+--     local line = vim.api.nvim_get_current_line()
+--     local col = vim.api.nvim_win_get_cursor(0)[2]
+--     local next_char = line:sub(col + 2, col + 2)
+--
+--     if string.find(next_char, "[%)%]%}\"\'%>]") then
+--         return "<Right>"
+--     else
+--         return "<End>"
+--     end
+-- end, { expr = true, desc = "Jump over closing pairs" })
