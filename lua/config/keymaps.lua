@@ -39,3 +39,36 @@ vim.keymap.set("n", "<Up>", ":resize -2<CR>", opts)
 vim.keymap.set("n", "<Down>", ":resize +2<CR>", opts)
 vim.keymap.set("n", "<Left>", ":vertical resize -2<CR>", opts)
 vim.keymap.set("n", "<Right>", ":vertical resize +2<CR>", opts)
+
+-- toggle vim-fugitive
+vim.keymap.set("n", "<C-M-S-F8>", function()
+    for _, win in pairs(vim.api.nvim_list_wins()) do
+        local buf = vim.api.nvim_win_get_buf(win)
+        if vim.bo[buf].filetype == "fugitive" then
+            vim.api.nvim_win_close(win, true)
+            return
+        end
+    end
+    vim.cmd("Git")
+end, { desc = "Toggle Fugitive Window" })
+
+-- smart line finisher
+vim.keymap.set("i", "<C-M-S-F8>", function()
+    local ft = vim.bo.filetype
+
+    local semicolon_langs = {
+        cs = true,
+        rust = true,
+        php = true,
+        c = true,
+        odin = true,
+        zig = true,
+        fs = true,
+    }
+
+    if semicolon_langs[ft] then
+        return "<Esc>A;<CR>"
+    else
+        return "<Esc>A<CR>"
+    end
+end, { expr = true, desc = "Smart Line Finisher" })
