@@ -11,6 +11,7 @@ return {
                     y_padding = 1,
                     align = "bottom",
                     relative = "editor",
+                    winblend = 0
                 },
             },
         })

@@ -6,7 +6,7 @@ return {
         notify.setup({
             level = vim.log.levels.TRACE,
             stages = "fade", -- Animation style: "fade", "slide", "static", "dismiss"
-            timeout = 2000,
+            timeout = 3000,
 
             background_colour = "NotifyBackground",
             icons = {
@@ -17,7 +17,7 @@ return {
                 TRACE = "✎"
             },
 
-            render = "default",
+            render = "compact",
 
             max_height = function()
                 return math.floor(vim.o.lines * 0.75)

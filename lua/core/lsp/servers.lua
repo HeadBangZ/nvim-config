@@ -2,7 +2,7 @@ local M = {}
 
 M.common = {
     dockerls = {
-        cmd = { "docker-langserver", "--sdtio" },
+        cmd = { "docker-langserver", "--stdio" },
         filetypes = { "dockerfile" },
         root_markers = { "Dockerfile" }
     },
