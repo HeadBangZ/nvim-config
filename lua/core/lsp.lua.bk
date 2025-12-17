@@ -1,4 +1,4 @@
-local is_workstation = os.getenv("NVIM_WORKSTATION_DEV") ~= nil
+local is_workstation = os.getenv("NVIM_WORKSTATION") ~= nil
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true

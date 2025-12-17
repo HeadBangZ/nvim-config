@@ -15,7 +15,7 @@ return {
                 return { ensure_installed = {} }
             end
 
-            local is_workstation = os.getenv("NVIM_WORKSTATION_DEV") ~= nil
+            local is_workstation = os.getenv("NVIM_WORKSTATION") ~= nil
 
             local ensure_installed = {}
             local function add_server_names(server_group)

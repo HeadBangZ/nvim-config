@@ -17,7 +17,7 @@ return {
                 TRACE = "✎"
             },
 
-            render = "compact",
+            render = "default",
 
             max_height = function()
                 return math.floor(vim.o.lines * 0.75)
