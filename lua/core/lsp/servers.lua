@@ -1,6 +1,16 @@
 local M = {}
 
 M.common = {
+    dockerls = {
+        cmd = { "docker-langserver", "--sdtio" },
+        filetypes = { "dockerfile" },
+        root_markers = { "Dockerfile" }
+    },
+    helm_ls = {
+        cmd = { "helm_ls", "serve" },
+        filetypes = { "helm" },
+        root_markers = { "Dockerfile" }
+    },
     gopls = {
         cmd = { "gopls" },
         filetypes = { "go", "gomod", "gowork", "gotmpl" },
