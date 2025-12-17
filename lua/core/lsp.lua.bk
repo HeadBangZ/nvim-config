@@ -1,5 +1,8 @@
 local is_workstation = os.getenv("NVIM_WORKSTATION_DEV") ~= nil
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
+
 local on_attach = function(client, bufnr)
     local function map_buf_key(mode, lhs, rhs, opts)
         vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts)
@@ -249,3 +252,4 @@ end
 
 vim.lsp.enable("gopls")
 vim.lsp.enable("lua_ls")
+vim.lsp.enable("intelephense")
