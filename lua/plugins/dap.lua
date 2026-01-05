@@ -7,7 +7,6 @@ return {
     },
     keys = {
         { "<leader>db", function() require("dap").toggle_breakpoint() end, desc = "DAP: Toggle Breakpoint" },
-        { "<leader>dr", function() require("dap").repl.open() end,         desc = "Debug: Open REPL" },
         { "<F5>",       function() require("dap").continue() end,          desc = "DAP: Continue/Start" },
         { "<F10>",      function() require("dap").step_over() end,         desc = "DAP: Step Over" },
         { "<F11>",      function() require("dap").step_into() end,         desc = "DAP: Step Into" },
