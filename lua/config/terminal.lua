@@ -1,43 +1,88 @@
--- Terminal
 local state = {
     win = nil,
     buf = nil,
 }
 
-local function toggle_term()
+local function get_or_create_buf()
+    if not (state.buf and vim.api.nvim_buf_is_valid(state.buf)) then
+        state.buf = vim.api.nvim_create_buf(false, true)
+    end
+    return state.buf
+end
+
+local function setup_term_options()
+    vim.opt_local.number = false
+    vim.opt_local.relativenumber = false
+    vim.opt_local.signcolumn = "no"
+    vim.cmd("startinsert")
+end
+
+local function toggle_float()
     if state.win and vim.api.nvim_win_is_valid(state.win) then
         vim.api.nvim_win_close(state.win, true)
         state.win = nil
         return
     end
 
-    vim.cmd("botright 12split")
-    state.win = vim.api.nvim_get_current_win()
+    local buf = get_or_create_buf()
+    local width = math.floor(vim.o.columns * 0.8)
+    local height = math.floor(vim.o.lines * 0.8)
 
-    if state.buf and vim.api.nvim_buf_is_valid(state.buf) then
-        vim.api.nvim_win_set_buf(state.win, state.buf)
-    else
-        local shell_cmd = vim.fn.has("win32") == 1 and "powershell.exe" or ""
-        vim.cmd("term " .. shell_cmd)
-        state.buf = vim.api.nvim_get_current_buf()
-        vim.opt_local.number = false
-        vim.opt_local.relativenumber = false
+    state.win = vim.api.nvim_open_win(buf, true, {
+        relative = "editor",
+        width = width,
+        height = height,
+        col = math.floor((vim.o.columns - width) / 2),
+        row = math.floor((vim.o.lines - height) / 2),
+        border = "rounded",
+        title = " Terminal ",
+        title_pos = "center",
+    })
+
+    if vim.bo[buf].buftype ~= "terminal" then
+        local shell = vim.fn.has("win32") == 1 and "powershell.exe" or os.getenv("SHELL")
+        vim.cmd.term(shell)
     end
-
-    vim.cmd("startinsert")
+    setup_term_options()
 end
 
+local function toggle_split()
+    for _, win in ipairs(vim.api.nvim_list_wins()) do
+        if vim.api.nvim_win_get_buf(win) == state.buf then
+            vim.api.nvim_win_close(win, true)
+            return
+        end
+    end
+
+    local buf = get_or_create_buf()
+    vim.cmd("botright 12split")
+    vim.api.nvim_win_set_buf(0, buf)
+
+    if vim.bo[buf].buftype ~= "terminal" then
+        local shell = vim.fn.has("win32") == 1 and "powershell.exe" or os.getenv("SHELL")
+        vim.cmd.term(shell)
+    end
+    setup_term_options()
+end
+
+-- KEYMAPS
 local opts = { noremap = true, silent = true }
 
-vim.keymap.set("n", "<C-t>", toggle_term, { desc = "Toggle Terminal" })
-
+vim.keymap.set("n", "<C-t>", toggle_float, { desc = "Terminal: Toggle Float" })
 vim.keymap.set("t", "<C-t>", function()
     vim.cmd("stopinsert")
-    toggle_term()
-end, { desc = "Toggle Terminal" })
+    toggle_float()
+end, { desc = "Terminal: Toggle Float" })
+
+vim.keymap.set("n", "<leader>st", toggle_split, { desc = "Terminal: Toggle Split" })
+vim.keymap.set("t", "<leader>st", function()
+    vim.cmd("stopinsert")
+    toggle_split()
+end, { desc = "Terminal: Toggle Split" })
 
 vim.keymap.set("t", "<ESC>", [[<C-\><C-n>]], opts)
 
 return {
-    toggle_term = toggle_term
+    toggle_float = toggle_float,
+    toggle_split = toggle_split
 }

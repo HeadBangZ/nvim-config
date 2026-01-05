@@ -1,5 +1,13 @@
 local M = {}
 
+local function get_json_schemas()
+    return require("schemastore").json.schemas()
+end
+
+local function get_yaml_schemas()
+    return require("schemastore").yaml.schemas()
+end
+
 M.common = {
     dockerls = {
         cmd = { "docker-langserver", "--stdio" },
@@ -60,9 +68,11 @@ M.common = {
     jsonls = {
         cmd = { "vscode-json-language-server", "--stdio" },
         filetypes = { "json", },
+        on_new_config = function(new_config)
+            new_config.settings.json.schemas = get_json_schemas()
+        end,
         settings = {
             json = {
-                schemas = require("schemastore").json.schemas(),
                 validate = { enable = true }
             }
         },
@@ -70,10 +80,12 @@ M.common = {
     yamlls = {
         cmd = { "yaml-language-server", "--stdio" },
         filetypes = { "yml", "yaml" },
+        on_new_config = function(new_config)
+            new_config.settings.yaml.schemas = get_yaml_schemas()
+        end,
         settings = {
             yaml = {
                 schemaStore = { enable = false, url = "" },
-                schemas = { require("schemastore").yaml.schemas() }
             }
         }
     },

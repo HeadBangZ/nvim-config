@@ -13,7 +13,7 @@ M.on_attach = function(client, bufnr)
     map_buf_key('n', 'grt', '<Cmd>lua require("fzf-lua").lsp_typedefs()<CR>', opts)
     map_buf_key('n', 'gs', '<Cmd>lua require("fzf-lua").lsp_document_symbols()<CR>', opts)
     map_buf_key('n', 'gS', '<Cmd>lua require("fzf-lua").lsp_workspace_symbols()<CR>', opts)
-    map_buf_key('n', '<leader>d', '<Cmd>lua require("fzf-lua").diagnostics_workspace()<CR>', opts)
+    map_buf_key('n', '<leader>fd', '<Cmd>lua require("fzf-lua").diagnostics_workspace()<CR>', opts)
 
     map_buf_key('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
     map_buf_key('n', '<C-a>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
