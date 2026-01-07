@@ -1,4 +1,4 @@
-local active_theme = "rose-pine"
+local active_theme = "everforest"
 
 local themes = {
     kanagawa = "rebelot/kanagawa.nvim",
@@ -17,8 +17,6 @@ for theme, repo in pairs(themes) do
             config = function()
                 if theme == "everforest" then
                     vim.g.everforest_transparent_background = 1
-                elseif theme == "gruvbox" then
-                    vim.g.gruvbox_transparent_bg = 1
                 end
 
                 vim.cmd.colorscheme(theme)
