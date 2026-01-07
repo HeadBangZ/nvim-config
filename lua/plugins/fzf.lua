@@ -50,6 +50,11 @@ return {
     },
     config = function()
         require("fzf-lua").setup({
+            fzf_colors = {
+                true,
+                bg = '-1',
+                gutter = '-1'
+            },
             winopts = {
                 height = 0.7,
                 width = 0.7,

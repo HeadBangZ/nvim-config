@@ -1,10 +1,9 @@
-local active_theme = "kanagawa"
+local active_theme = "rose-pine"
 
 local themes = {
     kanagawa = "rebelot/kanagawa.nvim",
-    tokyonight = "folke/tokyonight.nvim",
-    gruvbox = "morhetz/gruvbox",
     everforest = "sainnhe/everforest",
+    ["rose-pine"] = "rose-pine/neovim",
 }
 
 local plugins = {}
@@ -16,8 +15,13 @@ for theme, repo in pairs(themes) do
             lazy = false,
             priority = 1000,
             config = function()
-                vim.cmd.colorscheme(theme)
+                if theme == "everforest" then
+                    vim.g.everforest_transparent_background = 1
+                elseif theme == "gruvbox" then
+                    vim.g.gruvbox_transparent_bg = 1
+                end
 
+                vim.cmd.colorscheme(theme)
                 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
                 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
             end,
