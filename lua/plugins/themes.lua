@@ -17,6 +17,12 @@ for theme, repo in pairs(themes) do
             config = function()
                 if theme == "everforest" then
                     vim.g.everforest_transparent_background = 1
+                elseif theme == "rose-pine" then
+                    require('rose-pine').setup({
+                        styles = {
+                            transparency = true,
+                        },
+                    })
                 end
 
                 vim.cmd.colorscheme(theme)
