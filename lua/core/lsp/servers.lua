@@ -192,7 +192,7 @@ M.systems = {
                 },
             },
         },
-    }
+    },
 }
 
 return M

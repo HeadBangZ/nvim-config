@@ -49,7 +49,8 @@ return {
         },
     },
     config = function()
-        require("fzf-lua").setup({
+        local fzf = require("fzf-lua")
+        fzf.setup({
             fzf_colors = {
                 true,
                 bg = '-1',
@@ -66,5 +67,7 @@ return {
             file_icons = true,
             color_icons = true,
         })
+
+        fzf.register_ui_select()
     end
 }
