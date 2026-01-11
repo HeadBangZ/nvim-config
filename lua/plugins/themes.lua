@@ -1,4 +1,4 @@
-local active_theme = "everforest"
+local active_theme = "rose-pine"
 
 local themes = {
     kanagawa = "rebelot/kanagawa.nvim",
