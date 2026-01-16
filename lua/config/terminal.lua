@@ -57,6 +57,5 @@ end, { desc = "Terminal: Toggle Split" })
 vim.keymap.set("t", "<ESC>", [[<C-\><C-n>]], opts)
 
 return {
-    toggle_float = toggle_float,
     toggle_split = toggle_split
 }
