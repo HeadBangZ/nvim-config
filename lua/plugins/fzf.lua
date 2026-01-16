@@ -5,47 +5,52 @@ return {
         {
             "<leader>ff",
             function() require("fzf-lua").files() end,
-            desc = "FZF Find Files Current Working Directory"
+            desc = "[F]ind [F]iles"
         },
         {
             "<leader>fg",
             function() require("fzf-lua").live_grep() end,
-            desc = "FZF Live Grep"
+            desc = "[F]ind [G]rep"
         },
         {
             "<leader>fb",
             function() require("fzf-lua").buffers() end,
-            desc = "FZF Buffers"
+            desc = "[F]ind [B]uffers"
         },
         {
             "<leader>fh",
             function() require("fzf-lua").help_tags() end,
-            desc = "FZF Help Tags"
+            desc = "[F]ind [H]elp tags"
         },
         {
             "<leader>fo",
             function() require("fzf-lua").oldfiles() end,
-            desc = "FZF Old Files"
+            desc = "[F]ind [O]ld files"
         },
         {
             "<leader>fc",
             function() require("fzf-lua").commands() end,
-            desc = "FZF Commands"
+            desc = "[F]ind [C]ommands"
         },
         {
             "<leader>fk",
             function() require("fzf-lua").keymaps() end,
-            desc = "FZF Keymaps"
+            desc = "[F]ind [K]eymaps"
         },
         {
             "<leader>fw",
             function() require("fzf-lua").grep_cword() end,
-            desc = "FZF Grep Word Under Cursor"
+            desc = "[F]ind current [W]ord"
+        },
+        {
+            "<leader>fW",
+            function() require("fzf-lua").grep_cWORD() end,
+            desc = "[F]ind current [W]ORD"
         },
         {
             "<leader>fr",
             function() require("fzf-lua").resume() end,
-            desc = "FZF Resume"
+            desc = "[F]ind [R]esume"
         },
     },
     config = function()
