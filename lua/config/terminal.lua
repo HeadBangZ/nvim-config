@@ -36,7 +36,7 @@ local function toggle_split()
     end
 
     local buf = get_or_create_buf()
-    vim.cmd("botright 12split")
+    vim.cmd("botright 30split")
     vim.api.nvim_win_set_buf(0, buf)
 
     if vim.bo[buf].buftype ~= "terminal" then
