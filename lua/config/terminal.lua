@@ -27,34 +27,6 @@ local function get_shell()
     return os.getenv("SHELL")
 end
 
-local function toggle_float()
-    if state.win and vim.api.nvim_win_is_valid(state.win) then
-        vim.api.nvim_win_close(state.win, true)
-        state.win = nil
-        return
-    end
-
-    local buf = get_or_create_buf()
-    local width = math.floor(vim.o.columns * 0.8)
-    local height = math.floor(vim.o.lines * 0.8)
-
-    state.win = vim.api.nvim_open_win(buf, true, {
-        relative = "editor",
-        width = width,
-        height = height,
-        col = math.floor((vim.o.columns - width) / 2),
-        row = math.floor((vim.o.lines - height) / 2),
-        border = "rounded",
-        title = " Terminal ",
-        title_pos = "center",
-    })
-
-    if vim.bo[buf].buftype ~= "terminal" then
-        vim.cmd.term(get_shell())
-    end
-    setup_term_options()
-end
-
 local function toggle_split()
     for _, win in ipairs(vim.api.nvim_list_wins()) do
         if vim.api.nvim_win_get_buf(win) == state.buf then
@@ -75,12 +47,6 @@ end
 
 -- KEYMAPS
 local opts = { noremap = true, silent = true }
-
-vim.keymap.set("n", "<leader>ft", toggle_float, { desc = "Terminal: Toggle Float" })
-vim.keymap.set("t", "<leader>ft", function()
-    vim.cmd("stopinsert")
-    toggle_float()
-end, { desc = "Terminal: Toggle Float" })
 
 vim.keymap.set("n", "<leader>st", toggle_split, { desc = "Terminal: Toggle Split" })
 vim.keymap.set("t", "<leader>st", function()
