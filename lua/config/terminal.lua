@@ -17,6 +17,16 @@ local function setup_term_options()
     vim.cmd("startinsert")
 end
 
+local function get_shell()
+    if vim.fn.has("win32") == 1 then
+        if vim.fn.executable("pwsh") == 1 then
+            return "pwsh.exe"
+        end
+        return "powershell.exe"
+    end
+    return os.getenv("SHELL")
+end
+
 local function toggle_float()
     if state.win and vim.api.nvim_win_is_valid(state.win) then
         vim.api.nvim_win_close(state.win, true)
@@ -40,8 +50,7 @@ local function toggle_float()
     })
 
     if vim.bo[buf].buftype ~= "terminal" then
-        local shell = vim.fn.has("win32") == 1 and "powershell.exe" or os.getenv("SHELL")
-        vim.cmd.term(shell)
+        vim.cmd.term(get_shell())
     end
     setup_term_options()
 end
@@ -59,8 +68,7 @@ local function toggle_split()
     vim.api.nvim_win_set_buf(0, buf)
 
     if vim.bo[buf].buftype ~= "terminal" then
-        local shell = vim.fn.has("win32") == 1 and "powershell.exe" or os.getenv("SHELL")
-        vim.cmd.term(shell)
+        vim.cmd.term(get_shell())
     end
     setup_term_options()
 end
@@ -68,8 +76,8 @@ end
 -- KEYMAPS
 local opts = { noremap = true, silent = true }
 
-vim.keymap.set("n", "<C-t>", toggle_float, { desc = "Terminal: Toggle Float" })
-vim.keymap.set("t", "<C-t>", function()
+vim.keymap.set("n", "<leader>ft", toggle_float, { desc = "Terminal: Toggle Float" })
+vim.keymap.set("t", "<leader>ft", function()
     vim.cmd("stopinsert")
     toggle_float()
 end, { desc = "Terminal: Toggle Float" })
