@@ -52,6 +52,16 @@ return {
             function() require("fzf-lua").resume() end,
             desc = "[F]ind [R]esume"
         },
+        {
+            "<leader>hc",
+            function() require("fzf-lua").command_history() end,
+            desc = "[H]istory [C]ommands"
+        },
+        {
+            "<leader>hs",
+            function() require("fzf-lua").search_history() end,
+            desc = "[H]istory [S]earch"
+        }
     },
     config = function()
         local fzf = require("fzf-lua")
