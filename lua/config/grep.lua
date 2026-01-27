@@ -14,7 +14,7 @@ if vim.fn.executable("rg") == 1 then
 
     local grep_cmd = "rg --vimgrep --no-heading --smart-case --hidden"
     for _, pattern in ipairs(ignores) do
-        grep_cmd = grep_cmd .. " --glob='" .. pattern .. "'"
+        grep_cmd = grep_cmd .. ' --glob="' .. pattern .. '"'
     end
     opt.grepprg = grep_cmd
     opt.grepformat = "%f:%l:%c:%m"
