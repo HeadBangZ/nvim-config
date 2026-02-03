@@ -5,6 +5,7 @@
 vim.opt.fileformat = "unix"
 
 vim.opt.guicursor = ""
+vim.opt.colorcolumn = "100,120"
 
 vim.opt.number = true
 vim.opt.relativenumber = true
