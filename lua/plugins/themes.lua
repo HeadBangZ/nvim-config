@@ -4,6 +4,7 @@ local themes = {
     kanagawa = "rebelot/kanagawa.nvim",
     everforest = "sainnhe/everforest",
     ["rose-pine"] = "rose-pine/neovim",
+    darkvoid = "aliqyan-21/darkvoid.nvim"
 }
 
 local plugins = {}
