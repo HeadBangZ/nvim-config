@@ -53,5 +53,3 @@ vim.diagnostic.config({
 })
 
 vim.opt.history = 100
-
-vim.g.editorconfig = true
