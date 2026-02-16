@@ -61,7 +61,7 @@ return {
             "<leader>hs",
             function() require("fzf-lua").search_history() end,
             desc = "[H]istory [S]earch"
-        }
+        },
     },
     config = function()
         local fzf = require("fzf-lua")

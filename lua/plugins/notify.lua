@@ -8,7 +8,7 @@ return {
             stages = "fade", -- Animation style: "fade", "slide", "static", "dismiss"
             timeout = 3000,
 
-            background_colour = "NotifyBackground",
+            background_colour = "#000000",
             icons = {
                 ERROR = "",
                 WARN = "",

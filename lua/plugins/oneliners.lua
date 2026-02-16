@@ -1,14 +1,17 @@
 return {
     {
-        "nvim-lua/plenary.nvim",
+        "nvim-lua/plenary.nvim"
     },
     {
-        "ojroques/vim-oscyank",
+        "ojroques/vim-oscyank"
     },
     {
-        "tpope/vim-fugitive",
+        "tpope/vim-fugitive"
     },
     {
-        "mbbill/undotree",
+        "mbbill/undotree"
     },
+    {
+        "lewis6991/gitsigns.nvim"
+    }
 }
