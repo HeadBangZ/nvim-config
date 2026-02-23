@@ -50,21 +50,6 @@ M.common = {
             },
         },
     },
-    intelephense = {
-        cmd = { "intelephense", "--stdio" },
-        filetypes = { "php" },
-        root_markers = { "composer.json" },
-        settings = {
-            intelephense = {
-                files = { maxSize = 5000000 },
-                stubs = {
-                    "bcmath", "date", "filter", "hash", "iconv", "json", "mbstring", "pcntl",
-                    "pcre", "pdo", "pdo_mysql", "reflection", "session", "simplexml", "sockets",
-                    "spl", "standard", "xml", "zip"
-                },
-            },
-        },
-    },
     jsonls = {
         cmd = { "vscode-json-language-server", "--stdio" },
         filetypes = { "json", },
