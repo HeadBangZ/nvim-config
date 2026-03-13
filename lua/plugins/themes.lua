@@ -4,7 +4,8 @@ local themes = {
     kanagawa = "rebelot/kanagawa.nvim",
     everforest = "sainnhe/everforest",
     ["rose-pine"] = "rose-pine/neovim",
-    darkvoid = "aliqyan-21/darkvoid.nvim"
+    darkvoid = "aliqyan-21/darkvoid.nvim",
+    vesper = "datsfilipe/vesper.nvim"
 }
 
 local plugins = {}
@@ -24,6 +25,8 @@ for theme, repo in pairs(themes) do
                             transparency = true,
                         },
                     })
+                elseif theme == "vesper" then
+                    require('vesper').setup({ transparent = true })
                 end
 
                 vim.cmd.colorscheme(theme)
