@@ -1,4 +1,4 @@
-local active_theme = "darkvoid"
+local active_theme = "vesper"
 
 local themes = {
     kanagawa = "rebelot/kanagawa.nvim",
