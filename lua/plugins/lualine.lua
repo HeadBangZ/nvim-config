@@ -1,36 +1,31 @@
-return {
-    {
-        "nvim-lualine/lualine.nvim",
-        dependencies = {
-            "nvim-tree/nvim-web-devicons",
-        },
-        config = function()
-            local arrow_status = {
-                function()
-                    local success, statusline = pcall(require, "arrow.statusline")
-                    if success then
-                        return statusline.text_for_statusline_with_icons()
-                    end
-                end,
-                padding = { left = 1, right = 1 },
-            }
+local status_lualine, lualine = pcall(require, "lualine")
+if not status_lualine then
+    return 
+end
 
-            require("lualine").setup({
-                options = {
-                    theme = "auto",
-                    component_separators = { left = "", right = "" },
-                    section_separators = { left = "", right = "" },
-                    globalstatus = true,
-                },
-                sections = {
-                    lualine_a = { "mode" },
-                    lualine_b = { "branch", "diff" },
-                    lualine_c = { "filename", arrow_status },
-                    lualine_x = { "diagnostics", "encoding", "fileformat", "filetype" },
-                    lualine_y = { "progress" },
-                    lualine_z = { "location" },
-                },
-            })
-        end,
-    },
+local arrow_status = {
+    function()
+        local success, statusline = pcall(require, "arrow.statusline")
+        if success then
+            return statusline.text_for_statusline_with_icons()
+        end
+    end,
+    padding = { left = 1, right = 1 },
 }
+
+lualine.setup({
+    options = {
+        theme = "auto",
+        component_separators = { left = "", right = "" },
+        section_separators = { left = "", right = "" },
+        globalstatus = true,
+    },
+    sections = {
+        lualine_a = { "mode" },
+        lualine_b = { "branch", "diff" },
+        lualine_c = { "filename", arrow_status },
+        lualine_x = { "diagnostics", "encoding", "fileformat", "filetype" },
+        lualine_y = { "progress" },
+        lualine_z = { "location" },
+    },
+})
