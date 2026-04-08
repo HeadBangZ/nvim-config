@@ -4,6 +4,7 @@ require("plugins.arrow")
 require("plugins.autopairs")
 require("plugins.oil")
 require("plugins.lualine")
+require("plugins.fzf")
 
 vim.api.nvim_create_autocmd("InsertEnter", {
     callback = function()

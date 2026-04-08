@@ -23,6 +23,7 @@ vim.pack.add({
     { src = "https://github.com/ojroques/vim-oscyank" },
     { src = "https://github.com/tpope/vim-fugitive" },
     { src = "https://github.com/mbbill/undotree" },
+    { src = "https://github.com/junegunn/fzf.vim" },
 })
 
 require("config")
