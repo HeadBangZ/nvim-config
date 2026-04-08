@@ -20,7 +20,6 @@ vim.pack.add({
     { src = "https://github.com/nvim-lualine/lualine.nvim" },
     { src = "https://github.com/folke/which-key.nvim" },
     { src = "https://github.com/nvim-lua/plenary.nvim" },
-    { src = "https://github.com/ojroques/vim-oscyank" },
     { src = "https://github.com/tpope/vim-fugitive" },
     { src = "https://github.com/mbbill/undotree" },
     { src = "https://github.com/junegunn/fzf.vim" },

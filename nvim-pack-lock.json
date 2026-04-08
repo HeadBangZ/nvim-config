@@ -64,10 +64,6 @@
       "rev": "3b753cf8c6a4dcde6edee8827d464ba9b8c4a6f0",
       "src": "https://github.com/tpope/vim-fugitive"
     },
-    "vim-oscyank": {
-      "rev": "d67d76b2f19b868b70a1cf33a779d71dc092cb30",
-      "src": "https://github.com/ojroques/vim-oscyank"
-    },
     "which-key.nvim": {
       "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
       "src": "https://github.com/folke/which-key.nvim"
