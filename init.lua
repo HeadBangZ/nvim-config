@@ -11,6 +11,8 @@ vim.pack.add({
     { src = "https://github.com/datsfilipe/vesper.nvim" },
 
     -- plugins
+    { src = "https://github.com/nvim-treesitter/nvim-treesitter", branch = "main" },
+    { src = "https://github.com/windwp/nvim-ts-autotag" },
     { src = "https://github.com/otavioschwanck/arrow.nvim" },
     { src = "https://github.com/nvim-tree/nvim-web-devicons" },
     { src = "https://github.com/ibhagwan/fzf-lua" },

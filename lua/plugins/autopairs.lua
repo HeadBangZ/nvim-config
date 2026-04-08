@@ -4,3 +4,10 @@ if not ok then
 end
 
 autopairs.setup({})
+
+vim.api.nvim_create_autocmd("InsertEnter", {
+    callback = function()
+        require("plugins.autopairs")
+    end,
+    once = true,
+})
