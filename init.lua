@@ -1,6 +1,6 @@
 -- init.lua
-vim.opt.packpath:prepend(vim.fn.stdpath("data") .. "/site")
 vim.loader.enable()
+vim.opt.packpath:prepend(vim.fn.stdpath("data") .. "/site")
 
 -- Native plugins
 vim.pack.add({

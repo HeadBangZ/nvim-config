@@ -47,7 +47,6 @@ local function setup_cmp()
     })
 end
 
-
 vim.api.nvim_create_autocmd("InsertEnter", {
     callback = function()
         setup_cmp()
