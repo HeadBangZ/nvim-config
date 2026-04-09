@@ -22,6 +22,8 @@ end
 
 if vim.fn.has("win32") == 1 then
     opt.shellpipe = ">%s 2>&1"
+    opt.shellquote = ""
+    opt.shellxquote = ""
 end
 
 vim.api.nvim_create_autocmd("QuickFixCmdPost", {

@@ -9,6 +9,8 @@ require("plugins.treesitter")
 require("plugins.comments")
 require("plugins.colors")
 require("plugins.surround")
+require("plugins.cmp")
+require("plugins.mason")
 
 -- builtin
 require("plugins.builtin.undotree")

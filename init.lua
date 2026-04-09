@@ -1,4 +1,5 @@
 -- init.lua
+vim.opt.packpath:prepend(vim.fn.stdpath("data") .. "/site")
 vim.loader.enable()
 
 -- Native plugins
@@ -11,7 +12,7 @@ vim.pack.add({
     { src = "https://github.com/datsfilipe/vesper.nvim" },
 
     -- plugins
-    { src = "https://github.com/nvim-treesitter/nvim-treesitter", branch = "main" },
+    { src = "https://github.com/nvim-treesitter/nvim-treesitter",   branch = "main" },
     { src = "https://github.com/windwp/nvim-ts-autotag" },
     { src = "https://github.com/otavioschwanck/arrow.nvim" },
     { src = "https://github.com/nvim-tree/nvim-web-devicons" },
@@ -27,16 +28,18 @@ vim.pack.add({
     { src = "https://github.com/folke/todo-comments.nvim" },
     { src = "https://github.com/brenoprata10/nvim-highlight-colors" },
     { src = "https://github.com/kylechui/nvim-surround" },
+    { src = "https://github.com/hrsh7th/nvim-cmp" },
+    { src = "https://github.com/hrsh7th/cmp-nvim-lsp" },
+    { src = "https://github.com/hrsh7th/cmp-buffer" },
+    { src = "https://github.com/hrsh7th/cmp-path" },
+    { src = "https://github.com/saadparwaiz1/cmp_luasnip" },
+    { src = "https://github.com/L3MON4D3/LuaSnip" },
+    { src = "https://github.com/rafamadriz/friendly-snippets" },
+    { src = "https://github.com/b0o/schemastore.nvim" },
+    { src = "https://github.com/williamboman/mason.nvim" },
+    { src = "https://github.com/williamboman/mason-lspconfig.nvim" },
 })
 
 require("config")
-require("core.lsp")
 require("plugins")
-
--- Core logic
--- require("terminal")
--- require("lazy")
--- require("autocmd")
--- require("grep")
--- require("lsp")
--- vim.lsp.set_log_level("debug")
+require("core.lsp")
