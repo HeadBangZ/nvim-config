@@ -7,7 +7,6 @@ return {
             level = vim.log.levels.TRACE,
             stages = "fade", -- Animation style: "fade", "slide", "static", "dismiss"
             timeout = 3000,
-
             background_colour = "#000000",
             icons = {
                 ERROR = "",
@@ -18,7 +17,6 @@ return {
             },
 
             render = "default",
-
             max_height = function()
                 return math.floor(vim.o.lines * 0.75)
             end,

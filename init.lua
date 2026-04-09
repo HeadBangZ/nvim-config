@@ -38,8 +38,10 @@ vim.pack.add({
     { src = "https://github.com/b0o/schemastore.nvim" },
     { src = "https://github.com/williamboman/mason.nvim" },
     { src = "https://github.com/williamboman/mason-lspconfig.nvim" },
+    { src = "https://github.com/rcarriga/nvim-notify" },
 })
 
 require("config")
 require("plugins")
+require("core")
 require("core.lsp")
