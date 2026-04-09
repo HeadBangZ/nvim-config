@@ -23,3 +23,24 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end
     end
 })
+
+vim.api.nvim_create_autocmd("LspProgress", {
+    callback = function(ev)
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+        local val = ev.data.params.value
+        if not client or not val then return end
+
+        local msg = string.format("%s: %s %s",
+            client.name,
+            val.message or "",
+            val.title or ""
+        )
+
+        if val.kind == "end" then
+            vim.api.nvim_echo({ { client.name .. " loaded", "Comment" } }, false, {})
+            vim.defer_fn(function() vim.api.nvim_echo({ { "", "" } }, false, {}) end, 2000)
+        else
+            vim.api.nvim_echo({ { msg, "Comment" } }, false, {})
+        end
+    end,
+})

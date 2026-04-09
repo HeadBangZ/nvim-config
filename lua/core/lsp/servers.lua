@@ -1,27 +1,30 @@
 local M = {}
 
 local function get_json_schemas()
-    return require("schemastore").json.schemas()
+    local ok, schemastore = pcall(require, "schemastore")
+    return ok and schemastore.json.schemas() or {}
 end
 
 local function get_yaml_schemas()
-    return require("schemastore").yaml.schemas()
+    local ok, schemastore = pcall(require, "schemastore")
+    return ok and schemastore.yaml.schemas() or {}
 end
 
 M.common = {
     dockerls = {
         cmd = { "docker-langserver", "--stdio" },
         filetypes = { "dockerfile" },
-        root_markers = { "Dockerfile" }
+        root_markers = { "Dockerfile", "docker-compose.yml", "docker-compose.yaml" }
     },
     helm_ls = {
         cmd = { "helm_ls", "serve" },
         filetypes = { "helm" },
-        root_markers = { "Dockerfile" }
+        root_markers = { "Chart.yaml", "Chart.yml" },
     },
     gopls = {
         cmd = { "gopls" },
         filetypes = { "go", "gomod", "gowork", "gotmpl" },
+        root_markers = { "go.work", "go.mod", ".git" },
         settings = {
             gopls = {
                 completeUnimported = true,
@@ -34,7 +37,7 @@ M.common = {
     lua_ls = {
         cmd = { "lua-language-server" },
         filetypes = { "lua" },
-        root_markers = { ".luarc.json" },
+        root_markers = { ".luarc.json", ".luarc.jsonc", ".git" },
         settings = {
             Lua = {
                 workspace = {
@@ -52,7 +55,7 @@ M.common = {
     },
     jsonls = {
         cmd = { "vscode-json-language-server", "--stdio" },
-        filetypes = { "json", },
+        filetypes = { "json", "jsonc" },
         on_new_config = function(new_config)
             new_config.settings.json.schemas = get_json_schemas()
         end,
@@ -80,7 +83,7 @@ M.workstation = {
     pyright = {
         cmd = { "pyright-langserver", "--stdio" },
         filetypes = { "python" },
-        root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", "Pipfile", "pyrightconfig.json" },
+        root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", "Pipfile", "pyrightconfig.json", ".git" },
         settings = {
             python = {
                 analysis = {
@@ -94,7 +97,7 @@ M.workstation = {
     ts_ls = {
         cmd = { "typescript-language-server", "--stdio" },
         filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "vue" },
-        root_markers = { "package.json", "tsconfig.json", "jsconfig.json" },
+        root_markers = { "package.json", "tsconfig.json", "jsconfig.json", ".git" },
     },
     cssls = {
         cmd = { "vscode-css-language-server", "--stdio" },
@@ -144,13 +147,13 @@ M.systems = {
             "--background-index",
             "--offset-encoding=utf-8",
         },
-        root_markers = { ".clangd", "compile_commands.json" },
+        root_markers = { ".clangd", "compile_commands.json", "CMakeLists.txt", ".git" },
         filetypes = { "c" },
     },
     rust_analyzer = {
         cmd = { "rust-analyzer" },
         filetypes = { "rust" },
-        root_markers = { "Cargo.toml" },
+        root_markers = { "Cargo.toml", ".git" },
         settings = {
             ["rust_analyzer"] = {
                 inlayHints = {
@@ -163,12 +166,12 @@ M.systems = {
     ols = {
         cmd = { "ols" },
         filetypes = { "odin" },
-        root_markers = { "ols.json" },
+        root_markers = { "ols.json", ".git" },
     },
     nimlangserver = {
         cmd = { "nimlangserver" },
         filetypes = { "nim" },
-        root_markers = { "nim.nimble", "package.nim", "config.nims" },
+        root_markers = { "nim.nimble", "package.nim", "config.nims", ".git" },
         settings = {
             nim = {
                 nimsuggestPath = "/usr/bin/nimsuggest",

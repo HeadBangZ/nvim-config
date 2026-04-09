@@ -1,14 +1,19 @@
 local keymaps = require("core.lsp.keymaps")
 local servers = require("core.lsp.servers")
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+capabilities.workspace = capabilities.workspace or {}
+capabilities.workspace.didChangeWatchedFiles = capabilities.workspace.didChangeWatchedFiles or {}
 capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
 
 local function setup_servers(server_name, config)
-    config.on_attach = keymaps.on_attach
-    config.capabilities = capabilities
+    local final_config = vim.tbl_deep_extend("force", {
+        on_attach = keymaps.on_attach,
+        capabilities = capabilities
+    }, config)
 
-    vim.lsp.config[server_name] = config
+    vim.lsp.config(server_name, final_config)
     vim.lsp.enable(server_name)
 end
 
