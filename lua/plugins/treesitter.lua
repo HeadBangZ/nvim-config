@@ -74,4 +74,3 @@ local ok_tag, autotag = pcall(require, "nvim-ts-autotag")
 if ok_tag then
     autotag.setup({})
 end
-
