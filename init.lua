@@ -23,8 +23,10 @@ vim.pack.add({
     { src = "https://github.com/folke/which-key.nvim" },
     { src = "https://github.com/nvim-lua/plenary.nvim" },
     { src = "https://github.com/tpope/vim-fugitive" },
-    { src = "https://github.com/mbbill/undotree" },
     { src = "https://github.com/junegunn/fzf.vim" },
+    { src = "https://github.com/folke/todo-comments.nvim" },
+    { src = "https://github.com/brenoprata10/nvim-highlight-colors" },
+    { src = "https://github.com/kylechui/nvim-surround" },
 })
 
 require("config")

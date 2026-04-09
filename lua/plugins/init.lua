@@ -6,4 +6,10 @@ require("plugins.oil")
 require("plugins.lualine")
 require("plugins.fzf")
 require("plugins.treesitter")
+require("plugins.comments")
+require("plugins.colors")
+require("plugins.surround")
 
+-- builtin
+require("plugins.builtin.undotree")
+require("plugins.builtin.difftool")
