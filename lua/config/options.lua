@@ -54,6 +54,8 @@ vim.diagnostic.config({
 
 vim.opt.history = 100
 
+vim.opt.completeopt = { "menuone", "noselect", "popup" }
+
 vim.api.nvim_create_user_command("LspInfo", "checkhealth vim.lsp", { desc = "Show LSP Info" })
 vim.api.nvim_create_user_command("LspLog", function(_)
     local state_path = vim.fn.stdpath("state")
