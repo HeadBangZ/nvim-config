@@ -5,7 +5,6 @@ end
 
 todo.setup({
     colors = {
-        -- Your Custom Soft Colors
         soft_error = { "#f38ba8" },
         soft_warning = { "#f9e2af" },
         soft_hack = { "#fab387" },
@@ -27,4 +26,3 @@ todo.setup({
 })
 
 vim.keymap.set("n", "<leader>ft", "<cmd>TodoFzfLua<cr>", { desc = "[F]ind [T]odos" })
-
