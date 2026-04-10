@@ -3,7 +3,10 @@ vim.loader.enable()
 vim.opt.packpath:prepend(vim.fn.stdpath("data") .. "/site")
 
 vim.pack.add({
-    { src = "https://github.com/nvim-treesitter/nvim-treesitter", branch = "main" },
+    {
+        src = "https://github.com/nvim-treesitter/nvim-treesitter",
+        branch = "main"
+    },
     { src = "https://github.com/windwp/nvim-ts-autotag" },
     { src = "https://github.com/datsfilipe/vesper.nvim" },
     { src = "https://github.com/nvim-lualine/lualine.nvim" },
