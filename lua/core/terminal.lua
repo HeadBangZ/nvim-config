@@ -45,7 +45,6 @@ local function toggle_split()
     setup_term_options()
 end
 
--- KEYMAPS
 local opts = { noremap = true, silent = true }
 
 vim.keymap.set("n", "<leader>st", toggle_split, { desc = "Terminal: Toggle Split" })
