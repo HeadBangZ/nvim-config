@@ -6,7 +6,6 @@ vim.keymap.set("n", "<leader>E", function()
     { desc = "Open Oil file explorer (floating window)" })
 
 vim.keymap.set("n", "<leader>t", "~", { desc = "Toggle Case" })
--- vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle Undotree" })
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "Git status" })
 vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { desc = "LSP: [R]ename" })
 
