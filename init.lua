@@ -14,7 +14,6 @@ vim.pack.add({
     { src = "https://github.com/nvim-lualine/lualine.nvim" },
     { src = "https://github.com/nvim-tree/nvim-web-devicons" },
     { src = "https://github.com/rcarriga/nvim-notify" },
-    { src = "https://github.com/nvim-lua/plenary.nvim" },
 })
 
 require("config")

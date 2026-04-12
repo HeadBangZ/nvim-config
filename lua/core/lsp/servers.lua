@@ -67,7 +67,7 @@ M.common = {
     },
     yamlls = {
         cmd = { "yaml-language-server", "--stdio" },
-        filetypes = { "yml", "yaml" },
+        filetypes = { "yaml" },
         on_new_config = function(new_config)
             new_config.settings.yaml.schemas = get_yaml_schemas()
         end,
