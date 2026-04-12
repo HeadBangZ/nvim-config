@@ -19,7 +19,6 @@ local parsers = {
     "heex",
     "eex",
     "erlang",
-    "haskell",
 
     -- Scripting / Config
     "lua",

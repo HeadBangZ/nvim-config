@@ -3,8 +3,13 @@ if not ok then
     return
 end
 
-wk.setup({})
+wk.setup({
+    icons = {
+        rules = false,
+        font = "nvim-web-devicons"
+    }
+})
 
 vim.keymap.set("n", "<leader>?", function()
     wk.show({ global = false })
-end, { desc = "Buffer Local Keymaps (which-key)"})
+end, { desc = "Buffer Local Keymaps (which-key)" })
