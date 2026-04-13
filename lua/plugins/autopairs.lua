@@ -3,9 +3,9 @@ vim.api.nvim_create_autocmd("InsertEnter", {
     callback = function()
         local ok, autopairs = pcall(require, "nvim-autopairs")
         if not ok then
-            vim.notify("Autopairs: Still not found", vim.log.levels.ERROR)
             return
         end
+
         autopairs.setup({
             check_ts = true,
             enable_check_bracket_line = true
