@@ -36,18 +36,10 @@ vim.schedule(function()
         { src = "https://github.com/b0o/schemastore.nvim" },
         { src = "https://github.com/folke/todo-comments.nvim" },
         { src = "https://github.com/brenoprata10/nvim-highlight-colors" },
+        { src = "https://github.com/windwp/nvim-autopairs" },
+        { src = "https://github.com/kylechui/nvim-surround" },
     })
 
     require("core.lsp")
     require("plugins")
 end)
-
-vim.api.nvim_create_autocmd("InsertEnter", {
-    once = true,
-    callback = function()
-        vim.pack.add({
-            { src = "https://github.com/windwp/nvim-autopairs" },
-            { src = "https://github.com/kylechui/nvim-surround" },
-        })
-    end
-})
