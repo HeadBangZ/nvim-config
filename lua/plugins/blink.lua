@@ -8,9 +8,8 @@ blink.setup({
         ['<C-p>'] = { 'select_prev', 'fallback' },
         -- Actions
         ['<C-e>'] = { 'hide' },
-        ['<CR>'] = { 'accept', 'fallback' },
-        -- Manual trigger (if you still want it)
-        ['<C-CR>'] = { 'show', 'fallback' },
+        ['<C-y>'] = { 'accept', 'fallback' },
+        ['<C-j>'] = { 'show', 'fallback' },
         -- Scroll documentation up
         ['<C-b>'] = { 'scroll_documentation_up' },
         -- Scroll documentation down
