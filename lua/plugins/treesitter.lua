@@ -14,6 +14,9 @@ local parsers = {
     "zig",
     "nim",
 
+    -- General Purpose
+    "c_sharp",
+
     -- Functional
     "elixir",
     "heex",
@@ -24,8 +27,12 @@ local parsers = {
     "lua",
     "python",
     "bash",
-    "regex",
+
+    -- Cloud Native & IaC
+    "helm",
     "dockerfile",
+    "terraform",
+    "hcl",
 
     -- Web Development
     "php",
@@ -35,18 +42,22 @@ local parsers = {
     "javascript",
     "typescript",
 
-    -- Data Formats
+    -- Data Formats & Storage
     "json",
     "toml",
-    "yaml",
+    "sql",
     "csv",
-    "helm",
+    "yaml",
 
-    -- Documentation
+    -- Documentation & Git
     "markdown",
     "markdown_inline",
     "vim",
-    "vimdoc"
+    "vimdoc",
+    "gitignore",
+
+    -- Shared
+    "regex",
 }
 
 local installed = require("nvim-treesitter.config").get_installed()
