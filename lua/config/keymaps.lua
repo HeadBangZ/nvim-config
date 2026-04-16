@@ -37,6 +37,9 @@ vim.keymap.set("n", "<Down>", ":resize +2<CR>", opts)
 vim.keymap.set("n", "<Left>", ":vertical resize -2<CR>", opts)
 vim.keymap.set("n", "<Right>", ":vertical resize +2<CR>", opts)
 
+-- search and replace
+vim.keymap.set("v", "sr", [[:s/\%V]], { desc = "Rename within selection" })
+
 -- toggle vim-fugitive
 vim.keymap.set("n", "<C-M-S-F8>", function()
     for _, win in pairs(vim.api.nvim_list_wins()) do
