@@ -13,6 +13,20 @@ fzf.setup({
         row = 0.5,
         col = 0.5,
         border = "rounded",
+        -- preview = {
+        --     layout = "vertical",
+        --     vertical = "down:50%",
+        -- },
+    },
+    keymap = {
+        builtin = {
+            ["<C-f>"] = "preview-page-down",
+            ["<C-b>"] = "preview-page-up",
+            ["<C-d>"] = "preview-half-page-down",
+            ["<C-u>"] = "preview-half-page-up",
+            ["<C-e>"] = "preview-down",
+            ["<C-y>"] = "preview-up",
+        },
     },
     git_icons = true,
     file_icons = true,

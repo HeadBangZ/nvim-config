@@ -44,3 +44,15 @@ vim.api.nvim_create_autocmd("LspProgress", {
         end
     end,
 })
+
+vim.api.nvim_create_autocmd("QuickFixCmdPost", {
+    desc = "Sort quickfix list by line number",
+    group = vim.api.nvim_create_augroup("quickfix-sort", { clear = true }),
+    callback = function()
+        local q = vim.fn.getqflist()
+        table.sort(q, function(a, b)
+            return a.bufnr == b.bufnr and a.lnum < b.lnum or a.bufnr < b.bufnr
+        end)
+        vim.fn.setqflist(q, "r")
+    end,
+})
