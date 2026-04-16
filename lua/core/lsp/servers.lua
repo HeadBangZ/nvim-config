@@ -80,6 +80,11 @@ M.common = {
 }
 
 M.workstation = {
+    csharp_ls = {
+        cmd = { "csharp-ls" },
+        filetypes = { "cs" },
+        root_markers = { "*.sln", "*.csproj", ".git" },
+    },
     pyright = {
         cmd = { "pyright-langserver", "--stdio" },
         filetypes = { "python" },
