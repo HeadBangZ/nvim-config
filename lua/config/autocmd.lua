@@ -56,3 +56,9 @@ vim.api.nvim_create_autocmd("QuickFixCmdPost", {
         vim.fn.setqflist(q, "r")
     end,
 })
+
+vim.api.nvim_create_autocmd({ "ModeChanged", "BufWinEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
+    callback = function()
+        vim.cmd("redrawstatus")
+    end,
+})

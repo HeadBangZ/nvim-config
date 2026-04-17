@@ -11,7 +11,6 @@ vim.pack.add({
     { src = "https://github.com/williamboman/mason-lspconfig.nvim" },
     { src = "https://github.com/windwp/nvim-ts-autotag" },
     { src = "https://github.com/datsfilipe/vesper.nvim" },
-    { src = "https://github.com/nvim-lualine/lualine.nvim" },
     { src = "https://github.com/nvim-tree/nvim-web-devicons" },
     { src = "https://github.com/rcarriga/nvim-notify" },
 })
