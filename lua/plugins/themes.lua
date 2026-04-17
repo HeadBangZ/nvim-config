@@ -20,6 +20,7 @@ if ok_scheme then
     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
     vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
+    -- TODO: make it dynamic to the active theme
     local bg    = "#101010"
     local peach = "#FFC799"
     local green = "#99FFE4"
