@@ -31,7 +31,7 @@ if ok_scheme then
     vim.cmd(string.format('highlight! StModeInsert guifg=%s guibg=%s gui=bold', bg, green))
     vim.cmd(string.format('highlight! StModeVisual guifg=%s guibg=%s gui=bold', bg, white))
     vim.cmd(string.format('highlight! StPosition   guifg=%s guibg=%s gui=bold', bg, peach))
-    vim.cmd(string.format('highlight! StModeTerminal guifg=%s guibg=%s gui=bold', bg, red)) -- Added Red
+    vim.cmd(string.format('highlight! StModeTerminal guifg=%s guibg=%s gui=bold', bg, red))
 else
     print("Theme not found: " .. active_theme)
 end

@@ -82,8 +82,8 @@ function cmp.diagnostic_status()
     local ok = ' λ '
 
     local ignore = {
-        ['c'] = true, -- command mode
-        ['t'] = true  -- terminal mode
+        ['c'] = true,
+        ['t'] = true
     }
 
     local mode = vim.api.nvim_get_mode().mode
@@ -104,6 +104,31 @@ function cmp.diagnostic_status()
     end
 
     return ok
+end
+
+function cmp.marks_status()
+    local lmarks = vim.fn.getmarklist(vim.api.nvim_get_current_buf())
+    local gmarks = vim.fn.getmarklist()
+
+    local l_count = 0
+    local g_count = 0
+
+    for _, m in ipairs(lmarks) do
+        if m.mark:match("'[a-z]") then
+            l_count = l_count + 1
+        end
+    end
+    for _, m in ipairs(gmarks) do
+        if m.mark:match("'[A-Z]") then
+            g_count = g_count + 1
+        end
+    end
+
+    if l_count == 0 and g_count == 0 then
+        return ""
+    end
+
+    return string.format("󰈚 %d 󰳊 %d", l_count, g_count)
 end
 
 function cmp.fileicon()
@@ -135,13 +160,13 @@ end
 local statusline = {
     '%{%v:lua._statusline_component("mode")%}',
     '%{%v:lua._statusline_component("git")%}',
-    '%{%v:lua._statusline_component("diagnostic_status")%} ',
     ' %t %m %r',
+    ' %{%v:lua._statusline_component("diagnostic_status")%} ',
     '%=',
-    -- global and local marks
+    '%{%v:lua._statusline_component("marks_status")%} ',
     ' %{%v:lua._statusline_component("fileicon")%}',
-    ' %{&filetype} ',
-    '[%{%v:lua._statusline_component("encoding")%}] ',
+    '%{&filetype} ',
+    ' [%{%v:lua._statusline_component("encoding")%}] ',
     ' %2p%% ',
     '%{%v:lua._statusline_component("position")%}'
 }
