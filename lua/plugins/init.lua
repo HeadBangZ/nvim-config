@@ -1,6 +1,6 @@
 require("plugins.themes")
 require("plugins.autopairs")
-require("plugins.lualine")
+-- require("plugins.lualine")
 require("plugins.fzf")
 require("plugins.treesitter")
 require("plugins.comments")
