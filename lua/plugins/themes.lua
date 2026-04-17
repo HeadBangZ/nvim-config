@@ -1,38 +1,24 @@
-local active_theme = "vesper"
+local theme_name = "vesper"
 
-if active_theme == "everforest" then
-    vim.g.everforest_transparent_background = 1
-elseif active_theme == "rose-pine" then
-    local ok, rose_pine = pcall(require, "rose-pine")
-    if ok then
-        rose_pine.setup({ styles = { transparency = true } })
-    end
-elseif active_theme == "vesper" then
-    local ok, vesper = pcall(require, "vesper")
-    if ok then
-        vesper.setup({ transparent = true })
-    end
+if not pcall(vim.cmd.colorscheme, theme_name) then
+    return
 end
 
-local ok_scheme, _ = pcall(vim.cmd.colorscheme, active_theme)
-
-if ok_scheme then
-    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-
-    -- TODO: make it dynamic to the active theme
-    local bg    = "#101010"
-    local peach = "#FFC799"
-    local green = "#99FFE4"
-    local white = "#FFFFFF"
-    local red   = "#FF8080"
-
-    vim.cmd(string.format('highlight! Search guifg=%s guibg=%s gui=bold', bg, peach))
-    vim.cmd(string.format('highlight! StModeNormal guifg=%s guibg=%s gui=bold', bg, peach))
-    vim.cmd(string.format('highlight! StModeInsert guifg=%s guibg=%s gui=bold', bg, green))
-    vim.cmd(string.format('highlight! StModeVisual guifg=%s guibg=%s gui=bold', bg, white))
-    vim.cmd(string.format('highlight! StPosition   guifg=%s guibg=%s gui=bold', bg, peach))
-    vim.cmd(string.format('highlight! StModeTerminal guifg=%s guibg=%s gui=bold', bg, red))
-else
-    print("Theme not found: " .. active_theme)
+local groups = { "Normal", "NormalFloat", "LineNr", "SignColumn", "EndOfBuffer" }
+for _, group in ipairs(groups) do
+    vim.api.nvim_set_hl(0, group, { bg = "none", ctermbg = "none" })
 end
+
+local get_color = function(group, attr)
+    local hl = vim.api.nvim_get_hl(0, { name = group, link = false })
+    local col = hl[attr]
+    return col and string.format("#%06x", col) or "#FFFFFF"
+end
+
+local theme_accent = get_color("Statement", "bg")
+local theme_string = get_color("String", "fg")
+local theme_error = get_color("DiagnosticError", "fg")
+
+vim.api.nvim_set_hl(0, "StModeNormal", { fg = "#101010", bg = theme_string, bold = true })
+vim.api.nvim_set_hl(0, "StModeTerminal", { fg = "#101010", bg = theme_error, bold = true })
+vim.api.nvim_set_hl(0, "LineAndCol", { fg = "#101010", bg = theme_accent, bold = true })

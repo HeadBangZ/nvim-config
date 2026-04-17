@@ -150,7 +150,7 @@ function cmp.encoding()
 end
 
 function cmp.position()
-    return hi_pattern:format("Search", "%3l:%-2c")
+    return hi_pattern:format("LineAndCol", "%3l:%-2c")
 end
 
 function _G._statusline_component(name)
