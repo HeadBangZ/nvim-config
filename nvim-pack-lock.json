@@ -4,10 +4,6 @@
       "rev": "a62e1083a3cfe8b6b206e7d3d33a51091df25357",
       "src": "https://github.com/L3MON4D3/LuaSnip"
     },
-    "arrow.nvim": {
-      "rev": "6e0f726f55f99332dd726a53effd6813786b6d49",
-      "src": "https://github.com/otavioschwanck/arrow.nvim"
-    },
     "blink.cmp": {
       "rev": "456d38d1cd3743926f329204c2340f3e7840aad6",
       "src": "https://github.com/Saghen/blink.cmp"

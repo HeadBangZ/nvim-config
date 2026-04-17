@@ -49,3 +49,14 @@ map("n", "<leader>fW", fzf.grep_cWORD, { desc = "[F]ind current [W]ORD" })
 map("n", "<leader>fr", fzf.resume, { desc = "[F]ind [R]esume" })
 map("n", "<leader>hc", fzf.command_history, { desc = "[H]istory [C]ommands" })
 map("n", "<leader>hs", fzf.search_history, { desc = "[H]istory [S]earch" })
+
+vim.keymap.set("n", "<leader>sl", function()
+    fzf.marks({
+        marks = "%l"
+    })
+end, { desc = "[S]earch [L]ocal [M]arks" })
+vim.keymap.set("n", "<leader>sg", function()
+    fzf.marks({
+        marks = "%u"
+    })
+end, { desc = "[S]earch [G]lobal [M]arks" })

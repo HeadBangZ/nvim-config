@@ -1,5 +1,4 @@
 require("plugins.themes")
-require("plugins.arrow")
 require("plugins.autopairs")
 require("plugins.lualine")
 require("plugins.fzf")
