@@ -40,6 +40,11 @@ vim.keymap.set("n", "<Right>", ":vertical resize +2<CR>", opts)
 -- search and replace
 vim.keymap.set("v", "sr", [[:s/\%V]], { desc = "Rename within selection" })
 
+-- Marks
+vim.keymap.set("n", "<leader>sm", "<cmd>FzfLua marks<cr>", { desc = "[S]earch [A]ll [M]arks" })
+vim.keymap.set("n", "<leader>cl", "<cmd>delmarks!<cr>", { desc = "[C]lear [L]ocal [M]arks" })
+vim.keymap.set("n", "<leader>cg", "<cmd>delmarks A-Z<cr>", { desc = "[C]lear [G]lobal [M]arks" })
+
 -- toggle vim-fugitive
 vim.keymap.set("n", "<C-M-S-F8>", function()
     for _, win in pairs(vim.api.nvim_list_wins()) do
