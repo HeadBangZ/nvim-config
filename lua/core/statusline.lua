@@ -43,7 +43,67 @@ function cmp.mode()
     local m = vim.api.nvim_get_mode().mode
 
     local current_mode = modes[m] or 'NORMAL'
-    return hi_pattern:format("StatusLineMode", " " .. current_mode .. " ")
+
+    local hl = "StModeNormal"
+    if m == "i" or m == "ic" or m == "ix" then
+        hl = "StModeInsert"
+    elseif m:find("v") or m:find("V") or m == "\22" then
+        hl = "StModeVisual"
+    elseif m == "t" then
+        hl = "StModeTerminal"
+    end
+
+    return hi_pattern:format(hl, current_mode)
+end
+
+function cmp.git()
+    local git_info = vim.b.gitsigns_status_dict
+    if not git_info or not git_info.head then
+        return ""
+    end
+
+    local parts = { " " .. git_info.head }
+
+    if git_info.added and git_info.added > 0 then
+        table.insert(parts, " +" .. git_info.added)
+    end
+    if git_info.changed and git_info.changed > 0 then
+        table.insert(parts, " ~" .. git_info.changed)
+    end
+    if git_info.removed and git_info.removed > 0 then
+        table.insert(parts, " -" .. git_info.removed)
+    end
+
+    local status = table.concat(parts, "")
+    return hi_pattern:format("StatusLineGit", " " .. status .. " ")
+end
+
+function cmp.diagnostic_status()
+    local ok = ' λ '
+
+    local ignore = {
+        ['c'] = true, -- command mode
+        ['t'] = true  -- terminal mode
+    }
+
+    local mode = vim.api.nvim_get_mode().mode
+
+    if ignore[mode] then
+        return ok
+    end
+
+    local levels = vim.diagnostic.severity
+    local errors = #vim.diagnostic.get(0, { severity = levels.ERROR })
+    if errors > 0 then
+        return ' ✘ '
+    end
+
+    local warnings = #vim.diagnostic.get(0, { severity = levels.WARN })
+    if warnings > 0 then
+        return ' ▲ '
+    end
+
+    return ok
 end
 
 function cmp.fileicon()
@@ -59,8 +119,13 @@ function cmp.fileicon()
     return string.format(" %%#%s#%s%%* ", hl or "StatusLine", icon or "")
 end
 
+function cmp.encoding()
+    local enc = (vim.bo.fenc ~= '' and vim.bo.fenc) or vim.o.enc
+    return string.upper(enc)
+end
+
 function cmp.position()
-    return hi_pattern:format("Search", " %3l:%-2c ")
+    return hi_pattern:format("Search", "%3l:%-2c")
 end
 
 function _G._statusline_component(name)
@@ -69,15 +134,16 @@ end
 
 local statusline = {
     '%{%v:lua._statusline_component("mode")%}',
-    ' %t',
-    '%r',
-    '%m',
+    '%{%v:lua._statusline_component("git")%}',
+    '%{%v:lua._statusline_component("diagnostic_status")%} ',
+    ' %t %m %r',
     '%=',
-    '%{%v:lua._statusline_component("fileicon")%}',
-    ' %{&filetype}',
-    '%2p%%',
+    -- global and local marks
+    ' %{%v:lua._statusline_component("fileicon")%}',
+    ' %{&filetype} ',
+    '[%{%v:lua._statusline_component("encoding")%}] ',
+    ' %2p%% ',
     '%{%v:lua._statusline_component("position")%}'
 }
 
-vim.opt.statusline =
-[[%{%v:lua._statusline_component("mode")%} %t %r %m %= %{%v:lua._statusline_component("fileicon")%} %{&filetype} %2p%% %{%v:lua._statusline_component("position")%}]]
+vim.opt.statusline = table.concat(statusline, "")
