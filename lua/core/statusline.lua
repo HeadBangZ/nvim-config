@@ -1,4 +1,5 @@
 local cmp = {}
+local hi_pattern = '%%#%s# %s %%*'
 
 function cmp.mode()
     local modes = {
@@ -41,22 +42,42 @@ function cmp.mode()
     }
     local m = vim.api.nvim_get_mode().mode
 
-    local hl_map = {
-        n = "StatusLineNormal",
-        i = "StatusLineInsert",
-        v = "StatusLineVisual",
-        V = "StatusLineVisual",
-        ["\22"] = "StatusLineVisual",
-        c = "StatusLineCommand",
-        t = "StatusLineTerminal"
-    }
     local current_mode = modes[m] or 'NORMAL'
-    local hl = hl_map[m] or "StatusLineNormal"
-    return string.format("%%#%s# %s %%*", hl, current_mode)
+    return hi_pattern:format("StatusLineMode", " " .. current_mode .. " ")
 end
 
-function _G.statusline_render()
-    return table.concat({ cmp.mode(), " %t ", "%=", " %l:%c " })
+function cmp.fileicon()
+    local ok, icons = pcall(require, "nvim-web-devicons")
+    if not ok then
+        return ""
+    end
+
+    local name = vim.fn.expand("%:t")
+    local ext = vim.fn.expand("%:e")
+    local icon, hl = icons.get_icon(name, ext, { defualt = true })
+
+    return string.format(" %%#%s#%s%%* ", hl or "StatusLine", icon or "")
 end
 
-vim.opt.statusline = "%!v:lua.statusline_render()"
+function cmp.position()
+    return hi_pattern:format("Search", " %3l:%-2c ")
+end
+
+function _G._statusline_component(name)
+    return cmp[name]()
+end
+
+local statusline = {
+    '%{%v:lua._statusline_component("mode")%}',
+    ' %t',
+    '%r',
+    '%m',
+    '%=',
+    '%{%v:lua._statusline_component("fileicon")%}',
+    ' %{&filetype}',
+    '%2p%%',
+    '%{%v:lua._statusline_component("position")%}'
+}
+
+vim.opt.statusline =
+[[%{%v:lua._statusline_component("mode")%} %t %r %m %= %{%v:lua._statusline_component("fileicon")%} %{&filetype} %2p%% %{%v:lua._statusline_component("position")%}]]
