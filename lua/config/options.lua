@@ -56,6 +56,7 @@ vim.opt.history = 100
 
 vim.opt.completeopt = { "menuone", "noselect", "popup" }
 
+-- Lsp
 vim.api.nvim_create_user_command("LspInfo", "checkhealth vim.lsp", { desc = "Show LSP Info" })
 vim.api.nvim_create_user_command("LspLog", function(_)
     local state_path = vim.fn.stdpath("state")
@@ -63,3 +64,6 @@ vim.api.nvim_create_user_command("LspLog", function(_)
     vim.cmd(string.format("edit %s", log_path))
 end, { desc = "Show LSP Log" })
 vim.api.nvim_create_user_command("LspRestart", "lsp restart", { desc = "Restart LSP" })
+
+-- Vim Pack
+vim.api.nvim_create_user_command("PackUpdate", "lua vim.pack.update()", { desc = "Update Packages" })

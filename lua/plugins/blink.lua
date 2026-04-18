@@ -34,26 +34,26 @@ blink.setup({
         },
 
         menu = {
-            border = 'rounded',
+            border = 'single',
             draw = {
                 columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
             },
         },
         documentation = {
             window = {
-                border = 'rounded',
+                border = 'single',
                 max_width = 100,
                 max_height = 30,
             },
             auto_show = true,
-            auto_show_delay_ms = 200,
+            auto_show_delay_ms = 250,
         },
         ghost_text = { enabled = true },
     },
 
     signature = {
         enabled = true,
-        window = { border = 'rounded' }
+        window = { border = 'single' }
     },
 
     snippets = {

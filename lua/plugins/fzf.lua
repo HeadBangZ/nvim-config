@@ -12,11 +12,11 @@ fzf.setup({
         width = 0.7,
         row = 0.5,
         col = 0.5,
-        border = "rounded",
-        -- preview = {
-        --     layout = "vertical",
-        --     vertical = "down:50%",
-        -- },
+        border = "single",
+        preview = {
+            layout = "horizontal",
+            vertical = "down:70%",
+        },
     },
     keymap = {
         builtin = {
