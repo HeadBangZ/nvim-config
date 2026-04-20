@@ -11,7 +11,7 @@ local ensure_installed = {}
 
 local function add_to_list(server_group)
     for name, _ in pairs(server_group) do
-        if name ~= "intelephense" and name ~= "nimlangserver" then
+        if name ~= "nimlangserver" then
             table.insert(ensure_installed, name)
         end
     end
