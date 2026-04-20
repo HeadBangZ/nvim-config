@@ -11,7 +11,8 @@ M.on_attach = function(client, bufnr)
     vim.keymap.set("n", "grt", function() require('fzf-lua').lsp_typedefs() end, opts)
     vim.keymap.set("n", "gs", function() require('fzf-lua').lsp_document_symbols() end, opts)
     vim.keymap.set("n", "gS", function() require('fzf-lua').lsp_workspace_symbols() end, opts)
-    vim.keymap.set("n", "<leader>fd", function() require('fzf-lua').diagnostics_workspace() end, opts)
+    vim.keymap.set("n", "<leader>lD", function() require('fzf-lua').diagnostics_workspace() end, opts)
+    vim.keymap.set("n", "<leader>ld", function() require('fzf-lua').diagnostics_document() end, opts)
 
     -- LSP Actions
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
