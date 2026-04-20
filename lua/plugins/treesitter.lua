@@ -16,6 +16,7 @@ local parsers = {
 
     -- General Purpose
     "c_sharp",
+    "julia",
 
     -- Functional
     "elixir",
