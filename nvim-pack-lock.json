@@ -5,7 +5,7 @@
       "src": "https://github.com/L3MON4D3/LuaSnip"
     },
     "blink.cmp": {
-      "rev": "90d14caca4ae557665ab105080c27d5f289a2e30",
+      "rev": "61a1391399076ca37f06f63cca0a8fe22b267463",
       "src": "https://github.com/Saghen/blink.cmp"
     },
     "friendly-snippets": {
@@ -13,7 +13,7 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "fzf-lua": {
-      "rev": "c27c398ef84f3a98185623764ba4793758b68952",
+      "rev": "8223eb24a7adf72c4b24e04b751486b492775414",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitsigns.nvim": {
@@ -25,7 +25,7 @@
       "src": "https://github.com/williamboman/mason-lspconfig.nvim"
     },
     "mason.nvim": {
-      "rev": "b03fb0f20bc1d43daf558cda981a2be22e73ac42",
+      "rev": "12ddd182d9efbdc848b540f16484a583d52da0fb",
       "src": "https://github.com/williamboman/mason.nvim"
     },
     "nvim-autopairs": {
@@ -61,7 +61,7 @@
       "src": "https://github.com/stevearc/oil.nvim"
     },
     "schemastore.nvim": {
-      "rev": "250aed7415ddd6cb3ea321490c7b35094ed9148d",
+      "rev": "d09eb13366fe95deeecf3deba7a4639f0c82fcdc",
       "src": "https://github.com/b0o/schemastore.nvim"
     },
     "todo-comments.nvim": {

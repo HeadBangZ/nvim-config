@@ -79,31 +79,21 @@ function cmp.git()
 end
 
 function cmp.diagnostic_status()
-    local ok = ' λ '
-
-    local ignore = {
-        ['c'] = true,
-        ['t'] = true
-    }
-
     local mode = vim.api.nvim_get_mode().mode
-
-    if ignore[mode] then
-        return ok
+    if mode == 'c' or mode == 't' then
+        return ' λ '
     end
 
-    local levels = vim.diagnostic.severity
-    local errors = #vim.diagnostic.get(0, { severity = levels.ERROR })
-    if errors > 0 then
+    local counts = vim.diagnostic.count(0)
+    local severity = vim.diagnostic.severity
+
+    if counts[severity.ERROR] and counts[severity.ERROR] > 0 then
         return ' ✘ '
-    end
-
-    local warnings = #vim.diagnostic.get(0, { severity = levels.WARN })
-    if warnings > 0 then
+    elseif counts[severity.WARN] and counts[severity.WARN] > 0 then
         return ' ▲ '
     end
 
-    return ok
+    return ' λ '
 end
 
 function cmp.marks_status()
