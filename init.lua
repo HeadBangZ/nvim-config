@@ -24,7 +24,6 @@ vim.schedule(function()
         {
             src = "https://github.com/Saghen/blink.cmp",
             branch = "main",
-            version = "*"
         },
         { src = "https://github.com/L3MON4D3/LuaSnip" },
         { src = "https://github.com/rafamadriz/friendly-snippets" },

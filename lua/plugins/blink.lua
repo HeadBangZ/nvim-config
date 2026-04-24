@@ -65,6 +65,6 @@ blink.setup({
     },
 
     fuzzy = {
-        implementation = 'lua'
+        implementation = 'prefer_rust'
     }
 })
