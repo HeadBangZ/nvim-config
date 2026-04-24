@@ -1,6 +1,6 @@
 local blink = require("blink.cmp")
 
-blink.build():wait(60000)
+-- blink.build():wait(60000)
 
 blink.setup({
     keymap = {
@@ -65,6 +65,6 @@ blink.setup({
     },
 
     fuzzy = {
-        implementation = 'rust'
+        implementation = 'lua'
     }
 })
