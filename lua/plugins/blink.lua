@@ -65,6 +65,6 @@ blink.setup({
     },
 
     fuzzy = {
-        implementation = 'prefer_rust'
+        implementation = 'prefer_rust_with_warning'
     }
 })
