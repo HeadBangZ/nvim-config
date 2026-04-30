@@ -1,5 +1,7 @@
 local blink = require("blink.cmp")
 
+-- blink.build():wait(60000)
+
 blink.setup({
     keymap = {
         preset = 'none',
@@ -34,14 +36,14 @@ blink.setup({
         },
 
         menu = {
-            border = 'single',
+            border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' },
             draw = {
                 columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
             },
         },
         documentation = {
             window = {
-                border = 'single',
+                border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' },
                 max_width = 100,
                 max_height = 30,
             },
@@ -53,10 +55,16 @@ blink.setup({
 
     signature = {
         enabled = true,
-        window = { border = 'single' }
+        window = {
+            border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' },
+        }
     },
 
     snippets = {
         preset = 'luasnip'
     },
+
+    fuzzy = {
+        implementation = 'prefer_rust_with_warning'
+    }
 })
