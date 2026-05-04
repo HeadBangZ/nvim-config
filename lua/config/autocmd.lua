@@ -48,7 +48,7 @@ vim.api.nvim_create_autocmd("LspProgress", {
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "nvim-undotree",
     callback = function()
-        vim.api.nvim_win_set_width(0, 55)
+        vim.api.nvim_win_set_width(0, 40)
         vim.opt_local.winfixwidth = true
     end,
 })
