@@ -45,6 +45,14 @@ vim.api.nvim_create_autocmd("LspProgress", {
     end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "nvim-undotree",
+    callback = function()
+        vim.api.nvim_win_set_width(0, 55)
+        vim.opt_local.winfixwidth = true
+    end,
+})
+
 vim.api.nvim_create_autocmd("QuickFixCmdPost", {
     desc = "Sort quickfix list by line number",
     group = vim.api.nvim_create_augroup("quickfix-sort", { clear = true }),
