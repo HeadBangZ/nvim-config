@@ -29,6 +29,8 @@ local home = os.getenv("HOME") or os.getenv("USERPROFILE")
 vim.opt.undodir = home .. "/.vim/undodir"
 vim.opt.undofile = true
 
+vim.opt.splitright = true
+
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
