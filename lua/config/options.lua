@@ -10,6 +10,8 @@ vim.opt.colorcolumn = "120"
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+vim.cmd("autocmd BufEnter * set formatoptions-=cro | setlocal formatoptions-=cro")
+
 -- search settings
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
