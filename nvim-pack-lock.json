@@ -65,7 +65,7 @@
       "src": "https://github.com/stevearc/oil.nvim"
     },
     "schemastore.nvim": {
-      "rev": "988a3aafe6d8bb0f71c54aa79e2c65a79aa08837",
+      "rev": "05a0a69ca52c31aa687e8251ae11dd913df10061",
       "src": "https://github.com/b0o/schemastore.nvim"
     },
     "todo-comments.nvim": {
