@@ -1,4 +1,4 @@
-local theme_name = "vesper"
+local theme_name = "poimandres"
 
 if not pcall(vim.cmd.colorscheme, theme_name) then
     return
@@ -15,7 +15,7 @@ local get_color = function(group, attr)
     return col and string.format("#%06x", col) or "#FFFFFF"
 end
 
-local theme_accent = get_color("Statement", "bg")
+local theme_accent = get_color("Statement", "fg")
 local theme_string = get_color("String", "fg")
 local theme_error = get_color("DiagnosticError", "fg")
 
