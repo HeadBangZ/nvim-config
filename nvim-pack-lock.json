@@ -17,7 +17,7 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "fzf-lua": {
-      "rev": "c8aaa74c97157b2c62bdcfc1e57b15c052dc63ca",
+      "rev": "fea9eedc6894c44d44cbb772a5cd11c93b82d7a1",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitsigns.nvim": {
@@ -69,7 +69,7 @@
       "src": "https://github.com/olivercederborg/poimandres.nvim"
     },
     "schemastore.nvim": {
-      "rev": "68ba9015c0cc77a0fe954bd2578dfa7a5c24134f",
+      "rev": "5330d61a3b2f7ecf8bf6f9ab4ce12878497f2cee",
       "src": "https://github.com/b0o/schemastore.nvim"
     },
     "todo-comments.nvim": {
