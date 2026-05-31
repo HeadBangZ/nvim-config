@@ -5,6 +5,7 @@ local blink = require("blink.cmp")
 blink.setup({
     keymap = {
         preset = 'none',
+
         -- Navigation
         ['<C-n>'] = { 'select_next', 'fallback' },
         ['<C-p>'] = { 'select_prev', 'fallback' },
