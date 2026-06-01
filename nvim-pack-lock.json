@@ -69,7 +69,7 @@
       "src": "https://github.com/olivercederborg/poimandres.nvim"
     },
     "schemastore.nvim": {
-      "rev": "efa62017f59a6346486cc567d70acce965a00b12",
+      "rev": "bb1550c91d09d2ede8edd90a87fa4ccc9c0b9e1f",
       "src": "https://github.com/b0o/schemastore.nvim"
     },
     "todo-comments.nvim": {
