@@ -1,6 +1,6 @@
 local blink = require("blink.cmp")
 
--- blink.build():wait(60000)
+blink.build():pwait()
 
 blink.setup({
     keymap = {
