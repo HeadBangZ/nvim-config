@@ -49,6 +49,8 @@ function cmp.mode()
         hl = "StModeInsert"
     elseif m:find("v") or m:find("V") or m == "\22" then
         hl = "StModeVisual"
+    elseif m == "c" then
+        hl = "StModeCommand"
     elseif m == "t" then
         hl = "StModeTerminal"
     end
@@ -157,7 +159,7 @@ local statusline = {
     ' %{%v:lua._statusline_component("fileicon")%}',
     '%{&filetype} ',
     ' [%{%v:lua._statusline_component("encoding")%}] ',
-    ' %2p%% ',
+    ' %3p%% ',
     '%{%v:lua._statusline_component("position")%}'
 }
 

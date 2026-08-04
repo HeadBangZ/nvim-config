@@ -18,7 +18,9 @@ end
 local theme_accent = get_color("Statement", "fg")
 local theme_string = get_color("String", "fg")
 local theme_func = get_color("Function", "fg")
+local theme_special = get_color("Special", "fg")
 
 vim.api.nvim_set_hl(0, "StModeNormal", { fg = "#101010", bg = theme_string, bold = true })
-vim.api.nvim_set_hl(0, "StModeTerminal", { fg = "#101010", bg = theme_func, bold = true })
+vim.api.nvim_set_hl(0, "StModeCommand", { fg = "#101010", bg = theme_func, bold = true })
+vim.api.nvim_set_hl(0, "StModeTerminal", { fg = "#101010", bg = theme_special, bold = true })
 vim.api.nvim_set_hl(0, "LineAndCol", { fg = "#101010", bg = theme_accent, bold = true })
