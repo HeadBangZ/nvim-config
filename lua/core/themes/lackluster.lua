@@ -13,7 +13,7 @@ function M.setup()
             },
             ["@comment"] = {
                 overwrite = true,
-                fg = lackluster.color.gray5,
+                fg = lackluster.color.gray6,
                 italic = true,
             },
         },

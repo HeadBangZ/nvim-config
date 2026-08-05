@@ -1,4 +1,4 @@
-local theme_name = "lackluster"
+local theme_name = "poimandres"
 
 local ok_sub, theme_config = pcall(require, "core.themes." .. theme_name)
 if ok_sub and type(theme_config.setup) == "function" then
