@@ -1,7 +1,5 @@
--- vim.cmd("filetype plugin indent on")
--- vim.cmd("syntax on")
+vim.cmd("filetype plugin indent on")
 
--- vim.opt.filetype = "on"
 vim.opt.fileformat = "unix"
 
 vim.opt.guicursor = ""
@@ -48,7 +46,7 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldlevel = 99
 
 vim.diagnostic.config({
