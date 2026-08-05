@@ -1,29 +1,33 @@
 local M = {}
 
 M.on_attach = function(client, bufnr)
-    local opts = { buffer = bufnr, noremap = true, silent = true }
+    local fzf = require("fzf-lua")
+
+    local function map(mode, lhs, rhs, desc)
+        vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, noremap = true, silent = true, desc = desc })
+    end
 
     -- LSP Search / Navigation (Fzf-lua)
-    vim.keymap.set("n", "gd", function() require('fzf-lua').lsp_definitions() end, opts)
-    vim.keymap.set("n", "gD", function() require('fzf-lua').lsp_declarations() end, opts)
-    vim.keymap.set("n", "grr", function() require('fzf-lua').lsp_references() end, opts)
-    vim.keymap.set("n", "gic", function() require('fzf-lua').lsp_incoming_calls() end, opts)
-    vim.keymap.set("n", "gri", function() require('fzf-lua').lsp_implementations() end, opts)
-    vim.keymap.set("n", "grt", function() require('fzf-lua').lsp_typedefs() end, opts)
-    vim.keymap.set("n", "gs", function() require('fzf-lua').lsp_document_symbols() end, opts)
-    vim.keymap.set("n", "gS", function() require('fzf-lua').lsp_workspace_symbols() end, opts)
-    vim.keymap.set("n", "<leader>lD", function() require('fzf-lua').diagnostics_workspace() end, opts)
-    vim.keymap.set("n", "<leader>ld", function() require('fzf-lua').diagnostics_document() end, opts)
+    map("n", "gd", fzf.lsp_definitions, "LSP: [G]oto [D]efinition")
+    map("n", "gD", fzf.lsp_declarations, "LSP: [G]oto [D]eclaration")
+    map("n", "grr", fzf.lsp_references, "LSP: [G]oto [R]eferences")
+    map("n", "gic", fzf.lsp_incoming_calls, "LSP: [G]oto [I]ncoming [C]alls")
+    map("n", "gri", fzf.lsp_implementations, "LSP: [G]oto [I]mplementation")
+    map("n", "grt", fzf.lsp_typedefs, "LSP: [G]oto [T]ype Definition")
+    map("n", "gs", fzf.lsp_document_symbols, "LSP: [G]et Document [S]ymbols")
+    map("n", "gS", fzf.lsp_workspace_symbols, "LSP: [G]et Workspace [S]ymbols")
+    map("n", "<leader>lD", fzf.diagnostics_workspace, "LSP: Workspace [D]iagnostics")
+    map("n", "<leader>ld", fzf.diagnostics_document, "LSP: Document [D]iagnostics")
 
     -- LSP Actions
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-    vim.keymap.set("n", "<C-a>", vim.lsp.buf.signature_help, opts)
-    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+    map("n", "K", vim.lsp.buf.hover, "LSP: Hover Documentation")
+    map("n", "<C-a>", vim.lsp.buf.signature_help, "LSP: Signature Help")
+    map({ "n", "x" }, "<leader>ca", fzf.lsp_code_actions, "LSP: [C]ode [A]ction")
+    map("n", "<leader>rn", vim.lsp.buf.rename, "LSP: [R]ename")
 
     -- Diagnostics
-    vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end, opts)
-    vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count = 1 }) end, opts)
+    map("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end, "LSP: Previous Diagnostic")
+    map("n", "]d", function() vim.diagnostic.jump({ count = 1 }) end, "LSP: Next Diagnostic")
 end
 
 return M
