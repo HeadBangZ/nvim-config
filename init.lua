@@ -3,17 +3,9 @@ vim.loader.enable()
 vim.opt.packpath:prepend(vim.fn.stdpath("data") .. "/site")
 
 vim.pack.add({
-    {
-        src = "https://github.com/nvim-treesitter/nvim-treesitter",
-        branch = "main"
-    },
-    { src = "https://github.com/williamboman/mason.nvim" },
-    { src = "https://github.com/williamboman/mason-lspconfig.nvim" },
-    { src = "https://github.com/windwp/nvim-ts-autotag" },
-    -- { src = "https://github.com/datsfilipe/vesper.nvim" },
+    { src = "https://github.com/slugbyte/lackluster.nvim" },
+    { src = "https://github.com/datsfilipe/vesper.nvim" },
     { src = "https://github.com/olivercederborg/poimandres.nvim" },
-    { src = "https://github.com/nvim-tree/nvim-web-devicons" },
-    { src = "https://github.com/rcarriga/nvim-notify" },
 })
 
 require("config")
@@ -21,12 +13,18 @@ require("core")
 
 vim.schedule(function()
     vim.pack.add({
+        {
+            src = "https://github.com/nvim-treesitter/nvim-treesitter",
+            branch = "main"
+        },
+        { src = "https://github.com/williamboman/mason.nvim" },
+        { src = "https://github.com/williamboman/mason-lspconfig.nvim" },
+        { src = "https://github.com/nvim-tree/nvim-web-devicons" },
         { src = "https://github.com/Saghen/blink.lib" },
         {
             src = "https://github.com/Saghen/blink.cmp",
             branch = "main",
         },
-        { src = "https://github.com/L3MON4D3/LuaSnip" },
         { src = "https://github.com/rafamadriz/friendly-snippets" },
         { src = "https://github.com/ibhagwan/fzf-lua" },
         { src = "https://github.com/stevearc/oil.nvim" },

@@ -62,7 +62,7 @@ blink.setup({
     },
 
     snippets = {
-        preset = 'luasnip'
+        preset = 'default'
     },
 
     fuzzy = {

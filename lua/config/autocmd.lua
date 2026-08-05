@@ -1,21 +1,25 @@
----@diagnostic disable-next-line: missing-parameter
+local augroup = function(name)
+    return vim.api.nvim_create_augroup(name, { clear = true })
+end
+
 vim.api.nvim_create_autocmd('TextYankPost', {
     desc = "Highlight when yanking text",
-    group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
+    group = augroup('highlight-yank'),
     callback = function()
         vim.hl.on_yank()
     end,
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {
+    group = augroup("lsp-attach-format"),
     callback = function(args)
         local client = vim.lsp.get_client_by_id(args.data.client_id)
         if not client then return end
 
-        ---@diagnostic disable-next-line: missing-parameter
-        if client:supports_method("textDocument/formatting") then
+        if client:supports_method("textDocument/formatting", args.buf) then
             vim.api.nvim_create_autocmd("BufWritePre", {
                 buffer = args.buf,
+                group = augroup("lsp-format-" .. args.buf),
                 callback = function()
                     vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
                 end,
@@ -25,28 +29,27 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 vim.api.nvim_create_autocmd("LspProgress", {
+    group = augroup("lsp-progress-echo"),
     callback = function(ev)
         local client = vim.lsp.get_client_by_id(ev.data.client_id)
         local val = ev.data.params.value
         if not client or not val then return end
 
-        local msg = string.format("%s: %s %s",
-            client.name,
-            val.message or "",
-            val.title or ""
-        )
-
         if val.kind == "end" then
-            vim.api.nvim_echo({ { client.name .. " loaded", "Comment" } }, false, {})
-            vim.defer_fn(function() vim.api.nvim_echo({ { "", "" } }, false, {}) end, 2000)
+            vim.api.nvim_echo({ { client.name .. " ready", "NotifySuccess" } }, false, {})
+            vim.defer_fn(function()
+                vim.api.nvim_echo({ { "", "" } }, false, {})
+            end, 2000)
         else
-            vim.api.nvim_echo({ { msg, "Comment" } }, false, {})
+            local msg = string.format("%s: %s %s", client.name, val.title or "", val.message or "")
+            vim.api.nvim_echo({ { msg, "NotifyText" } }, false, {})
         end
     end,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "nvim-undotree",
+    group = augroup("undotree-fix"),
     callback = function()
         vim.api.nvim_win_set_width(0, 40)
         vim.opt_local.winfixwidth = true
@@ -55,7 +58,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 vim.api.nvim_create_autocmd("QuickFixCmdPost", {
     desc = "Sort quickfix list by line number",
-    group = vim.api.nvim_create_augroup("quickfix-sort", { clear = true }),
+    group = augroup("quickfix-sort"),
     callback = function()
         local q = vim.fn.getqflist()
         table.sort(q, function(a, b)
@@ -65,8 +68,28 @@ vim.api.nvim_create_autocmd("QuickFixCmdPost", {
     end,
 })
 
-vim.api.nvim_create_autocmd({ "LspProgress", "ModeChanged", "BufWinEnter", "CursorHold", "CursorHoldI", "FocusGained" },
+vim.api.nvim_create_autocmd("BufWritePost", {
+    group = augroup("notify-buf-write"),
+    callback = function(args)
+        local fname = vim.fn.fnamemodify(args.file, ":t")
+        vim.notify("Saved " .. fname, vim.log.levels.INFO)
+    end,
+})
+
+vim.api.nvim_create_autocmd("User", {
+    pattern = "GitSignsUpdate",
+    group = augroup("gitsigns-notify"),
+    callback = function()
+        local branch = vim.b.gitsigns_head
+        if branch then
+            vim.api.nvim_echo({ { "Git Branch: " .. branch, "NotifyInfo" } }, false, {})
+        end
+    end,
+})
+
+vim.api.nvim_create_autocmd({ "LspProgress", "ModeChanged", "BufWinEnter" },
     {
+        group = augroup("statusline-redraw"),
         callback = function()
             vim.cmd("redrawstatus")
         end,
