@@ -3,7 +3,7 @@ vim.cmd("packadd nvim.difftool")
 vim.keymap.set("n", "<leader>df", function()
     local target = vim.fn.input("Compare File: ", "", "file")
     if target ~= "" then
-        vim.cmd("DiffTool % " .. target)
+        vim.cmd("DiffTool % " .. vim.fn.fnameescape(target))
     end
 end, { desc = "[D]iff [F]ile" })
 

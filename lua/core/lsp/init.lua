@@ -1,3 +1,5 @@
+require("core.lsp.filetypes")
+
 local keymaps = require("core.lsp.keymaps")
 local servers = require("core.lsp.servers")
 

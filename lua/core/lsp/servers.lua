@@ -1,5 +1,7 @@
 local M = {}
 
+local helm_binary = vim.fn.executable("helm_ls") == 1 and "helm_ls" or "helm-ls"
+
 local function get_json_schemas()
     local ok, schemastore = pcall(require, "schemastore")
     return ok and schemastore.json.schemas() or {}
@@ -17,7 +19,7 @@ M.common = {
         root_markers = { "Dockerfile", "docker-compose.yml", "docker-compose.yaml" }
     },
     helm_ls = {
-        cmd = { "helm_ls", "serve" },
+        cmd = { helm_binary, "serve" },
         filetypes = { "helm" },
         root_markers = { "Chart.yaml", "Chart.yml" },
     },
@@ -53,18 +55,6 @@ M.common = {
             },
         },
     },
-    jsonls = {
-        cmd = { "vscode-json-language-server", "--stdio" },
-        filetypes = { "json", "jsonc" },
-        on_new_config = function(new_config)
-            new_config.settings.json.schemas = get_json_schemas()
-        end,
-        settings = {
-            json = {
-                validate = { enable = true }
-            }
-        },
-    },
     yamlls = {
         cmd = { "yaml-language-server", "--stdio" },
         filetypes = { "yaml" },
@@ -80,6 +70,18 @@ M.common = {
 }
 
 M.workstation = {
+    jsonls = {
+        cmd = { "vscode-json-language-server", "--stdio" },
+        filetypes = { "json", "jsonc" },
+        on_new_config = function(new_config)
+            new_config.settings.json.schemas = get_json_schemas()
+        end,
+        settings = {
+            json = {
+                validate = { enable = true }
+            }
+        },
+    },
     julials = {
         cmd = {
             "julia",
@@ -107,11 +109,6 @@ M.workstation = {
         filetypes = { "julia" },
         root_markers = { ".git", "Project.toml", "JuliaProject.toml" },
         settings = {},
-    },
-    csharp_ls = {
-        cmd = { "csharp-ls" },
-        filetypes = { "cs" },
-        root_markers = { "*.sln", "*.csproj", ".git" },
     },
     pyright = {
         cmd = { "pyright-langserver", "--stdio" },
@@ -148,7 +145,7 @@ M.workstation = {
     },
     html = {
         cmd = { "vscode-html-language-server", "--stdio" },
-        filetypes = { "htm", "html" },
+        filetypes = { "html" },
         root_markers = {},
         settings = {
             html = {
@@ -173,6 +170,19 @@ M.workstation = {
 }
 
 M.systems = {
+    deno = {
+        cmd = { "deno", "lsp" },
+        filetypes = { "json", "jsonc" },
+        settings = {
+            enable = true,
+            lint = true
+        }
+    },
+    bashls = {
+        cmd = { "bash-language-server", "start" },
+        filetypes = { "sh", "bash" },
+        root_markers = { ".git" },
+    },
     clangd = {
         cmd = {
             "clangd",
@@ -200,19 +210,6 @@ M.systems = {
         cmd = { "ols" },
         filetypes = { "odin" },
         root_markers = { "ols.json", ".git" },
-    },
-    nimlangserver = {
-        cmd = { "nimlangserver" },
-        filetypes = { "nim" },
-        root_markers = { "nim.nimble", "package.nim", "config.nims", ".git" },
-        settings = {
-            nim = {
-                nimsuggestPath = "/usr/bin/nimsuggest",
-                nimSearchPaths = {
-                    '/usr/lib/nim/lib',
-                },
-            },
-        },
     },
 }
 
