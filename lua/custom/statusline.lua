@@ -41,7 +41,6 @@ function cmp.mode()
         ['t'] = 'TERMINAL',
     }
     local m = vim.api.nvim_get_mode().mode
-
     local current_mode = modes[m] or 'NORMAL'
 
     local hl = "StModeNormal"
@@ -131,7 +130,7 @@ function cmp.fileicon()
 
     local name = vim.fn.expand("%:t")
     local ext = vim.fn.expand("%:e")
-    local icon, hl = icons.get_icon(name, ext, { defualt = true })
+    local icon, hl = icons.get_icon(name, ext, { default = true })
 
     return string.format(" %%#%s#%s%%* ", hl or "StatusLine", icon or "")
 end
@@ -164,3 +163,39 @@ local statusline = {
 }
 
 vim.opt.statusline = table.concat(statusline, "")
+
+local group = vim.api.nvim_create_augroup("statusline-redraw", { clear = true })
+
+vim.api.nvim_create_autocmd({ "LspProgress", "ModeChanged", "BufWinEnter" }, {
+    group = group,
+    callback = function()
+        vim.cmd("redrawstatus")
+    end,
+})
+
+local mark_ns = vim.api.nvim_create_namespace("statusline_mark_redraw")
+local setting_mark = false
+
+vim.on_key(function(key)
+    local mode = vim.api.nvim_get_mode().mode
+    if mode == "n" and key == "m" then
+        setting_mark = true
+    elseif setting_mark then
+        setting_mark = false
+        vim.schedule(function()
+            vim.cmd("redrawstatus")
+        end)
+    end
+end, mark_ns)
+
+vim.api.nvim_create_autocmd("CmdlineLeave", {
+    group = group,
+    callback = function()
+        local cmd = vim.fn.getcmdline()
+        if cmd:match("^delm") or cmd:match("^delmarks") then
+            vim.schedule(function()
+                vim.cmd("redrawstatus")
+            end)
+        end
+    end,
+})

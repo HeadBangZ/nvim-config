@@ -42,8 +42,8 @@ vim.keymap.set("v", "sr", [[:s/\%V]], { desc = "Rename within selection" })
 
 -- Marks
 vim.keymap.set("n", "<leader>sm", "<cmd>FzfLua marks<cr>", { desc = "[S]earch [A]ll [M]arks" })
-vim.keymap.set("n", "<leader>cl", "<cmd>delmarks!<cr>", { desc = "[C]lear [L]ocal [M]arks" })
-vim.keymap.set("n", "<leader>cg", "<cmd>delmarks A-Z<cr>", { desc = "[C]lear [G]lobal [M]arks" })
+vim.keymap.set("n", "<leader>cl", "<cmd>delmarks! | redrawstatus<cr>", { desc = "[C]lear [L]ocal [M]arks" })
+vim.keymap.set("n", "<leader>cg", "<cmd>delmarks A-Z | redrawstatus<cr>", { desc = "[C]lear [G]lobal [M]arks" })
 
 -- toggle vim-fugitive
 vim.keymap.set("n", "<C-M-S-F8>", function()

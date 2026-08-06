@@ -86,11 +86,3 @@ vim.api.nvim_create_autocmd("User", {
         end
     end,
 })
-
-vim.api.nvim_create_autocmd({ "LspProgress", "ModeChanged", "BufWinEnter" },
-    {
-        group = augroup("statusline-redraw"),
-        callback = function()
-            vim.cmd("redrawstatus")
-        end,
-    })
