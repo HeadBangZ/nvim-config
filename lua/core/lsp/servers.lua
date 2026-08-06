@@ -1,5 +1,7 @@
 local M = {}
 
+local helm_binary = vim.fn.executable("helm_ls") == 1 and "helm_ls" or "helm-ls"
+
 local function get_json_schemas()
     local ok, schemastore = pcall(require, "schemastore")
     return ok and schemastore.json.schemas() or {}
@@ -17,7 +19,7 @@ M.common = {
         root_markers = { "Dockerfile", "docker-compose.yml", "docker-compose.yaml" }
     },
     helm_ls = {
-        cmd = { "helm_ls", "serve" },
+        cmd = { helm_binary, "serve" },
         filetypes = { "helm" },
         root_markers = { "Chart.yaml", "Chart.yml" },
     },
@@ -108,11 +110,6 @@ M.workstation = {
         root_markers = { ".git", "Project.toml", "JuliaProject.toml" },
         settings = {},
     },
-    csharp_ls = {
-        cmd = { "csharp-ls" },
-        filetypes = { "cs" },
-        root_markers = { "*.sln", "*.csproj", ".git" },
-    },
     pyright = {
         cmd = { "pyright-langserver", "--stdio" },
         filetypes = { "python" },
@@ -148,7 +145,7 @@ M.workstation = {
     },
     html = {
         cmd = { "vscode-html-language-server", "--stdio" },
-        filetypes = { "htm", "html" },
+        filetypes = { "html" },
         root_markers = {},
         settings = {
             html = {
