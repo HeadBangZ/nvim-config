@@ -53,18 +53,6 @@ M.common = {
             },
         },
     },
-    jsonls = {
-        cmd = { "vscode-json-language-server", "--stdio" },
-        filetypes = { "json", "jsonc" },
-        on_new_config = function(new_config)
-            new_config.settings.json.schemas = get_json_schemas()
-        end,
-        settings = {
-            json = {
-                validate = { enable = true }
-            }
-        },
-    },
     yamlls = {
         cmd = { "yaml-language-server", "--stdio" },
         filetypes = { "yaml" },
@@ -80,6 +68,18 @@ M.common = {
 }
 
 M.workstation = {
+    jsonls = {
+        cmd = { "vscode-json-language-server", "--stdio" },
+        filetypes = { "json", "jsonc" },
+        on_new_config = function(new_config)
+            new_config.settings.json.schemas = get_json_schemas()
+        end,
+        settings = {
+            json = {
+                validate = { enable = true }
+            }
+        },
+    },
     julials = {
         cmd = {
             "julia",
@@ -173,6 +173,19 @@ M.workstation = {
 }
 
 M.systems = {
+    deno = {
+        cmd = { "deno", "lsp" },
+        filetypes = { "json", "jsonc" },
+        settings = {
+            enable = true,
+            lint = true
+        }
+    },
+    bashls = {
+        cmd = { "bash-language-server", "start" },
+        filetypes = { "sh", "bash" },
+        root_markers = { ".git" },
+    },
     clangd = {
         cmd = {
             "clangd",
@@ -200,19 +213,6 @@ M.systems = {
         cmd = { "ols" },
         filetypes = { "odin" },
         root_markers = { "ols.json", ".git" },
-    },
-    nimlangserver = {
-        cmd = { "nimlangserver" },
-        filetypes = { "nim" },
-        root_markers = { "nim.nimble", "package.nim", "config.nims", ".git" },
-        settings = {
-            nim = {
-                nimsuggestPath = "/usr/bin/nimsuggest",
-                nimSearchPaths = {
-                    '/usr/lib/nim/lib',
-                },
-            },
-        },
     },
 }
 

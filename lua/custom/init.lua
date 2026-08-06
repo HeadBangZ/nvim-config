@@ -1,0 +1,6 @@
+require("custom.autopairs")
+require("custom.comments")
+require("custom.notify")
+require("custom.grep")
+require("custom.terminal")
+require("custom.statusline")

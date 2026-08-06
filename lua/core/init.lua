@@ -1,7 +1,4 @@
-require("core.undotree")
 require("core.colorschemes")
 require("core.difftool")
-require("core.grep")
-require("core.terminal")
-require("core.statusline")
 require("core.diagnostics")
+require("core.undotree")
