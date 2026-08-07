@@ -70,6 +70,29 @@ M.common = {
 }
 
 M.workstation = {
+    roslyn_ls = {
+        cmd = { "roslyn-language-server", "--stdio" },
+        filetypes = { "cs", "razor" },
+        root_markers = {
+            function(name)
+                return name:match("%.sln$") or name:match("%.csproj$")
+            end,
+            ".git",
+        },
+        settings = {
+            ["csharp|background_analysis"] = {
+                dotnet_analyzer_diagnostics_scope = "openFiles",
+                dotnet_compiler_diagnostics_scope = "openFiles",
+            },
+            ["csharp|symbol_search"] = {
+                dotnet_search_reference_assemblies = true,
+            },
+            ["csharp|completion"] = {
+                dotnet_show_completion_items_from_unimported_namespaces = true,
+                dotnet_show_name_completion_suggestions = true,
+            },
+        },
+    },
     jsonls = {
         cmd = { "vscode-json-language-server", "--stdio" },
         filetypes = { "json", "jsonc" },
