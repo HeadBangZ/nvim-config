@@ -37,14 +37,14 @@ blink.setup({
         },
 
         menu = {
-            border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' },
+            border = "single",
             draw = {
                 columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
             },
         },
         documentation = {
             window = {
-                border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' },
+                border = "single",
                 max_width = 100,
                 max_height = 30,
             },
@@ -57,7 +57,7 @@ blink.setup({
     signature = {
         enabled = true,
         window = {
-            border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' },
+            border = "single",
         }
     },
 

@@ -23,7 +23,7 @@ local function get_float_config()
         row = row,
         col = col,
         style = "minimal",
-        border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" }
+        border = "single"
     }
 end
 
