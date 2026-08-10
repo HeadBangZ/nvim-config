@@ -35,7 +35,14 @@ vim.schedule(function()
         { src = "https://github.com/kylechui/nvim-surround" },
     })
 
-    require("core.lsp")
+    -- require("core.lsp")
     require("plugins")
     require("custom")
 end)
+
+vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
+    once = true,
+    callback = function()
+        require("core.lsp")
+    end,
+})

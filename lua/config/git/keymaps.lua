@@ -33,6 +33,7 @@ vim.keymap.set("n", "<leader>gq", "<cmd>DiffviewClose<cr>", { desc = "Git: [D]if
 -- Gitsigns
 vim.keymap.set("n", "]h", function() require("gitsigns").nav_hunk("next") end, { desc = "[N]ext [H]unk" })
 vim.keymap.set("n", "[h", function() require("gitsigns").nav_hunk("prev") end, { desc = "[P]rev [H]unk" })
-vim.keymap.set("n", "<leader>gp", function() require("gitsigns").preview_hunk() end, { desc = "Git: [P]review [H]unk" })
+vim.keymap.set("n", "<leader>gp", function() require("gitsigns").preview_hunk() end,
+    { desc = "Git: [P]review [H]unk" })
 vim.keymap.set("n", "<leader>gb", function() require("gitsigns").blame_line({ full = true }) end,
     { desc = "Git: [B]lame [L]ine" })

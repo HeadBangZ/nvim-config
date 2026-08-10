@@ -3,15 +3,24 @@ require("core.lsp.filetypes")
 local keymaps = require("core.lsp.keymaps")
 local servers = require("core.lsp.servers")
 
+local function get_capabilities(custom_capabilities)
+    local capabilities = custom_capabilities or vim.lsp.protocol.make_client_capabilities()
+
+    local ok, blink = pcall(require, "blink.cmp")
+    if ok then
+        capabilities = blink.get_lsp_capabilities(capabilities)
+    end
+
+    capabilities.workspace = capabilities.workspace or {}
+    capabilities.workspace.didChangeWatchedFiles = { dynamicRegistration = true }
+
+    return capabilities
+end
+
 local function setup_servers(server_name, config)
-    local server_capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
-
-    server_capabilities.workspace = server_capabilities.workspace or {}
-    server_capabilities.workspace.didChangeWatchedFiles = { dynamicRegistration = true }
-
     local final_config = vim.tbl_deep_extend("force", {
         on_attach = keymaps.on_attach,
-        capabilities = server_capabilities
+        capabilities = get_capabilities(config.capabilities)
     }, config)
 
     vim.lsp.config(server_name, final_config)
@@ -27,7 +36,6 @@ for name, config in pairs(servers.common) do
 end
 
 local is_workstation = os.getenv("NVIM_WORKSTATION") ~= nil
-
 if is_workstation then
     for name, config in pairs(servers.workstation) do
         setup_servers(name, config)
