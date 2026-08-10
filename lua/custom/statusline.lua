@@ -199,3 +199,21 @@ vim.api.nvim_create_autocmd("CmdlineLeave", {
         end
     end,
 })
+
+vim.api.nvim_create_autocmd("User", {
+    group = group,
+    pattern = { "FugitiveChanged", "NeogitStatusRefresh", "NeogitBranchReset" },
+    callback = function()
+        pcall(require("gitsigns").refresh)
+    end,
+})
+
+vim.api.nvim_create_autocmd("User", {
+    group = group,
+    pattern = "GitSignsUpdate",
+    callback = function()
+        vim.schedule(function()
+            vim.cmd("redrawstatus")
+        end)
+    end,
+})
