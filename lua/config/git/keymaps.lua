@@ -27,7 +27,7 @@ end, { desc = "[T]oggle [N]eogit [W]indow" })
 
 -- Diffview
 vim.keymap.set("n", "<leader>gd", "<cmd>DiffviewOpen<cr>", { desc = "Git: [D]iffview [O]pen" })
-vim.keymap.set("n", "<leader>gh", "<cmd>DiffviewFileHistory<cr>", { desc = "Git: [F]ile [H]istory" })
+vim.keymap.set("n", "<leader>gh", "<cmd>DiffviewFileHistory %<cr>", { desc = "Git: [F]ile [H]istory" })
 vim.keymap.set("n", "<leader>gq", "<cmd>DiffviewClose<cr>", { desc = "Git: [D]iffview [Q]uit" })
 
 -- Gitsigns
