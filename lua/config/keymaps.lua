@@ -6,7 +6,6 @@ vim.keymap.set("n", "<leader>E", function()
     { desc = "Open Oil file explorer (floating window)" })
 
 vim.keymap.set("n", "<leader>t", "~", { desc = "Toggle Case" })
-vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "Git status" })
 vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { desc = "LSP: [R]ename" })
 
 vim.keymap.set("n", "<leader>i",
@@ -44,18 +43,6 @@ vim.keymap.set("v", "sr", [[:s/\%V]], { desc = "Rename within selection" })
 vim.keymap.set("n", "<leader>sm", "<cmd>FzfLua marks<cr>", { desc = "[S]earch [A]ll [M]arks" })
 vim.keymap.set("n", "<leader>cl", "<cmd>delmarks! | redrawstatus<cr>", { desc = "[C]lear [L]ocal [M]arks" })
 vim.keymap.set("n", "<leader>cg", "<cmd>delmarks A-Z | redrawstatus<cr>", { desc = "[C]lear [G]lobal [M]arks" })
-
--- toggle vim-fugitive
-vim.keymap.set("n", "<C-M-S-F8>", function()
-    for _, win in pairs(vim.api.nvim_list_wins()) do
-        local buf = vim.api.nvim_win_get_buf(win)
-        if vim.bo[buf].filetype == "fugitive" then
-            vim.api.nvim_win_close(win, true)
-            return
-        end
-    end
-    vim.cmd("Git")
-end, { desc = "Toggle Fugitive Window" })
 
 -- jump over closing pairs ) ] } ' "
 vim.keymap.set("i", "<C-M-S-F8>", function()

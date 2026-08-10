@@ -1,4 +1,5 @@
 require("plugins.fzf")
+require("plugins.neogit")
 require("plugins.treesitter")
 require("plugins.colors")
 require("plugins.surround")
