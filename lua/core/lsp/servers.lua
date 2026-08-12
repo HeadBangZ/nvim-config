@@ -133,15 +133,16 @@ M.workstation = {
         root_markers = { ".git", "Project.toml", "JuliaProject.toml" },
         settings = {},
     },
-    pyright = {
-        cmd = { "pyright-langserver", "--stdio" },
+    basedpyright = {
+        cmd = { "basedpyright-langserver", "--stdio" },
         filetypes = { "python" },
         root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", "Pipfile", "pyrightconfig.json", ".git" },
         settings = {
             python = {
                 analysis = {
                     autoSearchPaths = true,
-                    diagnosticMode = "openFilesOnly",
+                    autoImportCompletions = true,
+                    diagnosticMode = "workspace",
                     useLibraryCodeForTypes = true,
                 },
             },
