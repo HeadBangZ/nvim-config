@@ -1,4 +1,3 @@
-require("custom.autopairs")
 require("custom.comments")
 require("custom.notify")
 require("custom.grep")
