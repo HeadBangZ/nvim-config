@@ -6,7 +6,6 @@ local pair_map = {
     ["'"] = "'",
     ['`'] = '`',
     ['´'] = '´',
-    ['<'] = '>',
 }
 
 local function is_in_string_or_comment()
