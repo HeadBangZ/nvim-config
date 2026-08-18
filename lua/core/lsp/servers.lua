@@ -13,6 +13,11 @@ local function get_yaml_schemas()
 end
 
 M.common = {
+    sqls = {
+        cmd = { "sqls" },
+        filetypes = { "sql", "mysql", "plsql" },
+        root_markers = { ".sqls.yml", ".git" },
+    },
     dockerls = {
         cmd = { "docker-langserver", "--stdio" },
         filetypes = { "dockerfile" },
