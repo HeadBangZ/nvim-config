@@ -11,6 +11,11 @@ vim.keymap.set("n", "<C-M-S-F8>", function()
     require("neogit").open()
 end, { desc = "[T]oggle [N]eogit [W]indow" })
 
+-- Diffview
+vim.keymap.set("n", "<leader>gd", "<cmd>DiffviewOpen<cr>", { desc = "Git: [D]iffview [O]pen" })
+vim.keymap.set("n", "<leader>gh", "<cmd>DiffviewFileHistory %<cr>", { desc = "Git: [F]ile [H]istory" })
+vim.keymap.set("n", "<leader>gq", "<cmd>DiffviewClose<cr>", { desc = "Git: [D]iffview [Q]uit" })
+
 -- Fugitive
 -- vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "Git status" })
 -- vim.keymap.set("n", "<C-M-S-F8>", function()
@@ -23,12 +28,6 @@ end, { desc = "[T]oggle [N]eogit [W]indow" })
 --     end
 --     vim.cmd("Git")
 -- end, { desc = "Toggle Fugitive Window" })
-
-
--- Diffview
-vim.keymap.set("n", "<leader>gd", "<cmd>DiffviewOpen<cr>", { desc = "Git: [D]iffview [O]pen" })
-vim.keymap.set("n", "<leader>gh", "<cmd>DiffviewFileHistory %<cr>", { desc = "Git: [F]ile [H]istory" })
-vim.keymap.set("n", "<leader>gq", "<cmd>DiffviewClose<cr>", { desc = "Git: [D]iffview [Q]uit" })
 
 -- Gitsigns
 vim.keymap.set("n", "]h", function() require("gitsigns").nav_hunk("next") end, { desc = "[N]ext [H]unk" })
