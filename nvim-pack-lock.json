@@ -1,7 +1,7 @@
 {
   "plugins": {
     "blink.cmp": {
-      "rev": "e116ff9c5c1c2ed6bcdb2e0a6e547099876a8116",
+      "rev": "d50cfb205c677143d1f036a4749e21c1c8c6bc85",
       "src": "https://github.com/Saghen/blink.cmp"
     },
     "blink.lib": {
@@ -25,11 +25,11 @@
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "neogit": {
-      "rev": "37e0f22a2345bad1bffe01b31970885882f46275",
+      "rev": "5adc81b26232954cd7a90f158aa7844c18fc3165",
       "src": "https://github.com/NeogitOrg/neogit"
     },
     "nvim-autopairs": {
-      "rev": "7b9923abad60b903ece7c52940e1321d39eccc79",
+      "rev": "430522f95fe4fb7c511ec64f8c1a90cc6a66c05c",
       "src": "https://github.com/windwp/nvim-autopairs"
     },
     "nvim-highlight-colors": {
@@ -41,7 +41,7 @@
       "src": "https://github.com/kylechui/nvim-surround"
     },
     "nvim-treesitter": {
-      "rev": "074aa4422bf029908338e855d0c0f71470a971bb",
+      "rev": "8b98b4470eb326f1c7b50dae79f8c963568e5720",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-web-devicons": {
@@ -57,7 +57,7 @@
       "src": "https://github.com/olivercederborg/poimandres.nvim"
     },
     "schemastore.nvim": {
-      "rev": "cef8d093b63c9be7e8b49f7dc341e8447fc4c300",
+      "rev": "5f2a3b5dc13f3622000cb488c9af505b933152e3",
       "src": "https://github.com/b0o/schemastore.nvim"
     }
   }
