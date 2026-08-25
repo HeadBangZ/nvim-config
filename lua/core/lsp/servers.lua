@@ -75,6 +75,18 @@ M.common = {
 }
 
 M.workstation = {
+    powershell_es = {
+        cmd = { "pwsh", "-NoProfile", "-Function", "PowerShellEditorServices" },
+        filetypes = { "ps1", "psm1", "psd1" },
+        root_markers = { ".git" },
+        settings = {
+            powershell = {
+                codeFormatting = {
+                    preset = "OTBS",
+                },
+            },
+        },
+    },
     roslyn_ls = {
         cmd = { "roslyn-language-server", "--stdio" },
         filetypes = { "cs", "razor" },
@@ -169,50 +181,6 @@ M.workstation = {
             }
         }
     }
-}
-
-M.systems = {
-    deno = {
-        cmd = { "deno", "lsp" },
-        filetypes = { "json", "jsonc" },
-        settings = {
-            enable = true,
-            lint = true
-        }
-    },
-    bashls = {
-        cmd = { "bash-language-server", "start" },
-        filetypes = { "sh", "bash" },
-        root_markers = { ".git" },
-    },
-    clangd = {
-        cmd = {
-            "clangd",
-            "--clang-tidy",
-            "--background-index",
-            "--offset-encoding=utf-8",
-        },
-        root_markers = { ".clangd", "compile_commands.json", "CMakeLists.txt", ".git" },
-        filetypes = { "c" },
-    },
-    rust_analyzer = {
-        cmd = { "rust-analyzer" },
-        filetypes = { "rust" },
-        root_markers = { "Cargo.toml", ".git" },
-        settings = {
-            ["rust_analyzer"] = {
-                inlayHints = {
-                },
-            },
-            checkOnSave = { command = "clippy" },
-            procMacro = { enable = true },
-        },
-    },
-    ols = {
-        cmd = { "ols" },
-        filetypes = { "odin" },
-        root_markers = { "ols.json", ".git" },
-    },
 }
 
 return M

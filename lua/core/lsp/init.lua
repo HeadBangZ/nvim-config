@@ -35,13 +35,6 @@ for name, config in pairs(servers.common) do
     setup_servers(name, config)
 end
 
-local is_workstation = os.getenv("NVIM_WORKSTATION") ~= nil
-if is_workstation then
-    for name, config in pairs(servers.workstation) do
-        setup_servers(name, config)
-    end
-else
-    for name, config in pairs(servers.systems) do
-        setup_servers(name, config)
-    end
+for name, config in pairs(servers.workstation) do
+    setup_servers(name, config)
 end
