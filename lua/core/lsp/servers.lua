@@ -1,7 +1,5 @@
 local M = {}
 
-local helm_binary = vim.fn.executable("helm_ls") == 1 and "helm_ls" or "helm-ls"
-
 local function get_json_schemas()
     local ok, schemastore = pcall(require, "schemastore")
     return ok and schemastore.json.schemas() or {}
@@ -24,7 +22,7 @@ M.common = {
         root_markers = { "Dockerfile", "docker-compose.yml", "docker-compose.yaml" }
     },
     helm_ls = {
-        cmd = { helm_binary, "serve" },
+        cmd = { "helm-ls", "serve" },
         filetypes = { "helm" },
         root_markers = { "Chart.yaml", "Chart.yml" },
     },
