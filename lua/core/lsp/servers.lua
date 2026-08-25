@@ -110,34 +110,6 @@ M.workstation = {
             }
         },
     },
-    julials = {
-        cmd = {
-            "julia",
-            "--project=" .. vim.fn.expand("~/.julia/environments/lsp/"),
-            "--startup-file=no",
-            "--history-file=no",
-            "-e",
-            [[
-                using Pkg; Pkg.instantiate()
-                using LanguageServer
-                depot_path = get(ENV, "JULIA_DEPOT_PATH", "")
-                project_path = let
-                    p = Base.load_path_expand((
-                        p = get(ENV, "JULIA_PROJECT", nothing);
-                        p === nothing ? nothing : isempty(p) ? nothing : p
-                    ))
-                    fp = p === nothing ? Base.current_project() : p
-                    fp === nothing ? pwd() : dirname(fp)
-                end
-                server = LanguageServer.LanguageServerInstance(stdin, stdout, project_path, depot_path)
-                server.runlinter = true
-                run(server)
-            ]],
-        },
-        filetypes = { "julia" },
-        root_markers = { ".git", "Project.toml", "JuliaProject.toml" },
-        settings = {},
-    },
     basedpyright = {
         cmd = { "basedpyright-langserver", "--stdio" },
         filetypes = { "python" },
