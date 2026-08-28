@@ -1,7 +1,7 @@
 {
   "plugins": {
     "blink.cmp": {
-      "rev": "d50cfb205c677143d1f036a4749e21c1c8c6bc85",
+      "rev": "101d71861f6a012f2be80e4100720874330d86aa",
       "src": "https://github.com/Saghen/blink.cmp"
     },
     "blink.lib": {
@@ -27,10 +27,6 @@
     "neogit": {
       "rev": "5adc81b26232954cd7a90f158aa7844c18fc3165",
       "src": "https://github.com/NeogitOrg/neogit"
-    },
-    "nvim-autopairs": {
-      "rev": "430522f95fe4fb7c511ec64f8c1a90cc6a66c05c",
-      "src": "https://github.com/windwp/nvim-autopairs"
     },
     "nvim-dap": {
       "rev": "9e848e09a697ee95302a3ef2dd43fd6eb709e570",
@@ -69,7 +65,7 @@
       "src": "https://github.com/olivercederborg/poimandres.nvim"
     },
     "schemastore.nvim": {
-      "rev": "5f2a3b5dc13f3622000cb488c9af505b933152e3",
+      "rev": "b4a92475bb6928810b66a0dd2fd86bea44089aba",
       "src": "https://github.com/b0o/schemastore.nvim"
     }
   }

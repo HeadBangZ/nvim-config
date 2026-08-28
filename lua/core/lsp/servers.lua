@@ -131,7 +131,7 @@ M.workstation = {
                     autoImportCompletions = true,
                     diagnosticMode = "workspace",
                     useLibraryCodeForTypes = true,
-                    typeCheckingMode = true,
+                    typeCheckingMode = "standard",
                 },
             },
         },

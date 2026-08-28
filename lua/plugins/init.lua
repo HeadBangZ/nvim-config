@@ -1,6 +1,6 @@
 require("plugins.fzf")
 require("plugins.dap")
-require("plugins.autopairs")
+-- require("plugins.autopairs")
 require("plugins.neogit_config")
 require("plugins.treesitter")
 require("plugins.colors")
