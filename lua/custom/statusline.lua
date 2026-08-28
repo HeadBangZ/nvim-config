@@ -166,7 +166,7 @@ vim.opt.statusline = table.concat(statusline, "")
 
 local group = vim.api.nvim_create_augroup("statusline-redraw", { clear = true })
 
-vim.api.nvim_create_autocmd({ "LspProgress", "ModeChanged", "BufWinEnter" }, {
+vim.api.nvim_create_autocmd({ "ModeChanged", "BufWinEnter" }, {
     group = group,
     callback = function()
         vim.cmd("redrawstatus")
