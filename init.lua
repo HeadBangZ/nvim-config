@@ -34,16 +34,11 @@ vim.schedule(function()
         { src = "https://github.com/b0o/schemastore.nvim" },
         { src = "https://github.com/brenoprata10/nvim-highlight-colors" },
         { src = "https://github.com/kylechui/nvim-surround" },
+        { src = "https://github.com/GCBallesteros/jupytext.nvim" },
+        { src = "https://github.com/benlubas/molten-nvim" },
     })
 
-    -- require("core.lsp")
+    require("core.lsp")
     require("plugins")
     require("custom")
 end)
-
-vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
-    once = true,
-    callback = function()
-        require("core.lsp")
-    end,
-})
