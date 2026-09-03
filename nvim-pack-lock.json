@@ -32,10 +32,6 @@
       "rev": "b1c5a726921b7a8c9321e9a7a208aa0571de5810",
       "src": "https://github.com/echasnovski/mini.pairs"
     },
-    "molten-nvim": {
-      "rev": "bedea63819c618e007e7c40059fc6e72d598c8df",
-      "src": "https://github.com/benlubas/molten-nvim"
-    },
     "neogit": {
       "rev": "5adc81b26232954cd7a90f158aa7844c18fc3165",
       "src": "https://github.com/NeogitOrg/neogit"
