@@ -34,7 +34,6 @@ vim.schedule(function()
         { src = "https://github.com/b0o/schemastore.nvim" },
         { src = "https://github.com/brenoprata10/nvim-highlight-colors" },
         { src = "https://github.com/kylechui/nvim-surround" },
-        { src = "https://github.com/GCBallesteros/jupytext.nvim" },
         { src = "https://github.com/benlubas/molten-nvim" },
     })
 

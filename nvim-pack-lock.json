@@ -28,10 +28,6 @@
       "rev": "5be654f2232c10ddcad19c1607a67b6b4b78fc29",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
-    "jupytext.nvim": {
-      "rev": "c8baf3ad344c59b3abd461ecc17fc16ec44d0f7b",
-      "src": "https://github.com/GCBallesteros/jupytext.nvim"
-    },
     "mini.pairs": {
       "rev": "b1c5a726921b7a8c9321e9a7a208aa0571de5810",
       "src": "https://github.com/echasnovski/mini.pairs"

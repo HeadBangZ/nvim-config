@@ -100,3 +100,39 @@ vim.api.nvim_create_user_command("ReloadConfig", function()
 
     vim.notify("Neovim configuration reloaded successfully!", vim.log.levels.INFO)
 end, {})
+
+vim.api.nvim_create_autocmd({ "BufReadCmd" }, {
+    pattern = "*.ipynb",
+    callback = function(args)
+        local buf = args.buf
+        local file = args.file
+
+        local cmd = string.format("jupytext --to md --output - %s", vim.fn.shellescape(file))
+        local output = vim.fn.systemlist(cmd)
+
+        if vim.v.shell_error ~= 0 then
+            vim.notify("Jupytext failed to convert notebook", vim.log.levels.ERROR)
+            return
+        end
+
+        vim.api.nvim_buf_set_lines(buf, 0, -1, false, output)
+        vim.api.nvim_set_option_value("filetype", "markdown", { buf = buf })
+        vim.api.nvim_set_option_value("modified", false, { buf = buf })
+
+        vim.api.nvim_create_autocmd("BufWriteCmd", {
+            buffer = buf,
+            callback = function()
+                local content = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
+                local tmp_md = vim.fn.tempname() .. ".md"
+                vim.fn.writefile(content, tmp_md)
+
+                local update_cmd = string.format("jupytext --to ipynb --output %s %s", vim.fn.shellescape(file),
+                    vim.fn.shellescape(tmp_md))
+                vim.fn.system(update_cmd)
+                vim.fn.delete(tmp_md)
+
+                vim.api.nvim_set_option_value("modified", false, { buf = buf })
+            end,
+        })
+    end,
+})
