@@ -30,7 +30,7 @@ vim.schedule(function()
         { src = "https://github.com/lewis6991/gitsigns.nvim" },
         -- { src = "https://github.com/tpope/vim-fugitive" },
         { src = "https://github.com/NeogitOrg/neogit" },
-        { src = "https://github.com/echasnovski/mini.pairs" },
+        -- { src = "https://github.com/echasnovski/mini.pairs" },
         { src = "https://github.com/b0o/schemastore.nvim" },
         { src = "https://github.com/brenoprata10/nvim-highlight-colors" },
         { src = "https://github.com/kylechui/nvim-surround" },
