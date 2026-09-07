@@ -1,4 +1,5 @@
 require("plugins.fzf")
+require("plugins.claude")
 -- require("plugins.mini_pairs")
 require("plugins.neogit_config")
 require("plugins.treesitter")

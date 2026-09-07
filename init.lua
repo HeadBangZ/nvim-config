@@ -34,6 +34,8 @@ vim.schedule(function()
         { src = "https://github.com/b0o/schemastore.nvim" },
         { src = "https://github.com/brenoprata10/nvim-highlight-colors" },
         { src = "https://github.com/kylechui/nvim-surround" },
+        { src = "https://github.com/folke/snacks.nvim" },
+        { src = "https://github.com/coder/claudecode.nvim" },
     })
 
     -- require("core.lsp")
