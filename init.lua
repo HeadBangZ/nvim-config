@@ -9,7 +9,6 @@ vim.pack.add({
 })
 
 require("config")
-require("core")
 
 vim.schedule(function()
     vim.pack.add({
@@ -46,6 +45,6 @@ end)
 vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
     once = true,
     callback = function()
-        require("core.lsp")
+        require("config.lsp")
     end,
 })
