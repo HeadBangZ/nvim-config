@@ -1,22 +1,22 @@
 vim.g.mapleader = ' '
-vim.keymap.set("n", "<leader>cd", vim.cmd.Oil, { desc = "Open Oil file explorer" })
+vim.keymap.set("n", "<leader>cd", vim.cmd.Oil, { desc = "Oil: [O]pen" })
 vim.keymap.set("n", "<leader>E", function()
         require("oil").open_float(vim.loop.cwd())
     end,
-    { desc = "Open Oil file explorer (floating window)" })
+    { desc = "Oil: [O]pen [F]loat" })
 
-vim.keymap.set("n", "<leader>t", "~", { desc = "Toggle Case" })
+vim.keymap.set("n", "<leader>t", "~", { desc = "[T]oggle [C]ase" })
 vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { desc = "LSP: [R]ename" })
 
 vim.keymap.set("n", "<leader>i",
     function()
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ 0 }), { 0 })
     end,
-    { desc = "Inlay hints" }
+    { desc = "LSP: [I]nlay [H]ints" }
 )
 
 vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format, { desc = "LSP: [F]ormat [D]ocument", silent = true })
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Remove highlights", silent = true })
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "[R]emove [H]ighlights", silent = true })
 
 local opts = { noremap = true, silent = true }
 
@@ -37,12 +37,12 @@ vim.keymap.set("n", "<Left>", ":vertical resize -2<CR>", opts)
 vim.keymap.set("n", "<Right>", ":vertical resize +2<CR>", opts)
 
 -- search and replace
-vim.keymap.set("v", "sr", [[:s/\%V]], { desc = "Rename within selection" })
+vim.keymap.set("v", "sr", [[:s/\%V]], { desc = "[R]ename [W]ithin [S]election" })
 
 -- Marks
-vim.keymap.set("n", "<leader>sm", "<cmd>FzfLua marks<cr>", { desc = "[S]earch [A]ll [M]arks" })
-vim.keymap.set("n", "<leader>cl", "<cmd>delmarks! | redrawstatus<cr>", { desc = "[C]lear [L]ocal [M]arks" })
-vim.keymap.set("n", "<leader>cg", "<cmd>delmarks A-Z | redrawstatus<cr>", { desc = "[C]lear [G]lobal [M]arks" })
+vim.keymap.set("n", "<leader>sm", "<cmd>FzfLua marks<cr>", { desc = "Fzf: [S]earch [A]ll [M]arks" })
+vim.keymap.set("n", "<leader>cl", "<cmd>delmarks! | redrawstatus<cr>", { desc = "Marks: [C]lear [L]ocal" })
+vim.keymap.set("n", "<leader>cg", "<cmd>delmarks A-Z | redrawstatus<cr>", { desc = "Marks: [C]lear [G]lobal" })
 
 -- Move between windows
 vim.keymap.set("t", "<C-h>", [[<C-\><C-n>h]], opts)
@@ -61,4 +61,4 @@ vim.keymap.set("i", "<C-M-S-F8>", function()
     else
         return "<End>"
     end
-end, { expr = true, desc = "Jump over closing pairs" })
+end, { expr = true, desc = "[J]ump [O]ver [C]losing [P]airs" })

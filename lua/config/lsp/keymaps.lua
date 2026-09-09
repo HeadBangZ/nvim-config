@@ -17,21 +17,21 @@ M.on_attach = function(_, bufnr)
     map("n", "grr", fzf_cmd("lsp_references"), "LSP: [G]oto [R]eferences")
     map("n", "gic", fzf_cmd("lsp_incoming_calls"), "LSP: [G]oto [I]ncoming [C]alls")
     map("n", "gri", fzf_cmd("lsp_implementations"), "LSP: [G]oto [I]mplementation")
-    map("n", "grt", fzf_cmd("lsp_typedefs"), "LSP: [G]oto [T]ype Definition")
-    map("n", "gs", fzf_cmd("lsp_document_symbols"), "LSP: [G]et Document [S]ymbols")
-    map("n", "gS", fzf_cmd("lsp_workspace_symbols"), "LSP: [G]et Workspace [S]ymbols")
-    map("n", "<leader>lD", fzf_cmd("diagnostics_workspace"), "LSP: Workspace [D]iagnostics")
-    map("n", "<leader>ld", fzf_cmd("diagnostics_document"), "LSP: Document [D]iagnostics")
+    map("n", "grt", fzf_cmd("lsp_typedefs"), "LSP: [G]oto [T]ype [D]efinition")
+    map("n", "gs", fzf_cmd("lsp_document_symbols"), "LSP: [G]et [D]ocument [S]ymbols")
+    map("n", "gS", fzf_cmd("lsp_workspace_symbols"), "LSP: [G]et [W]orkspace [S]ymbols")
+    map("n", "<leader>lD", fzf_cmd("diagnostics_workspace"), "LSP: [W]orkspace [D]iagnostics")
+    map("n", "<leader>ld", fzf_cmd("diagnostics_document"), "LSP: [D]ocument [D]iagnostics")
 
     -- LSP Actions
-    map("n", "K", vim.lsp.buf.hover, "LSP: Hover Documentation")
-    map("n", "<C-a>", vim.lsp.buf.signature_help, "LSP: Signature Help")
+    map("n", "K", vim.lsp.buf.hover, "LSP: [H]over [D]ocumentation")
+    map("n", "<C-a>", vim.lsp.buf.signature_help, "LSP: [S]ignature [H]elp")
     map({ "n", "x" }, "<leader>ca", fzf_cmd("lsp_code_actions"), "LSP: [C]ode [A]ction")
     map("n", "<leader>rn", vim.lsp.buf.rename, "LSP: [R]ename")
 
     -- Diagnostics
-    map("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end, "LSP: Previous Diagnostic")
-    map("n", "]d", function() vim.diagnostic.jump({ count = 1 }) end, "LSP: Next Diagnostic")
+    map("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end, "LSP: [P]revious [D]iagnostic")
+    map("n", "]d", function() vim.diagnostic.jump({ count = 1 }) end, "LSP: [N]ext [D]iagnostic")
 end
 
 return M

@@ -14,8 +14,8 @@ gitsigns.setup({
     end
 
     -- Navigation
-    map("n", "]h", function() gs.nav_hunk("next") end, { desc = "[N]ext [H]unk" })
-    map("n", "[h", function() gs.nav_hunk("prev") end, { desc = "[P]rev [H]unk" })
+    map("n", "]h", function() gs.nav_hunk("next") end, { desc = "Git: [N]ext [H]unk" })
+    map("n", "[h", function() gs.nav_hunk("prev") end, { desc = "Git: [P]rev [H]unk" })
 
     -- Actions
     map("n", "<leader>gp", gs.preview_hunk, { desc = "Git: [P]review [H]unk" })

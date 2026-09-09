@@ -12,4 +12,4 @@ end
 local map = vim.keymap.set
 
 map("n", "<leader>gs", vim.cmd.Git, { desc = "Git: [S]tatus" })
-map("n", "<C-M-S-F8>", toggle_fugitive, { desc = "Git: [T]oggle Fugitive Window" })
+map("n", "<C-M-S-F8>", toggle_fugitive, { desc = "Git: [T]oggle [F]ugitive [W]indow" })

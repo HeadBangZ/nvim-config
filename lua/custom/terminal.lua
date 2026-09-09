@@ -62,11 +62,11 @@ end
 
 local opts = { noremap = true, silent = true }
 
-vim.keymap.set("n", "<leader>st", toggle_float, { desc = "Terminal: Toggle Float" })
+vim.keymap.set("n", "<leader>st", toggle_float, { desc = "Terminal: [T]oggle [F]loat" })
 vim.keymap.set("t", "<leader>st", function()
     vim.cmd("stopinsert")
     toggle_float()
-end, { desc = "Terminal: Toggle Float" })
+end, { desc = "Terminal: [T]oggle [F]loat" })
 
 vim.keymap.set("t", "<ESC>", [[<C-\><C-n>]], opts)
 

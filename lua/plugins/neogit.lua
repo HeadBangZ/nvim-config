@@ -24,4 +24,4 @@ end
 local map = vim.keymap.set
 
 map("n", "<leader>gs", "<cmd>Neogit<cr>", { desc = "Git: [S]tatus" })
-map("n", "<C-M-S-F8>", toggle_neogit, { desc = "Git: [T]oggle Neogit Window" })
+map("n", "<C-M-S-F8>", toggle_neogit, { desc = "Git: [T]oggle [N]eogit [W]indow" })

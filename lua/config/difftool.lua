@@ -5,6 +5,6 @@ vim.keymap.set("n", "<leader>df", function()
     if target ~= "" then
         vim.cmd("DiffTool % " .. vim.fn.fnameescape(target))
     end
-end, { desc = "[D]iff [F]ile" })
+end, { desc = "Diff: [F]ile" })
 
-vim.keymap.set("n", "<leader>da", ":DiffTool ", { desc = "[D]iff [A]ny" })
+vim.keymap.set("n", "<leader>da", ":DiffTool ", { desc = "Diff: [A]ny" })

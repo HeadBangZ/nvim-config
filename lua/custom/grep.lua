@@ -36,7 +36,7 @@ vim.api.nvim_create_autocmd("QuickFixCmdPost", {
 
 local keymap = vim.keymap.set
 
-keymap("n", "<leader>rg", ":grep! ", { desc = "Grep project..." })
+keymap("n", "<leader>rg", ":grep! ", { desc = "[G]rep [P]roject" })
 
 keymap("n", "<leader>q", function()
     local qf_exists = false
@@ -50,4 +50,4 @@ keymap("n", "<leader>q", function()
     else
         vim.cmd("copen")
     end
-end, { desc = "Toggle Quickfix Window" })
+end, { desc = "[T]oggle [Q]uickfix [W]indow" })

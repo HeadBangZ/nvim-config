@@ -37,4 +37,4 @@ vim.keymap.set('n', '<leader>ft', function()
         [[\b(FIX|FIXME|BUG|FIXIT|ISSUE|TODO|HACK|WARN|WARNING|PERF|OPTIM|PERFORMANCE|OPTIMIZE|NOTE|INFO|TEST|TESTING|PASSED|FAILED):]],
         no_esc = true,
     })
-end, { desc = '[F]ind [T]ags (TODO/FIX/NOTE)' })
+end, { desc = 'Fzf: [F]ind [T]ags (TODO/FIX/NOTE)' })

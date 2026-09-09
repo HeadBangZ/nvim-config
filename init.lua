@@ -3,7 +3,6 @@ vim.loader.enable()
 vim.opt.packpath:prepend(vim.fn.stdpath("data") .. "/site")
 
 vim.pack.add({
-    -- { src = "https://github.com/slugbyte/lackluster.nvim" },
     -- { src = "https://github.com/datsfilipe/vesper.nvim" },
     { src = "https://github.com/olivercederborg/poimandres.nvim" },
 })
