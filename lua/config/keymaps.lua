@@ -44,6 +44,12 @@ vim.keymap.set("n", "<leader>sm", "<cmd>FzfLua marks<cr>", { desc = "[S]earch [A
 vim.keymap.set("n", "<leader>cl", "<cmd>delmarks! | redrawstatus<cr>", { desc = "[C]lear [L]ocal [M]arks" })
 vim.keymap.set("n", "<leader>cg", "<cmd>delmarks A-Z | redrawstatus<cr>", { desc = "[C]lear [G]lobal [M]arks" })
 
+-- Move between windows
+vim.keymap.set("t", "<C-h>", [[<C-\><C-n>h]], opts)
+vim.keymap.set("t", "<C-j>", [[<C-\><C-n>j]], opts)
+vim.keymap.set("t", "<C-k>", [[<C-\><C-n>k]], opts)
+vim.keymap.set("t", "<C-l>", [[<C-\><C-n>l]], opts)
+
 -- jump over closing pairs ) ] } ' "
 vim.keymap.set("i", "<C-M-S-F8>", function()
     local line = vim.api.nvim_get_current_line()

@@ -96,7 +96,7 @@ vim.api.nvim_create_user_command("ReloadConfig", function()
 
     dofile(vim.env.MYVIMRC)
 
-    vim.cmd("bufdo e")
+    vim.cmd("bufdo e!")
 
     vim.notify("Neovim configuration reloaded successfully!", vim.log.levels.INFO)
 end, {})
