@@ -74,7 +74,6 @@ M.common = {
 
 M.workstation = {
     powershell_es = {
-        cmd = { "pwsh", "-NoProfile", "-Function", "PowerShellEditorServices" },
         filetypes = { "ps1", "psm1", "psd1" },
         root_markers = { ".git" },
         settings = {
