@@ -1,4 +1,5 @@
 require("plugins.fzf")
+require("plugins.rendermarkdown")
 require("plugins.claude")
 require("plugins.neogit")
 require("plugins.diffview")

@@ -34,6 +34,7 @@ vim.schedule(function()
         { src = "https://github.com/kylechui/nvim-surround" },
         { src = "https://github.com/folke/snacks.nvim" },
         { src = "https://github.com/coder/claudecode.nvim" },
+        { src = "https://github.com/meanderingprogrammer/render-markdown.nvim" },
     })
 
     -- require("core.lsp")
