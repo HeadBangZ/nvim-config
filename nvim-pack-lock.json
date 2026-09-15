@@ -1,11 +1,11 @@
 {
   "plugins": {
     "blink.cmp": {
-      "rev": "49d39fda6350d7f789d1da1053e86c9e256f8108",
+      "rev": "473c928d8b9b5b3f638cd085a01899972cf205c6",
       "src": "https://github.com/Saghen/blink.cmp"
     },
     "blink.lib": {
-      "rev": "f55df8a6e0a7acccf45ef0ffbb4ce46110fcf7d0",
+      "rev": "fd9a48ebbe6ec30d5dfcc5b42c243941ccdca1aa",
       "src": "https://github.com/Saghen/blink.lib"
     },
     "canola.nvim": {
@@ -21,7 +21,7 @@
       "src": "https://github.com/sindrets/diffview.nvim"
     },
     "friendly-snippets": {
-      "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
+      "rev": "b4d01b0fdf3c9a549961c2f9ffe8dc09be166219",
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "fzf-lua": {
@@ -29,7 +29,7 @@
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitsigns.nvim": {
-      "rev": "5be654f2232c10ddcad19c1607a67b6b4b78fc29",
+      "rev": "e583e226776859490757718a22f43f1aac1a3c14",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "neogit": {
@@ -45,7 +45,7 @@
       "src": "https://github.com/kylechui/nvim-surround"
     },
     "nvim-treesitter": {
-      "rev": "0d0969030ad955b510d7c8012b40252a25c12a6d",
+      "rev": "9a168f6357ed21c3a636e1727bc7d382abc451b8",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-web-devicons": {
@@ -57,11 +57,11 @@
       "src": "https://github.com/olivercederborg/poimandres.nvim"
     },
     "render-markdown.nvim": {
-      "rev": "a778444a73080301a50c4a6f58c90d7e094dd59e",
+      "rev": "640a3ec6d538bad17c328be373c7cad0293d9589",
       "src": "https://github.com/meanderingprogrammer/render-markdown.nvim"
     },
     "schemastore.nvim": {
-      "rev": "4a0e1b74096937d366031bc1e2b244546af39f8e",
+      "rev": "72d144a9e014646963b8a5c67a4fde19b9772528",
       "src": "https://github.com/b0o/schemastore.nvim"
     },
     "snacks.nvim": {
