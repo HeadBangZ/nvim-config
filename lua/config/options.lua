@@ -48,11 +48,10 @@ vim.opt.updatetime = 50
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.diagnostic.config({
-    virtual_lines = {
-        current_line = true,
-    },
-})
+vim.keymap.set("n", "<leader>vl", function()
+    local current = vim.diagnostic.config().virtual_lines
+    vim.diagnostic.config({ virtual_lines = not current and { current_line = true } or false })
+end, { desc = "Toggle diagnostic virtual lines" })
 
 vim.opt.history = 100
 
