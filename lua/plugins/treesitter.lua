@@ -74,14 +74,42 @@ if #to_install > 0 then
     ts.install(to_install)
 end
 
+local update_interval_days = 7
+local last_update_file = vim.fs.joinpath(vim.fn.stdpath("state"), "ts_last_update")
+
+local function mark_updated()
+    local f = io.open(last_update_file, "w")
+    if f then
+        f:write(tostring(os.time()))
+        f:close()
+    end
+end
+
+local function update_is_due()
+    local f = io.open(last_update_file, "r")
+    if not f then
+        return true
+    end
+
+    local last = tonumber(f:read("*a"))
+    f:close()
+
+    return not last or (os.time() - last) > (update_interval_days * 24 * 60 * 60)
+end
+
+vim.api.nvim_create_user_command("TSUpdateCheck", function()
+    ts.update()
+    mark_updated()
+end, { desc = "Treesitter: check installed parsers for updates" })
+
+if update_is_due() then
+    ts.update()
+    mark_updated()
+end
+
 vim.api.nvim_create_autocmd('FileType', {
     callback = function()
         pcall(vim.treesitter.start)
         vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
     end,
 })
-
-local ok_tag, autotag = pcall(require, "nvim-ts-autotag")
-if ok_tag then
-    autotag.setup({})
-end

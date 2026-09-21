@@ -1,10 +1,16 @@
 vim.api.nvim_set_hl(0, 'RenderMarkdownCode', { bg = 'None' })
 
-require("render-markdown").setup({
-    completions = {
-        blink = { enabled = true },
-        lsp = { enabled = true }
-    },
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "markdown",
+    once = true,
+    callback = function()
+        require("render-markdown").setup({
+            completions = {
+                blink = { enabled = true },
+                lsp = { enabled = true }
+            },
+        })
+    end,
 })
 
 local map = vim.keymap.set
