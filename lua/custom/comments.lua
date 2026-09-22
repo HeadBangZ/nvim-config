@@ -8,10 +8,6 @@ local colors = {
     TodoTest = '#f5c2e7',
 }
 
-for group, color in pairs(colors) do
-    vim.api.nvim_set_hl(0, group, { fg = "#11111b", bg = color, bold = true })
-end
-
 local keyword_groups = {
     TodoFix  = '\\v<(FIX|FIXME|BUG|FIXIT|ISSUE):',
     TodoInfo = '\\v<(TODO):',
@@ -22,13 +18,40 @@ local keyword_groups = {
     TodoTest = '\\v<(TEST|TESTING|PASSED|FAILED):',
 }
 
-vim.api.nvim_create_autocmd({ 'BufEnter', 'WinEnter' }, {
-    callback = function()
-        pcall(vim.fn.clearmatches)
-        for group, pattern in pairs(keyword_groups) do
-            vim.fn.matchadd(group, pattern)
+local group = vim.api.nvim_create_augroup("todo-comments", { clear = true })
+
+local function apply_highlights()
+    for name, color in pairs(colors) do
+        vim.api.nvim_set_hl(0, name, { fg = "#11111b", bg = color, bold = true })
+    end
+end
+
+vim.api.nvim_create_autocmd("ColorScheme", { group = group, callback = apply_highlights })
+apply_highlights()
+
+local function apply_matches()
+    for _, id in ipairs(vim.w.todo_match_ids or {}) do
+        pcall(vim.fn.matchdelete, id)
+    end
+
+    if vim.bo.buftype ~= "" then
+        vim.w.todo_match_ids = {}
+        return
+    end
+
+    local ids = {}
+    for name, pattern in pairs(keyword_groups) do
+        local ok, id = pcall(vim.fn.matchadd, name, pattern)
+        if ok then
+            table.insert(ids, id)
         end
-    end,
+    end
+    vim.w.todo_match_ids = ids
+end
+
+vim.api.nvim_create_autocmd({ 'BufWinEnter', 'WinNew' }, {
+    group = group,
+    callback = apply_matches,
 })
 
 vim.keymap.set('n', '<leader>ft', function()

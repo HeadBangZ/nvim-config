@@ -36,14 +36,7 @@ vim.schedule(function()
         { src = "https://github.com/meanderingprogrammer/render-markdown.nvim" },
     })
 
-    -- require("config.lsp")
+    require("config.lsp")
     require("plugins")
     require("custom")
 end)
-
-vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
-    once = true,
-    callback = function()
-        require("config.lsp")
-    end,
-})

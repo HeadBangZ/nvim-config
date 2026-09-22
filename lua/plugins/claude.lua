@@ -38,6 +38,7 @@ map("n", "<leader>aa", cmd("ClaudeCodeDiffAccept"), { desc = "Claude: [A]ccept [
 map("n", "<leader>ad", cmd("ClaudeCodeDiffDeny"), { desc = "Claude: [D]eny [D]iff" })
 
 vim.api.nvim_create_autocmd("FileType", {
+    group = vim.api.nvim_create_augroup("claudecode-oil", { clear = true }),
     pattern = "oil",
     callback = function(ev)
         map("n", "<leader>as", cmd("ClaudeCodeTreeAdd"), { buffer = ev.buf, desc = "Claude: [A]dd [F]ile" })

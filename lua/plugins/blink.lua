@@ -13,7 +13,7 @@ function M.setup()
             ['<C-n>'] = { 'select_next', 'fallback' },
             ['<C-p>'] = { 'select_prev', 'fallback' },
             -- Actions
-            ['<C-e>'] = { 'hide' },
+            ['<C-e>'] = { 'hide', 'fallback' },
             ['<C-y>'] = { 'accept', 'fallback' },
             ['<C-j>'] = { 'show', 'fallback' },
             -- Jumps

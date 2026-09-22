@@ -1,6 +1,6 @@
 local M = {}
 
-M.on_attach = function(_, bufnr)
+M.on_attach = function(client, bufnr)
     local function map(mode, lhs, rhs, desc)
         vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, noremap = true, silent = true, desc = desc })
     end
@@ -11,7 +11,7 @@ M.on_attach = function(_, bufnr)
         end
     end
 
-    -- LSP Navigation (Lazy fzf-lua)
+    -- LSP Navigation
     map("n", "gd", fzf_cmd("lsp_definitions"), "LSP: [G]oto [D]efinition")
     map("n", "gD", fzf_cmd("lsp_declarations"), "LSP: [G]oto [D]eclaration")
     map("n", "grr", fzf_cmd("lsp_references"), "LSP: [G]oto [R]eferences")
@@ -28,6 +28,12 @@ M.on_attach = function(_, bufnr)
     map("n", "<C-a>", vim.lsp.buf.signature_help, "LSP: [S]ignature [H]elp")
     map({ "n", "x" }, "<leader>ca", fzf_cmd("lsp_code_actions"), "LSP: [C]ode [A]ction")
     map("n", "<leader>rn", vim.lsp.buf.rename, "LSP: [R]ename")
+
+    if client:supports_method("textDocument/formatting", bufnr) then
+        map("n", "<leader>cf", function()
+            vim.lsp.buf.format({ bufnr = bufnr })
+        end, "LSP: [F]ormat [D]ocument")
+    end
 
     -- Diagnostics
     map("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end, "LSP: [P]revious [D]iagnostic")

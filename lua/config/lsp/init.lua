@@ -18,10 +18,12 @@ local function get_capabilities(custom_capabilities)
 end
 
 local function setup_servers(server_name, config)
-    local final_config = vim.tbl_deep_extend("force", {
-        on_attach = keymaps.on_attach,
-        capabilities = get_capabilities(config.capabilities)
-    }, config)
+    if not config.cmd then
+        return
+    end
+
+    local final_config = vim.tbl_deep_extend("force", { on_attach = keymaps.on_attach }, config)
+    final_config.capabilities = get_capabilities(config.capabilities)
 
     vim.lsp.config(server_name, final_config)
     vim.lsp.enable(server_name)

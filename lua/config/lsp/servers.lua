@@ -61,29 +61,17 @@ M.common = {
     yamlls = {
         cmd = { "yaml-language-server", "--stdio" },
         filetypes = { "yaml" },
-        on_new_config = function(new_config)
-            new_config.settings.yaml.schemas = get_yaml_schemas()
-        end,
         settings = {
             yaml = {
+                -- Disable the built-in store and feed it schemastore's catalog instead.
                 schemaStore = { enable = false, url = "" },
+                schemas = get_yaml_schemas(),
             }
         }
     },
 }
 
 M.workstation = {
-    powershell_es = {
-        filetypes = { "ps1", "psm1", "psd1" },
-        root_markers = { ".git" },
-        settings = {
-            powershell = {
-                codeFormatting = {
-                    preset = "OTBS",
-                },
-            },
-        },
-    },
     roslyn_ls = {
         cmd = { "roslyn-language-server", "--stdio" },
         filetypes = { "cs", "razor" },
@@ -110,12 +98,10 @@ M.workstation = {
     jsonls = {
         cmd = { "vscode-json-language-server", "--stdio" },
         filetypes = { "json", "jsonc" },
-        on_new_config = function(new_config)
-            new_config.settings.json.schemas = get_json_schemas()
-        end,
         settings = {
             json = {
-                validate = { enable = true }
+                validate = { enable = true },
+                schemas = get_json_schemas(),
             }
         },
     },

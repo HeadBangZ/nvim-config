@@ -20,8 +20,22 @@ if vim.fn.executable("rg") == 1 then
     opt.grepformat = "%f:%l:%c:%m"
 end
 
-if vim.fn.has("win32") == 1 then
-    opt.shellpipe = ">%s 2>&1"
+if vim.fn.has("win32") == 1
+    and vim.g.use_powershell_shell ~= false
+    and vim.fn.executable("pwsh") == 1
+then
+    opt.shell = "pwsh"
+    opt.shellcmdflag = table.concat({
+        "-NoLogo",
+        "-NoProfile",
+        "-ExecutionPolicy RemoteSigned",
+        "-Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;",
+        "$PSDefaultParameterValues['Out-File:Encoding']='utf8';",
+        "Remove-Alias -Force -ErrorAction SilentlyContinue tee;",
+    }, " ")
+    -- %% is a literal percent; a bare %{ trips Neovim's "only one %s" validator.
+    opt.shellredir = '2>&1 | %%{ "$_" } | Out-File %s; exit $LastExitCode'
+    opt.shellpipe = '2>&1 | %%{ "$_" } | Tee-Object %s; exit $LastExitCode'
     opt.shellquote = ""
     opt.shellxquote = ""
 end

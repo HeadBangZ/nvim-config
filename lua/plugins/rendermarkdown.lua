@@ -1,6 +1,14 @@
-vim.api.nvim_set_hl(0, 'RenderMarkdownCode', { bg = 'None' })
+local group = vim.api.nvim_create_augroup("render-markdown", { clear = true })
+
+local function apply_highlights()
+    vim.api.nvim_set_hl(0, "RenderMarkdownCode", { bg = "None" })
+end
+
+vim.api.nvim_create_autocmd("ColorScheme", { group = group, callback = apply_highlights })
+apply_highlights()
 
 vim.api.nvim_create_autocmd("FileType", {
+    group = group,
     pattern = "markdown",
     once = true,
     callback = function()

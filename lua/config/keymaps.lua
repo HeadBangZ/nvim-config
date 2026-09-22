@@ -6,16 +6,15 @@ vim.keymap.set("n", "<leader>E", function()
     { desc = "Oil: [O]pen [F]loat" })
 
 vim.keymap.set("n", "<leader>t", "~", { desc = "[T]oggle [C]ase" })
-vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { desc = "LSP: [R]ename" })
 
 vim.keymap.set("n", "<leader>i",
     function()
-        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ 0 }), { 0 })
+        local filter = { bufnr = 0 }
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(filter), filter)
     end,
     { desc = "LSP: [I]nlay [H]ints" }
 )
 
-vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format, { desc = "LSP: [F]ormat [D]ocument", silent = true })
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "[R]emove [H]ighlights", silent = true })
 
 local opts = { noremap = true, silent = true }

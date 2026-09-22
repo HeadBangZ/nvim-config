@@ -10,39 +10,48 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     end,
 })
 
+local format_group = augroup("lsp-format-on-save")
+
 vim.api.nvim_create_autocmd("LspAttach", {
     group = augroup("lsp-attach-format"),
     callback = function(args)
         local client = vim.lsp.get_client_by_id(args.data.client_id)
         if not client then return end
+        if not client:supports_method("textDocument/formatting", args.buf) then return end
 
-        if client:supports_method("textDocument/formatting", args.buf) then
-            vim.api.nvim_create_autocmd("BufWritePre", {
-                buffer = args.buf,
-                group = augroup("lsp-format-" .. args.buf),
-                callback = function()
-                    vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
-                end,
-            })
-        end
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = args.buf,
+            group = format_group,
+            callback = function()
+                if vim.g.disable_autoformat or vim.b[args.buf].disable_autoformat then
+                    return
+                end
+                vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
+            end,
+        })
     end
 })
 
+vim.api.nvim_create_user_command("FormatOnSave", function()
+    vim.g.disable_autoformat = not vim.g.disable_autoformat
+    vim.notify(
+        "Format on save " .. (vim.g.disable_autoformat and "disabled" or "enabled"),
+        vim.log.levels.INFO
+    )
+end, { desc = "Toggle format on save" })
+
 vim.api.nvim_create_autocmd("LspProgress", {
-    group = augroup("lsp-progress-echo"),
+    group = augroup("lsp-progress-notify"),
     callback = function(ev)
         local client = vim.lsp.get_client_by_id(ev.data.client_id)
         local val = ev.data.params.value
         if not client or not val then return end
 
         if val.kind == "end" then
-            vim.api.nvim_echo({ { client.name .. " ready", "NotifySuccess" } }, false, {})
-            vim.defer_fn(function()
-                vim.api.nvim_echo({ { "", "" } }, false, {})
-            end, 2000)
+            vim.notify(client.name .. " ready", vim.log.levels.INFO)
         else
             local msg = string.format("%s: %s %s", client.name, val.title or "", val.message or "")
-            vim.api.nvim_echo({ { msg, "NotifyText" } }, false, {})
+            vim.notify(msg, vim.log.levels.INFO)
         end
     end,
 })
@@ -101,7 +110,10 @@ vim.api.nvim_create_user_command("ReloadConfig", function()
     vim.notify("Neovim configuration reloaded successfully!", vim.log.levels.INFO)
 end, {})
 
+local jupytext_group = augroup("jupytext")
+
 vim.api.nvim_create_autocmd({ "BufReadCmd" }, {
+    group = jupytext_group,
     pattern = "*.ipynb",
     callback = function(args)
         local buf = args.buf
@@ -121,6 +133,7 @@ vim.api.nvim_create_autocmd({ "BufReadCmd" }, {
 
         vim.api.nvim_create_autocmd("BufWriteCmd", {
             buffer = buf,
+            group = jupytext_group,
             callback = function()
                 local content = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
                 local tmp_md = vim.fn.tempname() .. ".md"

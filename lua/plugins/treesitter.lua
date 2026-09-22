@@ -108,8 +108,13 @@ if update_is_due() then
 end
 
 vim.api.nvim_create_autocmd('FileType', {
-    callback = function()
-        pcall(vim.treesitter.start)
-        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    group = vim.api.nvim_create_augroup("treesitter-start", { clear = true }),
+    callback = function(ev)
+        local lang = vim.treesitter.language.get_lang(ev.match)
+        if not lang or not pcall(vim.treesitter.start, ev.buf, lang) then
+            return
+        end
+
+        vim.bo[ev.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
     end,
 })
