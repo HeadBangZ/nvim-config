@@ -41,7 +41,7 @@ vim.api.nvim_create_user_command("FormatOnSave", function()
 end, { desc = "Toggle format on save" })
 
 vim.api.nvim_create_autocmd("LspProgress", {
-    group = augroup("lsp-progress-notify"),
+    group = augroup("lsp-progress-echo"),
     callback = function(ev)
         local client = vim.lsp.get_client_by_id(ev.data.client_id)
         local val = ev.data.params.value
@@ -49,8 +49,8 @@ vim.api.nvim_create_autocmd("LspProgress", {
 
         if val.kind == "end" then
             vim.notify(client.name .. " ready", vim.log.levels.INFO)
-        else
-            local msg = string.format("%s: %s %s", client.name, val.title or "", val.message or "")
+        elseif val.kind == "begin" then
+            local msg = string.format("%s: %s", client.name, val.title or "")
             vim.notify(msg, vim.log.levels.INFO)
         end
     end,
