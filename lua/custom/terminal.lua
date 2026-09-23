@@ -62,8 +62,8 @@ end
 
 local opts = { noremap = true, silent = true }
 
-vim.keymap.set("n", "<leader>st", toggle_float, { desc = "Terminal: [T]oggle [F]loat" })
-vim.keymap.set("t", "<leader>st", function()
+vim.keymap.set("n", "<M-b>", toggle_float, { desc = "Terminal: [T]oggle [F]loat" })
+vim.keymap.set("t", "<M-b>", function()
     vim.cmd("stopinsert")
     toggle_float()
 end, { desc = "Terminal: [T]oggle [F]loat" })
