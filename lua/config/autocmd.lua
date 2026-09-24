@@ -10,6 +10,15 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+    desc = "Hide colorcolumn in markdown",
+    group = augroup("markdown-colorcolumn"),
+    pattern = "markdown",
+    callback = function()
+        vim.opt_local.colorcolumn = ""
+    end,
+})
+
 local format_group = augroup("lsp-format-on-save")
 
 vim.api.nvim_create_autocmd("LspAttach", {
