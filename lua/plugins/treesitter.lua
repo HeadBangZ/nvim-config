@@ -59,6 +59,7 @@ local parsers = {
 
     -- Shared
     "regex",
+    "comment"
 }
 
 local installed = require("nvim-treesitter.config").get_installed()

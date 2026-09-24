@@ -1,4 +1,5 @@
-require("config.colorschemes")
+require("config.themes").setup()
+
 require("config.difftool")
 require("config.diagnostics")
 require("config.undotree")
