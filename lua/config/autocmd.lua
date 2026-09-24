@@ -15,6 +15,9 @@ vim.api.nvim_create_autocmd("FileType", {
     group = augroup("markdown-colorcolumn"),
     pattern = "markdown",
     callback = function()
+        vim.opt_local.wrap = true
+        vim.opt_local.linebreak = true
+        vim.opt_local.breakindent = true
         vim.opt_local.colorcolumn = ""
     end,
 })
