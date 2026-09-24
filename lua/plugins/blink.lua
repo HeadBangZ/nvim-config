@@ -17,8 +17,8 @@ function M.setup()
             ['<C-y>'] = { 'accept', 'fallback' },
             ['<C-j>'] = { 'show', 'fallback' },
             -- Jumps
-            ['<C-h>'] = { 'snippet_forward', 'fallback' },
-            ['<C-l>'] = { 'snippet_backward', 'fallback' },
+            ['<C-l>'] = { 'snippet_forward', 'fallback' },
+            ['<C-h>'] = { 'snippet_backward', 'fallback' },
             -- Scroll documentation up
             ['<C-b>'] = { 'scroll_documentation_up' },
             -- Scroll documentation down
