@@ -53,6 +53,7 @@ local parsers = {
     -- Documentation & Git
     "markdown",
     "markdown_inline",
+    "mermaid",
     "vim",
     "vimdoc",
     "gitignore",
