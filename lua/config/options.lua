@@ -9,8 +9,6 @@ vim.opt.cursorline = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 
-vim.cmd("autocmd BufEnter * set formatoptions-=cro | setlocal formatoptions-=cro")
-
 -- keys
 vim.opt.showcmd = true
 
@@ -53,7 +51,7 @@ vim.keymap.set("n", "<leader>vl", function()
     vim.diagnostic.config({ virtual_lines = not current and { current_line = true } or false })
 end, { desc = "Toggle diagnostic virtual lines" })
 
-vim.opt.history = 100
+vim.opt.history = 10000
 
 vim.opt.completeopt = { "menuone", "noselect", "popup" }
 

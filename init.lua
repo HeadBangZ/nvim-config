@@ -2,6 +2,8 @@
 vim.loader.enable()
 vim.opt.packpath:prepend(vim.fn.stdpath("data") .. "/site")
 
+vim.g.mapleader = ' '
+
 vim.pack.add({
     -- { src = "https://github.com/datsfilipe/vesper.nvim" },
     { src = "https://github.com/olivercederborg/poimandres.nvim" },

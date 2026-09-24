@@ -25,7 +25,6 @@ M.on_attach = function(client, bufnr)
 
     -- LSP Actions
     map("n", "K", vim.lsp.buf.hover, "LSP: [H]over [D]ocumentation")
-    map("n", "<C-a>", vim.lsp.buf.signature_help, "LSP: [S]ignature [H]elp")
     map({ "n", "x" }, "<leader>ca", fzf_cmd("lsp_code_actions"), "LSP: [C]ode [A]ction")
     map("n", "<leader>rn", vim.lsp.buf.rename, "LSP: [R]ename")
 

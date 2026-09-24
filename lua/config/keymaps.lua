@@ -1,12 +1,4 @@
-vim.g.mapleader = ' '
 vim.keymap.set("n", "<leader>cd", vim.cmd.Oil, { desc = "Oil: [O]pen" })
-vim.keymap.set("n", "<leader>E", function()
-        require("oil").open_float(vim.loop.cwd())
-    end,
-    { desc = "Oil: [O]pen [F]loat" })
-
-vim.keymap.set("n", "<leader>t", "~", { desc = "[T]oggle [C]ase" })
-
 vim.keymap.set("n", "<leader>i",
     function()
         local filter = { bufnr = 0 }

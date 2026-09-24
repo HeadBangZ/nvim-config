@@ -19,6 +19,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         if not client then return end
         if not client:supports_method("textDocument/formatting", args.buf) then return end
 
+        vim.api.nvim_clear_autocmds({ group = format_group, buffer = args.buf })
         vim.api.nvim_create_autocmd("BufWritePre", {
             buffer = args.buf,
             group = format_group,
@@ -26,10 +27,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
                 if vim.g.disable_autoformat or vim.b[args.buf].disable_autoformat then
                     return
                 end
-                vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
+                vim.lsp.buf.format({ bufnr = args.buf })
             end,
         })
     end
+})
+
+vim.api.nvim_create_autocmd("BufEnter", {
+    desc = "Don't continue comments on new lines",
+    group = augroup("no-auto-comment"),
+    callback = function()
+        vim.opt_local.formatoptions:remove({ "c", "r", "o" })
+    end,
 })
 
 vim.api.nvim_create_user_command("FormatOnSave", function()
