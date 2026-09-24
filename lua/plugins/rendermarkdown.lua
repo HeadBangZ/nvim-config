@@ -13,6 +13,9 @@ vim.api.nvim_create_autocmd("FileType", {
     once = true,
     callback = function()
         require("render-markdown").setup({
+            -- Keep the cursor line rendered too, so normal mode looks like a preview;
+            -- insert mode still shows the raw markdown
+            anti_conceal = { enabled = false },
             completions = {
                 blink = { enabled = true },
                 lsp = { enabled = true }
