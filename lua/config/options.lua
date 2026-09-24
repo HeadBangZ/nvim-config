@@ -64,7 +64,19 @@ vim.api.nvim_create_user_command("LspLog", function(_)
     local log_path = vim.fs.joinpath(state_path, "lsp.log")
     vim.cmd(string.format("edit %s", log_path))
 end, { desc = "Show LSP Log" })
-vim.api.nvim_create_user_command("LspRestart", "lsp restart", { desc = "Restart LSP" })
+
+vim.api.nvim_create_user_command("LspRestart", function(opts)
+    vim.cmd("lsp restart " .. opts.args)
+end, {
+    nargs = "*",
+    complete = function(arg_lead)
+        return vim.iter(vim.lsp.get_clients({ bufnr = 0 }))
+            :map(function(client) return client.name end)
+            :filter(function(name) return vim.startswith(name, arg_lead) end)
+            :totable()
+    end,
+    desc = "LSP: [R]estart",
+})
 
 -- Vim Pack
 vim.api.nvim_create_user_command("PackUpdate", "lua vim.pack.update()", { desc = "Update Packages" })
