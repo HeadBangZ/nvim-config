@@ -1,178 +1,217 @@
 local M = {}
 
-M.settings = {
-    transparent = true,
-    italic_comments = true,
-    italic_keywords = true
-}
+function M.groups(c, s)
+    return {
+        -------------------------------------------------------------------------
+        -- UI
+        -------------------------------------------------------------------------
+        Normal = { fg = c.fg, bg = c.bg },
+        NormalFloat = { fg = c.fg, bg = c.bg_float },
+        FloatBorder = { fg = c.dim, bg = c.bg_float },
+        FloatTitle = { fg = c.accent, bg = c.bg_float, bold = true },
+        ColorColumn = { bg = c.bg_alt },
+        CursorLine = { bg = c.bg_alt },
+        CursorColumn = { bg = c.bg_alt },
+        LineNr = { fg = c.dim },
+        CursorLineNr = { fg = c.fg, bold = true },
+        SignColumn = { bg = c.bg },
+        WinSeparator = { fg = c.dim, bg = c.bg },
+        VertSplit = { link = "WinSeparator" },
+        Visual = { bg = c.bg_alt },
+        Search = { fg = c.on_accent, bg = c.warn },
+        IncSearch = { fg = c.on_accent, bg = c.inc_search or c.accent },
+        StatusLine = { fg = c.fg, bg = c.bg_alt },
+        StatusLineNC = { fg = c.muted, bg = c.bg },
+        Pmenu = { fg = c.fg, bg = c.bg_alt },
+        PmenuSel = { fg = c.bg_alt, bg = c.accent, bold = true },
+        PmenuSbar = { bg = c.bg_alt },
+        PmenuThumb = { bg = c.dim },
+        Whitespace = { fg = c.dim },
+        NonText = { fg = c.dim },
 
-M.default = "vesper"
+        -------------------------------------------------------------------------
+        -- Syntax
+        -------------------------------------------------------------------------
+        Comment = { fg = c.muted, italic = s.italic_comments },
+        Constant = { fg = c.constant },
+        String = { fg = c.string },
+        Character = { link = "String" },
+        Number = { fg = c.number or c.constant },
+        Float = { link = "Number" },
+        Boolean = { fg = c.boolean or c.constant, bold = true },
 
-M.themes = {
-    vesper = {
-        src = "https://github.com/datsfilipe/vesper.nvim",
-        setup = function(s)
-            ---@diagnostic disable-next-line: redundant-parameter
-            require("vesper").setup({
-                transparent = s.transparent,
-                italics = {
-                    comments = s.italic_comments,
-                    keywords = s.italic_keywords,
-                },
-            })
-        end,
-    },
-    poimandres = {
-        src = "https://github.com/olivercederborg/poimandres.nvim",
-        setup = function(s)
-            ---@diagnostic disable-next-line: redundant-parameter
-            require("poimandres").setup({
-                disable_background = s.transparent,
-                disable_float_background = s.transparent,
-                disable_italics = not s.italic_comments,
-                bold_vert_split = false,
-                dim_nc_background = false,
-            })
-        end,
-    },
-    zenbones = {},
-    ["modus-vivendi"] = {},
-}
+        Identifier = { fg = c.fg },
+        Function = { fg = c.func },
 
-local state_file = vim.fn.stdpath("state") .. "/theme"
+        Statement = { fg = c.statement or c.accent, bold = true },
+        Conditional = { link = "Statement" },
+        Repeat = { link = "Statement" },
+        Label = { fg = c.accent },
+        Operator = { fg = c.operator or c.fg },
+        Keyword = { fg = c.accent, bold = true, italic = s.italic_keywords },
+        Exception = { fg = c.error, bold = true },
 
-local function read_saved()
-    local f = io.open(state_file, "r")
-    if not f then
-        return nil
-    end
+        PreProc = { fg = c.preproc or c.type },
+        Include = { fg = c.include or c.preproc or c.type },
+        Define = { link = "Include" },
+        Macro = { link = "Include" },
 
-    local name = f:read("*l")
-    f:close()
-    return name
+        Type = { fg = c.type, bold = true },
+        StorageClass = { fg = c.type_decl or c.type },
+        Structure = { link = "StorageClass" },
+        Typedef = { link = "StorageClass" },
+
+        Special = { fg = c.special or c.constant },
+        SpecialChar = { link = "Special" },
+        Tag = { fg = c.accent },
+        Delimiter = { fg = c.delimiter or c.muted },
+        SpecialComment = { fg = c.muted, bold = true },
+        Debug = { fg = c.error },
+
+        Underlined = { underline = true },
+        Bold = { bold = true },
+        Italic = { italic = true },
+        Error = { fg = c.error, bold = true },
+        Todo = { fg = c.on_accent, bg = c.todo or c.warn, bold = true },
+
+        -------------------------------------------------------------------------
+        -- Treesitter
+        -------------------------------------------------------------------------
+        ["@comment"] = { link = "Comment" },
+        ["@variable"] = { fg = c.fg },
+        ["@variable.builtin"] = { fg = c.builtin or c.fg, italic = true },
+        ["@function"] = { link = "Function" },
+        ["@function.call"] = { link = "Function" },
+        ["@function.builtin"] = { fg = c.func, bold = true },
+        ["@keyword"] = { link = "Keyword" },
+        ["@keyword.return"] = { link = "Keyword" },
+        ["@string"] = { link = "String" },
+        ["@number"] = { link = "Number" },
+        ["@boolean"] = { link = "Boolean" },
+        ["@type"] = { link = "Type" },
+        ["@type.builtin"] = { fg = c.type },
+        ["@property"] = { fg = c.fg },
+        ["@punctuation.bracket"] = { fg = c.bracket or c.muted },
+        ["@punctuation.delimiter"] = { fg = c.delimiter or c.muted },
+
+        -------------------------------------------------------------------------
+        -- Diagnostics & diffs
+        -------------------------------------------------------------------------
+        DiagnosticError = { fg = c.error },
+        DiagnosticWarn = { fg = c.warn },
+        DiagnosticInfo = { fg = c.info },
+        DiagnosticHint = { fg = c.hint },
+
+        DiffAdd = { bg = c.diff_add },
+        DiffChange = { bg = c.diff_change },
+        DiffDelete = { fg = c.dim, bg = c.diff_delete },
+        DiffText = { bg = c.diff_text, bold = true },
+
+        -------------------------------------------------------------------------
+        -- Plugins
+        -------------------------------------------------------------------------
+        -- oil.nvim
+        OilDir = { fg = c.accent, bold = true },
+        OilDirIcon = { fg = c.accent },
+        OilFile = { fg = c.fg },
+        OilLink = { fg = c.string, underline = true },
+        OilLinkTarget = { fg = c.muted },
+        OilCopy = { fg = c.warn },
+        OilMove = { fg = c.warn },
+        OilPurge = { fg = c.error },
+        OilCreate = { fg = c.add },
+        OilDelete = { fg = c.error },
+        OilPermission = { fg = c.muted },
+        OilSize = { fg = c.muted },
+        OilMtime = { fg = c.muted },
+
+        -- fzf-lua
+        FzfLuaNormal = { fg = c.fg, bg = c.bg_float },
+        FzfLuaBorder = { fg = c.dim, bg = c.bg_float },
+        FzfLuaTitle = { fg = c.accent, bg = c.bg_float, bold = true },
+        FzfLuaBackdrop = { bg = c.bg_float },
+        FzfLuaCursorLine = { bg = c.bg_alt },
+        FzfLuaMatch = { fg = c.match or c.accent, bold = true },
+        FzfLuaFzfMatch = { link = "FzfLuaMatch" },
+        FzfLuaFzfPointer = { fg = c.accent },
+        FzfLuaHeader = { fg = c.accent },
+        FzfLuaScrollBorder = { fg = c.dim },
+
+        -- blink.cmp
+        BlinkCmpMenu = { fg = c.fg, bg = c.bg_float },
+        BlinkCmpMenuBorder = { fg = c.dim, bg = c.bg_float },
+        BlinkCmpSelection = { fg = c.fg, bg = c.bg_alt, bold = true },
+        BlinkCmpLabel = { fg = c.fg },
+        BlinkCmpLabelDeprecated = { fg = c.muted, strikethrough = true },
+        BlinkCmpLabelMatch = { link = "FzfLuaMatch" },
+        BlinkCmpDoc = { fg = c.fg, bg = c.bg_float },
+        BlinkCmpDocBorder = { fg = c.dim, bg = c.bg_float },
+        BlinkCmpKind = { fg = c.kind or c.accent },
+
+        -- gitsigns.nvim
+        GitSignsAdd = { fg = c.add, bg = c.bg },
+        GitSignsChange = { fg = c.warn, bg = c.bg },
+        GitSignsDelete = { fg = c.error, bg = c.bg },
+        GitSignsChangedelete = { link = "GitSignsChange" },
+        GitSignsTopdelete = { link = "GitSignsDelete" },
+        GitSignsUntracked = { fg = c.muted, bg = c.bg },
+        GitSignsAddInline = { bg = c.diff_add },
+        GitSignsChangeInline = { bg = c.diff_change },
+        GitSignsDeleteInline = { bg = c.diff_delete },
+        GitSignsCurrentLineBlame = { fg = c.muted, italic = true },
+
+        -- diffview / neogit
+        DiffviewFilePanelTitle = { fg = c.accent, bold = true },
+        DiffviewFilePanelCounter = { fg = c.string, bold = true },
+        DiffviewFilePanelFileName = { fg = c.fg },
+        DiffviewFolderName = { fg = c.muted },
+        NeogitBranch = { fg = c.accent, bold = true },
+        NeogitRemote = { fg = c.string },
+        NeogitHunkHeader = { fg = c.fg, bg = c.bg_alt, bold = true },
+        NeogitHunkHeaderHighlight = { fg = c.accent, bg = c.bg_alt, bold = true },
+        NeogitDiffAddHighlight = { bg = c.diff_add },
+        NeogitDiffDeleteHighlight = { bg = c.diff_delete },
+
+        -- nvim-highlight-colors
+        HighlightColorsInline = { bold = true },
+    }
 end
 
-local function save(name)
-    local f = io.open(state_file, "w")
-    if f then
-        f:write(name)
-        f:close()
+function M.terminal(c)
+    local ansi = { c.bg_alt, c.error, c.add, c.warn, c.func, c.string, c.accent, c.fg }
+    for i, color in ipairs(ansi) do
+        vim.g["terminal_color_" .. (i - 1)] = color
+        vim.g["terminal_color_" .. (i + 7)] = color
     end
 end
 
-local function get_hl(group)
-    return vim.api.nvim_get_hl(0, { name = group, link = false })
-end
+function M.load(name)
+    local module = "config.themes.palettes." .. name
+    package.loaded[module] = nil
+    local spec = require(module)
+    local settings = require("config.themes").settings
 
-local function get_color(group, attr, fallback)
-    local value = get_hl(group)[attr]
-    return value and string.format("#%06x", value) or fallback
-end
-
-local function clear_bg(groups)
-    for _, group in ipairs(groups) do
-        local hl = get_hl(group)
-        hl.bg, hl.ctermbg = nil, nil
-        ---@diagnostic disable-next-line: param-type-mismatch
-        vim.api.nvim_set_hl(0, group, hl)
+    vim.cmd("highlight clear")
+    if vim.g.syntax_on then
+        vim.cmd("syntax reset")
     end
-end
+    vim.o.background = spec.background or "dark"
+    vim.g.colors_name = name
 
-local function set_statusline_groups()
-    local text = get_color("Normal", "bg", "#101010")
-    local function mode(group, source, fallback)
-        vim.api.nvim_set_hl(0, group, { fg = text, bg = get_color(source, "fg", fallback), bold = true })
+    local c = vim.deepcopy(spec.colors)
+    if settings.transparent then
+        c.bg, c.bg_float = "NONE", "NONE"
     end
 
-    mode("StModeNormal", "String", "#a6e3a1")
-    mode("StModeVisual", "Constant", "#cba6f7")
-    mode("StModeCommand", "Function", "#89b4fa")
-    mode("StModeTerminal", "Type", "#fab387")
-    mode("LineAndCol", "Statement", "#f9e2af")
-end
-
-local function remove_unused(keep)
-    local srcs = {}
-    for name, theme in pairs(M.themes) do
-        if theme.src and name ~= keep then
-            srcs[theme.src] = true
-        end
+    local groups = M.groups(c, settings)
+    if spec.overrides then
+        groups = vim.tbl_extend("force", groups, spec.overrides(c, settings))
     end
 
-    local names = {}
-    for _, plugin in ipairs(vim.pack.get()) do
-        if srcs[plugin.spec.src] and not plugin.active then
-            table.insert(names, plugin.spec.name)
-        end
+    for group, opts in pairs(groups) do
+        vim.api.nvim_set_hl(0, group, opts)
     end
-
-    if #names > 0 then
-        local ok, err = pcall(vim.pack.del, names)
-        if not ok then
-            vim.notify("Failed to remove themes: " .. err, vim.log.levels.WARN)
-        end
-    end
-end
-
-function M.apply(name)
-    local theme = M.themes[name]
-    if not theme then
-        vim.notify("Unknown theme: " .. name, vim.log.levels.ERROR)
-        return false
-    end
-
-    if theme.src then
-        vim.pack.add({ theme.src }, { confirm = false })
-    end
-
-    if theme.setup then
-        local ok, err = pcall(theme.setup, M.settings)
-        if not ok then
-            vim.notify(("Theme '%s' setup failed: %s"):format(name, err), vim.log.levels.WARN)
-        end
-    end
-
-    local ok, err = pcall(vim.cmd.colorscheme, name)
-    if not ok then
-        vim.notify(("Theme '%s' failed to load: %s"):format(name, err), vim.log.levels.ERROR)
-        return false
-    end
-
-    remove_unused(name)
-    return true
-end
-
-function M.setup()
-    vim.api.nvim_create_autocmd("ColorScheme", {
-        group = vim.api.nvim_create_augroup("config_themes", { clear = true }),
-        callback = function(ev)
-            if M.settings.transparent then
-                clear_bg({ "Normal", "NormalFloat", "LineNr", "SignColumn", "EndOfBuffer" })
-            end
-            set_statusline_groups()
-            if M.themes[ev.match] then
-                save(ev.match)
-            end
-        end,
-    })
-
-    vim.api.nvim_create_user_command("Theme", function(opts)
-        M.apply(opts.args)
-    end, {
-        nargs = 1,
-        complete = function(arg)
-            local names = vim.tbl_filter(function(n)
-                return vim.startswith(n, arg)
-            end, vim.tbl_keys(M.themes))
-            table.sort(names)
-            return names
-        end,
-    })
-
-    local name = read_saved() or M.default
-    if not M.apply(name) and name ~= M.default and not M.apply(M.default) then
-        vim.cmd.colorscheme("default")
-    end
+    M.terminal(c)
 end
 
 return M

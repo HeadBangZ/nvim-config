@@ -31,6 +31,7 @@ vim.schedule(function()
         { src = "https://github.com/folke/snacks.nvim" },
         { src = "https://github.com/coder/claudecode.nvim" },
         { src = "https://github.com/meanderingprogrammer/render-markdown.nvim" },
+        { src = "https://github.com/kevalin/mermaid.nvim" },
     })
 
     require("config.lsp")

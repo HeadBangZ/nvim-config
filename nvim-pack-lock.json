@@ -32,6 +32,10 @@
       "rev": "070a5d7b985546cc57e1fc61e5bc507fecac6045",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
+    "mermaid.nvim": {
+      "rev": "4da12693b3b4d63b67d07bafe8340b4abc265c70",
+      "src": "https://github.com/kevalin/mermaid.nvim"
+    },
     "mini.pairs": {
       "rev": "b1c5a726921b7a8c9321e9a7a208aa0571de5810",
       "src": "https://github.com/echasnovski/mini.pairs"
@@ -55,10 +59,6 @@
     "nvim-web-devicons": {
       "rev": "58447c1fca354bbf184425e4a8d01deecbd6f3c4",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
-    },
-    "poimandres.nvim": {
-      "rev": "a488957d803943a4201ac3b774913fcafa9e6b3a",
-      "src": "https://github.com/olivercederborg/poimandres.nvim"
     },
     "render-markdown.nvim": {
       "rev": "640a3ec6d538bad17c328be373c7cad0293d9589",
