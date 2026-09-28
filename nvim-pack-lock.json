@@ -9,7 +9,7 @@
       "src": "https://github.com/Saghen/blink.lib"
     },
     "canola.nvim": {
-      "rev": "8173bc716f29797ce0ad94359565a20e17a0b88c",
+      "rev": "407c8949deafb39c5aa373bb06f9796c09e0635e",
       "src": "https://forge.barrettruth.com/barrettruth/canola.nvim"
     },
     "claudecode.nvim": {
@@ -25,7 +25,7 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "fzf-lua": {
-      "rev": "13bb178a299f7493dd64427a58e61904c4b58ecb",
+      "rev": "ec1b98d3f5f44a1cff1f2c3832af2f09c3d806ca",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitsigns.nvim": {
@@ -53,7 +53,7 @@
       "src": "https://github.com/kylechui/nvim-surround"
     },
     "nvim-treesitter": {
-      "rev": "f603a2f4da48728f80257fb5fbb90145fd1dc173",
+      "rev": "728e031f6b11d03d1f0708b7dc4fb0f1d9c8a137",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-web-devicons": {
@@ -69,7 +69,7 @@
       "src": "https://github.com/meanderingprogrammer/render-markdown.nvim"
     },
     "schemastore.nvim": {
-      "rev": "76faabd8d091e4316ec8e1e90aa9371210b574b3",
+      "rev": "411163b2be396495c76788a016cb1354f1e8acd0",
       "src": "https://github.com/b0o/schemastore.nvim"
     },
     "snacks.nvim": {
