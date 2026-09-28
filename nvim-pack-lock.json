@@ -60,6 +60,10 @@
       "rev": "58447c1fca354bbf184425e4a8d01deecbd6f3c4",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
+    "orgmode": {
+      "rev": "d9cd82d732cf4322100cf2c4c57b285c870bd893",
+      "src": "https://github.com/nvim-orgmode/orgmode"
+    },
     "render-markdown.nvim": {
       "rev": "640a3ec6d538bad17c328be373c7cad0293d9589",
       "src": "https://github.com/meanderingprogrammer/render-markdown.nvim"
