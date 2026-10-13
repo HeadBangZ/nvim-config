@@ -9,12 +9,16 @@
       "src": "https://github.com/Saghen/blink.lib"
     },
     "canola.nvim": {
-      "rev": "407c8949deafb39c5aa373bb06f9796c09e0635e",
+      "rev": "b5f19d41b294e84e9fd2a81460cfc02fed8321ed",
       "src": "https://forge.barrettruth.com/barrettruth/canola.nvim"
     },
     "claudecode.nvim": {
       "rev": "2390c6e45c4789072c293ac69de051d169668b29",
       "src": "https://github.com/coder/claudecode.nvim"
+    },
+    "databricks.nvim": {
+      "rev": "ba9f45e9fbdecab1e261ae9f0918d0fc82c0b29c",
+      "src": "https://github.com/natori-hrj/databricks.nvim"
     },
     "diffview.nvim": {
       "rev": "4516612fe98ff56ae0415a259ff6361a89419b0a",
@@ -25,11 +29,11 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "fzf-lua": {
-      "rev": "ec1b98d3f5f44a1cff1f2c3832af2f09c3d806ca",
+      "rev": "6995a3f8ba256a7a9949747ffbdf5a88eb8a3697",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitsigns.nvim": {
-      "rev": "070a5d7b985546cc57e1fc61e5bc507fecac6045",
+      "rev": "aa6cc2d7addb288cfd79a05ac257695d5ff61deb",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "mermaid.nvim": {
@@ -41,7 +45,7 @@
       "src": "https://github.com/echasnovski/mini.pairs"
     },
     "neogit": {
-      "rev": "5adc81b26232954cd7a90f158aa7844c18fc3165",
+      "rev": "70708be9664b7fcdd010eb07bdc3ebc9311c2027",
       "src": "https://github.com/NeogitOrg/neogit"
     },
     "nvim-highlight-colors": {
@@ -53,11 +57,11 @@
       "src": "https://github.com/kylechui/nvim-surround"
     },
     "nvim-treesitter": {
-      "rev": "728e031f6b11d03d1f0708b7dc4fb0f1d9c8a137",
+      "rev": "1a4f47b03dfe92d28de7d5654c67327ef008c9e6",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-web-devicons": {
-      "rev": "58447c1fca354bbf184425e4a8d01deecbd6f3c4",
+      "rev": "ec309a0eaff6ea967e58c275996155ab5c16938d",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "obsidian.nvim": {
@@ -66,11 +70,11 @@
       "version": ">=0.0.0"
     },
     "render-markdown.nvim": {
-      "rev": "640a3ec6d538bad17c328be373c7cad0293d9589",
+      "rev": "8e8795368391036643b622875a6da6a51bcd33f4",
       "src": "https://github.com/meanderingprogrammer/render-markdown.nvim"
     },
     "schemastore.nvim": {
-      "rev": "411163b2be396495c76788a016cb1354f1e8acd0",
+      "rev": "9ec57eeac6e2e14b7b9b9e74dc8b0ca4954a684b",
       "src": "https://github.com/b0o/schemastore.nvim"
     },
     "snacks.nvim": {
