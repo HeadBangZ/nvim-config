@@ -3,38 +3,26 @@ local state = {
     buf = nil,
 }
 
-local function get_or_create_buf()
-    if not (state.buf and vim.api.nvim_buf_is_valid(state.buf)) then
-        state.buf = vim.api.nvim_create_buf(false, true)
-    end
-    return state.buf
-end
-
 local function get_float_config()
     local width = math.floor(vim.o.columns * 0.8)
     local height = math.floor(vim.o.lines * 0.8)
-    local col = math.floor((vim.o.columns - width) / 2)
-    local row = math.floor((vim.o.lines - height) / 2)
 
     return {
         relative = "editor",
         width = width,
         height = height,
-        row = row,
-        col = col,
+        row = math.floor((vim.o.lines - height) / 2),
+        col = math.floor((vim.o.columns - width) / 2),
         style = "minimal",
         border = "single"
     }
 end
 
 local function get_shell()
-    if vim.fn.has("win32") == 1 then
-        if vim.fn.executable("pwsh") == 1 then
-            return "pwsh.exe"
-        end
-        return "powershell.exe"
+    if vim.fn.executable("pwsh") == 1 then
+        return "pwsh.exe"
     end
-    return os.getenv("SHELL")
+    return "powershell.exe"
 end
 
 local function toggle_float()
@@ -44,16 +32,39 @@ local function toggle_float()
         return
     end
 
-    local buf = get_or_create_buf()
-    state.win = vim.api.nvim_open_win(buf, true, get_float_config())
+    if not (state.buf and vim.api.nvim_buf_is_valid(state.buf)) then
+        state.buf = vim.api.nvim_create_buf(false, true)
+    end
+
+    state.win = vim.api.nvim_open_win(state.buf, true, get_float_config())
+
+    vim.api.nvim_create_autocmd("TermClose", {
+        buffer = state.buf,
+        once = true,
+        callback = function()
+            if state.win and vim.api.nvim_win_is_valid(state.win) then
+                vim.api.nvim_win_close(state.win, true)
+                state.win = nil
+            end
+            state.buf = nil
+        end,
+    })
+
+    vim.api.nvim_create_autocmd("VimResized", {
+        buffer = state.buf,
+        callback = function()
+            if state.win and vim.api.nvim_win_is_valid(state.win) then
+                vim.api.nvim_win_set_config(state.win, get_float_config())
+            end
+        end,
+    })
 
     vim.wo[state.win].winhighlight = "FloatBorder:Function"
-
     vim.opt_local.number = false
     vim.opt_local.relativenumber = false
     vim.opt_local.signcolumn = "no"
 
-    if vim.bo[buf].buftype ~= "terminal" then
+    if vim.bo[state.buf].buftype ~= "terminal" then
         vim.cmd.term(get_shell())
     end
 
