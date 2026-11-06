@@ -35,7 +35,8 @@ M.themes = {
             })
         end,
     },
-    ["modus-vivendi"] = {}
+    ["modus-vivendi"] = {},
+    ["zenbones"] = {}
 }
 
 local state_file = vim.fn.stdpath("state") .. "/theme"

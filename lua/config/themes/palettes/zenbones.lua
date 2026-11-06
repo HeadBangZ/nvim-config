@@ -1,0 +1,55 @@
+local p = {
+    bg       = "#1c1917",
+    bg_alt   = "#262322",
+    bg_float = "#211e1c",
+    fg       = "#b4b0ab",
+    muted    = "#8c8780",
+    dim      = "#44403e",
+    rose     = "#c68a7b",
+    slate    = "#8ba4b0",
+    sage     = "#879a7f",
+    amber    = "#c3a472",
+    red      = "#bb6a68",
+}
+
+return {
+    colors = {
+        bg = p.bg,
+        bg_alt = p.bg_alt,
+        bg_float = p.bg_float,
+        fg = p.fg,
+        muted = p.muted,
+        dim = p.dim,
+        on_accent = p.bg_alt,
+
+        accent = p.slate,
+        func = p.slate,
+        string = p.rose,
+        type = p.fg,
+        constant = p.sage,
+        error = p.red,
+        warn = p.amber,
+        info = p.slate,
+        hint = p.muted,
+        add = p.sage,
+
+        -- zenbones-specific tweaks
+        number = p.fg,
+        boolean = p.rose,
+        statement = p.fg,
+        special = p.rose,
+        operator = p.muted,
+        preproc = p.muted,
+        include = p.slate,
+        type_decl = p.slate,
+        builtin = p.slate,
+        todo = p.rose,
+        inc_search = p.rose,
+        match = p.rose,
+
+        diff_add = "#253325",
+        diff_change = "#383324",
+        diff_delete = "#3d2424",
+        diff_text = "#4a3f25",
+    },
+}
