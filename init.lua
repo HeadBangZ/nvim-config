@@ -29,7 +29,7 @@ vim.schedule(function()
         { src = "https://github.com/brenoprata10/nvim-highlight-colors" },
         { src = "https://github.com/kylechui/nvim-surround" },
         { src = "https://github.com/folke/snacks.nvim" },
-        { src = "https://github.com/coder/claudecode.nvim" },
+        -- { src = "https://github.com/coder/claudecode.nvim" },
         { src = "https://github.com/natori-hrj/databricks.nvim" },
         { src = "https://github.com/meanderingprogrammer/render-markdown.nvim" },
         { src = "https://github.com/kevalin/mermaid.nvim" },

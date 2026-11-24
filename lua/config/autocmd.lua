@@ -27,16 +27,15 @@ local format_group = augroup("lsp-format-on-save")
 vim.api.nvim_create_autocmd("LspAttach", {
     group = augroup("lsp-attach-format"),
     callback = function(args)
-        local client = vim.lsp.get_client_by_id(args.data.client_id)
-        if not client then return end
-        if not client:supports_method("textDocument/formatting", args.buf) then return end
-
         vim.api.nvim_clear_autocmds({ group = format_group, buffer = args.buf })
         vim.api.nvim_create_autocmd("BufWritePre", {
             buffer = args.buf,
             group = format_group,
             callback = function()
                 if vim.g.disable_autoformat or vim.b[args.buf].disable_autoformat then
+                    return
+                end
+                if #vim.lsp.get_clients({ bufnr = args.buf, method = "textDocument/formatting" }) == 0 then
                     return
                 end
                 vim.lsp.buf.format({ bufnr = args.buf })

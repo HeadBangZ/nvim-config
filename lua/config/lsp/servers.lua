@@ -105,6 +105,16 @@ M.workstation = {
             }
         },
     },
+    ruff = {
+        cmd = { "ruff", "server" },
+        filetypes = { "python" },
+        root_markers = {
+            "pyproject.toml",
+            "ruff.toml",
+            ".ruff.toml",
+            ".git"
+        }
+    },
     basedpyright = {
         cmd = { "basedpyright-langserver", "--stdio" },
         filetypes = { "python" },
@@ -116,7 +126,7 @@ M.workstation = {
                     autoImportCompletions = true,
                     diagnosticMode = "workspace",
                     useLibraryCodeForTypes = true,
-                    typeCheckingMode = "standard",
+                    typeCheckingMode = "recommended",
                 },
             },
         },
